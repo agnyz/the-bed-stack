@@ -19,5 +19,23 @@ For more information on how to this works with other frontends/backends, head ov
 
 # Getting started
 
-> npm install, npm start, etc.
+1. **Clone and install dependencies**
 
+    ```bash
+    gh repo clone agnyz/elysia-realworld-example-app
+    cd elysia-realworld-example-app
+    ni
+    ```
+2. **Run the app**
+
+    ```bash
+    bun run dev
+    ```
+
+# Contributing
+
+See [Contributing Guide](CONTRIBUTING.md).
+
+# License
+
+[MIT](LICENSE) License © 2023 Agnyz Technologies FC
