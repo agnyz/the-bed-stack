@@ -9,7 +9,7 @@ To understand the scope of this document, please read:
 
 ## Who we are
 
-We are a group of open-source developers and who develop, use, promote this RealWorld project, software around it, and other related activities for our mutual benefit.
+We are a group of open-source developers who develop, use, promote the Elysia RealWorld example app, software around it, and other related activities for our mutual benefit.
 
 ## Core Philosophy
 
