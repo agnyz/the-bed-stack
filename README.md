@@ -24,7 +24,7 @@ For more information on how to this works with other frontends/backends, head ov
     ```bash
     gh repo clone agnyz/elysia-realworld-example-app
     cd elysia-realworld-example-app
-    ni
+    bun i
     ```
 2. **Run the app**
 
