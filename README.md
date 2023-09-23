@@ -15,7 +15,11 @@ For more information on how to this works with other frontends/backends, head ov
 
 # How it works
 
-> Describe the general architecture of your app here
+The application uses [ElysiaJS](https://elysiajs.com/) framework to implement the [backend API](https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction) outlined in the [RealWorld docs](https://realworld-docs.netlify.app/).
+
+It relies on [Bun's native SQLite3 driver](https://bun.sh/docs/api/sqlite) to store data, and interacts with it through [DrizzleORM](https://orm.drizzle.team/docs/quick-sqlite/bun).
+
+The runtime is [Bun](https://bun.sh/) and the code is written in [TypeScript](https://www.typescriptlang.org/).
 
 # Getting started
 
