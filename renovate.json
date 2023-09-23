@@ -3,5 +3,11 @@
   "extends": [
     "config:base",
     ":disableDependencyDashboard"
-  ]
+  ],
+  "vulnerabilityAlerts": {
+    "automerge": true,
+    "labels": [
+      "security"
+    ]
+  }
 }
