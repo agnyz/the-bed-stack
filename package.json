@@ -10,10 +10,12 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
+    "drizzle-orm": "^0.28.6",
     "elysia": "latest"
   },
   "devDependencies": {
     "bun-types": "latest",
+    "drizzle-kit": "^0.19.13",
     "vitepress": "^1.0.0-rc.15"
   },
   "peerDependencies": {
