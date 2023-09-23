@@ -8,7 +8,7 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunk-V634PGSD.js";
+} from "./chunk-G3CMYKT2.js";
 
 // node_modules/vitepress/dist/client/theme-default/index.js
 import "/Users/yborodetsky/code/pets/elysia-realworld-example-app/node_modules/vitepress/dist/client/theme-default/styles/fonts.css";
