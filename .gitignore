@@ -13,6 +13,11 @@
 .settings/
 *.sublime-workspace
 
+# VitePress cache 
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
