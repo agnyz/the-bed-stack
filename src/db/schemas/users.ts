@@ -2,6 +2,7 @@
 import { sql } from "drizzle-orm";
 import { pgTable, text, date, serial} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox'; 
+import { Type } from '@sinclair/typebox';
 
 
 
@@ -19,7 +20,8 @@ export const users = pgTable('users', {
 
 
 // Schema for inserting a user - can be used to validate API requests
-export const insertUserSchema = createInsertSchema(users);
+const insertUserSchemaRaw = createInsertSchema(users);
+export const insertUserSchema = Type.Omit(insertUserSchemaRaw, ['id', 'created_at', 'updated_at']);
 
 // Schema for selecting a user - can be used to validate API responses
 export const selectUserSchema = createSelectSchema(users);
