@@ -10,10 +10,14 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
+    "drizzle-orm": "^0.28.6",
+    "drizzle-typebox": "^0.1.1",
     "elysia": "latest"
   },
   "devDependencies": {
+    "better-sqlite3": "^8.6.0",
     "bun-types": "latest",
+    "drizzle-kit": "^0.19.13",
     "vitepress": "^1.0.0-rc.15"
   },
   "peerDependencies": {
