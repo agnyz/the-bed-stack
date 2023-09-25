@@ -7,7 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "db:up": "docker-compose up -d",
+    "db:generate": "bun drizzle-kit generate:pg",
+    "db:push": "bun drizzle-kit push:pg",
+    "db:seed": "bun run src/db/seed.ts",
+    "db:dump": "bun drizzle-kit dump:pg",
+    "db:studio": "bun drizzle-kit studio"
   },
   "dependencies": {
     "drizzle-orm": "^0.28.6",
