@@ -6,7 +6,7 @@
 ### [Demo](https://demo.realworld.io/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
 
 
-This codebase was created to demonstrate a fully fledged fullstack application built with **ElysiaJS** including CRUD operations, authentication, routing, pagination, and more.
+This codebase was created to demonstrate a fully fledged backend application built with **ElysiaJS** including CRUD operations, authentication, routing, pagination, and more.
 
 We've gone to great lengths to adhere to the **ElysiaJS** community styleguides & best practices.
 
@@ -17,7 +17,7 @@ For more information on how to this works with other frontends/backends, head ov
 
 The application uses [ElysiaJS](https://elysiajs.com/) framework to implement the [backend API](https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction) outlined in the [RealWorld docs](https://realworld-docs.netlify.app/).
 
-It relies on [Bun's native SQLite3 driver](https://bun.sh/docs/api/sqlite) to store data, and interacts with it through [DrizzleORM](https://orm.drizzle.team/docs/quick-sqlite/bun).
+It relies on [Postgres.js](https://github.com/porsager/postgres) to store data, and interacts with it through [DrizzleORM](https://orm.drizzle.team/docs/quick-postgresql/postgresjs).
 
 The runtime is [Bun](https://bun.sh/) and the code is written in [TypeScript](https://www.typescriptlang.org/).
 
