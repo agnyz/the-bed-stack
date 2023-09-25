@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1695584965813,
+      "tag": "0000_bored_warstar",
+      "breakpoints": false
+    }
+  ]
+}
