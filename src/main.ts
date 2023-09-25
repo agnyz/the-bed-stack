@@ -1,8 +1,8 @@
 import { Elysia } from "elysia";
-import { setup } from "@/app.module";
+import { setupApp } from "@/app.module";
 
 const app = new Elysia()
-    .use(setup)
+    .use(setupApp)
     .listen(3000);
 
 console.log(

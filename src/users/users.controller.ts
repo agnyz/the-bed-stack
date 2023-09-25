@@ -1,5 +1,6 @@
 import { Elysia } from "elysia";
 import {UsersService} from "@/users/users.service";
+import  { type PostgresJsDatabase } from "drizzle-orm/postgres-js";
 
 // Below are some ideas for how to structure the controller-service relationship.
 
@@ -36,3 +37,45 @@ export default (usersService: UsersService) => new Elysia({prefix: '/users'})
     .get("/", () => {
         return usersService.findAll();
     })
+
+
+// Idea 4: use a class that will be injected into the app state
+// and it creates its own service (or the service can be injected 
+// into the class in the same plugin that creates the class itself)
+export class UsersController {
+    private readonly usersService: UsersService;
+    private readonly db: PostgresJsDatabase
+
+    constructor(db: PostgresJsDatabase) {
+        this.db = db;
+        this.usersService = new UsersService(this.db);
+    }
+
+    registerUser (body: any) {
+        return this.usersService.findAll();
+    }
+
+    loginUser (body: any) {
+        return this.usersService.findAll();
+    }
+
+    getCurrentUser (body: any) {
+        return this.usersService.findAll();
+    }
+
+    updateUser (body: any) {
+        return this.usersService.findAll();
+    }
+
+    getProfile (body: any) {
+        return this.usersService.findAll();
+    }
+
+    followUser (body: any) {
+        return this.usersService.findAll();
+    }
+
+    unfollowUser (body: any) {
+        return this.usersService.findAll();
+    }
+}
