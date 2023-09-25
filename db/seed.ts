@@ -1,8 +1,7 @@
 import { exit } from 'process';
-import { db } from './index';
-import { users } from './schemas/users';
+import { db } from '../src/database';
+import { users } from '../src/database/schemas/users';
 
-console.log("Migrations complete.")
 const data = {
     id: users.id.default,
     email: 'test@email.com',
