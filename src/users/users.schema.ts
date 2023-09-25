@@ -1,6 +1,6 @@
 import { sql } from "drizzle-orm";
 import { pgTable, text, date, serial} from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from 'drizzle-typebox'; 
+import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
 import { Type } from '@sinclair/typebox';
 
 export const users = pgTable('users', {
