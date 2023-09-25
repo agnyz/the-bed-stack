@@ -17,10 +17,8 @@
 import { Elysia } from "elysia";
 import {UsersService} from "@/users/users.service";
 
-export default new Elysia()
-    .group("/users", (app) => app
-        .decorate("usersService", new UsersService())
-        .get("/", async ({usersService}) => {
-            return usersService.findAll();
-        })
-    )
+export default new Elysia({prefix: '/users'})
+    .decorate("usersService", new UsersService())
+    .get("/", async ({usersService}) => {
+        return usersService.findAll();
+    })
