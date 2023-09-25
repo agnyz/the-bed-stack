@@ -11,7 +11,7 @@ export const dbCredentialsString = `postgres://${dbCredentials.user}:${dbCredent
 
 export default {
     out: "./src/db/migrations",
-    schema: "./src/db/schemas/*.ts",
+    schema: "**/*.schema.ts",
     breakpoints: false,
     driver: "pg",
     dbCredentials
