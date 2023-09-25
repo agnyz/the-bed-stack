@@ -6,7 +6,7 @@ import { dbCredentialsString } from '../config';
 
 // for migrations
 const migrationClient = postgres(dbCredentialsString, { max: 1 });
-migrate(drizzle(migrationClient), {migrationsFolder: './migrations'})
+await migrate(drizzle(migrationClient), {migrationsFolder: `${import.meta.dir}/migrations`});
 
 // for query purposes
 const queryClient = postgres(dbCredentialsString);
