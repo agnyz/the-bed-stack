@@ -1,6 +1,6 @@
 import { exit } from 'process';
-import { db } from '../src/database';
-import { users } from '../src/database/schemas/users';
+import { db } from '@/database.providers';
+import {users} from "@/users/users.schema";
 
 const data = {
     id: users.id.default,

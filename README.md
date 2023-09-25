@@ -30,10 +30,22 @@ The runtime is [Bun](https://bun.sh/) and the code is written in [TypeScript](ht
     cd elysia-realworld-example-app
     bun i
     ```
-2. **Run the app**
+
+2. **Ensure Docker daemon is running and spin up the Postgres container**
 
     ```bash
-    bun run dev
+    docker-compose up -d
+    ```
+3. **Push the schema to the database**
+
+    ```bash
+    bun drizzle-kit push:pg
+    ```
+
+4. **Run the app**
+
+    ```bash
+    bun dev
     ```
 
 # Contributing
