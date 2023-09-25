@@ -1,10 +1,7 @@
-
 import { sql } from "drizzle-orm";
 import { pgTable, text, date, serial} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox'; 
 import { Type } from '@sinclair/typebox';
-
-
 
 export const users = pgTable('users', {
     id: serial('id').primaryKey(),
@@ -16,8 +13,6 @@ export const users = pgTable('users', {
     created_at: date('created_at').default(sql`CURRENT_DATE`),
     updated_at: date('updated_at').default(sql`CURRENT_DATE`),
 });
-
-
 
 // Schema for inserting a user - can be used to validate API requests
 const insertUserSchemaRaw = createInsertSchema(users);

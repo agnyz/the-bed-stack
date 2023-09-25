@@ -2,7 +2,6 @@ import { exit } from 'process';
 import { db } from './index';
 import { users } from './schemas/users';
 
-
 console.log("Migrations complete.")
 const data = {
     id: users.id.default,
