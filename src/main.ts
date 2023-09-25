@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import setup from "@/app.setup";
+import { setup } from "@/app.module";
 
 const app = new Elysia()
     .use(setup)
