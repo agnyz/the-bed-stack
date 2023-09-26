@@ -34,12 +34,12 @@ The runtime is [Bun](https://bun.sh/) and the code is written in [TypeScript](ht
 2. **Ensure Docker daemon is running and spin up the Postgres container**
 
     ```bash
-    docker-compose up -d
+    bun db:up
     ```
 3. **Push the schema to the database**
 
     ```bash
-    bun drizzle-kit push:pg
+    bun db:push
     ```
 
 4. **Run the app**
