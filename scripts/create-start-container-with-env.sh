@@ -20,5 +20,5 @@ if [ -f ".env.local" ]; then
   env_file=".env.local"
 fi
 
-# Run docker-compose with the selected env file
-docker-compose --env-file $env_file up -d
+# Run docker-compose with the selected env file and pass along any arguments
+docker-compose --env-file $env_file up "$@"
