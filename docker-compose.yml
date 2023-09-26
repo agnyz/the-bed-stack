@@ -3,7 +3,7 @@ services:
     image: postgres
     restart: always
     ports:
-      - 5432:5432
+      - ${POSTGRES_PORT}:5432
     environment:
       PGUSER: ${POSTGRES_USER}
       POSTGRES_DB: ${POSTGRES_DB}
