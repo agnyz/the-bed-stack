@@ -3,8 +3,11 @@ name: Lint, format, and test
 on:
   pull_request:
     branches: [main]
-    paths-ignore:
-      - "docs/**" # no point in linting docs, our linter doesn't support markdown
+    paths:
+      # only typescript/json should be linted and formatted
+      - "**.json"
+      - "**.ts"
+      - "**.mts"
 
 jobs:
   lint:
