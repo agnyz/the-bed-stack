@@ -1,19 +1,13 @@
-import {users} from "./users.schema";
-import {PostgresJsDatabase} from "drizzle-orm/postgres-js";
+// users.service.ts
+// in charge of business logic - generate slug, fetch data from other services, cache something, etc.
 
-// note that we should specifically NOT import the db and use it here
-// so we can mock it in tests and switch it out as needed
-// also, this would hurt the single responsibility principle.
+import {UsersRepository} from "@/users/users.repository";
 
 export class UsersService {
 
-    // the type here is
-    constructor(private readonly db: PostgresJsDatabase) {}
+    constructor(private readonly repository: UsersRepository) {}
 
     async findAll() {
-        return this.db.select().from(users);
+        return this.repository.findAll();
     }
 }
-
-// export a factory for consistency with other providers (like the controller)
-export default (db: PostgresJsDatabase) => new UsersService(db);
