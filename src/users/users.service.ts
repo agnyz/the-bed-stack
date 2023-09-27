@@ -1,10 +1,10 @@
 // users.service.ts
 // in charge of business logic - generate slug, fetch data from other services, cache something, etc.
-import { NotFoundError } from "elysia";
-import { UsersRepository } from "@/users/users.repository";
-import { User, UserToCreate } from "@/users/users.schema";
-import { generateToken } from "@/auth";
-import { AuthenticationError } from "@/errors";
+import { NotFoundError } from 'elysia';
+import { UsersRepository } from '@/users/users.repository';
+import { UserInDb, UserToCreate } from '@/users/users.schema';
+import { generateToken } from '@/auth';
+import { AuthenticationError } from '@/errors';
 
 export class UsersService {
   constructor(private readonly repository: UsersRepository) {}
@@ -12,7 +12,7 @@ export class UsersService {
   async findByEmail(email: string) {
     const user = await this.repository.findByEmail(email);
     if (!user) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError('User not found');
     }
     return await this.generateUserResponse(user);
   }
@@ -26,15 +26,15 @@ export class UsersService {
   async loginUser(email: string, password: string) {
     const user = await this.repository.findByEmail(email);
     if (!user) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError('User not found');
     }
     if (!(await Bun.password.verify(password, user.password))) {
-      throw new AuthenticationError("Invalid password");
+      throw new AuthenticationError('Invalid password');
     }
     return await this.generateUserResponse(user);
   }
 
-  private async generateUserResponse(user: User) {
+  async generateUserResponse(user: UserInDb) {
     return {
       user: {
         email: user.email,
