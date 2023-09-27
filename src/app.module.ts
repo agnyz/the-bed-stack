@@ -9,8 +9,6 @@ import { usersPlugin } from "./users/users.plugin";
  */
 export const setupApp = () => {
   return new Elysia()
-      .use(usersPlugin)
-      .post("/", ({ store }) =>
-            store.usersService.findAll()
-      )
+    .use(usersPlugin)
+    .post("/", ({ store }) => store.usersService.findAll());
 };
