@@ -1,6 +1,6 @@
-import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
-import { dbCredentialsString } from "@db/config";
+import { dbCredentialsString } from '@db/config';
+import { PostgresJsDatabase, drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
 
 // for migrations
 export const migrationClient = postgres(dbCredentialsString, { max: 1 });
