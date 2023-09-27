@@ -1,7 +1,7 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import { migrate } from 'drizzle-orm/postgres-js/migrator';
-import { migrationClient } from '@/database.providers';
+import { migrationsClient } from '@/database.providers';
 
-await migrate(drizzle(migrationClient), {
+await migrate(drizzle(migrationsClient), {
   migrationsFolder: `${import.meta.dir}`,
 });

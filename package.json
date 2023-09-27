@@ -1,6 +1,8 @@
 {
   "name": "elysia-realworld-example-app",
+  "title": "Elysia Realworld Example App",
   "version": "1.0.50",
+  "description": "A RealWorld example for an app in the backend created with Bun and Elysia.",
   "scripts": {
     "start": "bun run src/main.ts",
     "dev": "bun run --watch src/main.ts",
@@ -19,6 +21,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@elysiajs/swagger": "^0.7.3",
     "drizzle-orm": "^0.28.6",
     "drizzle-typebox": "^0.1.1",
     "elysia": "latest",
