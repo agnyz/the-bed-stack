@@ -42,7 +42,7 @@
   "module": "src/index.ts",
   "type": "module",
   "lint-staged": {
-    "*": "biome format --write",
-    "*.ts": "biome lint --apply"
+    "*.json": "biome format --write",
+    "*.ts": ["biome lint --apply", "biome format --write"]
   }
 }
