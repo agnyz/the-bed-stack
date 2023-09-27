@@ -10,7 +10,7 @@ export const dbCredentials = {
 export const dbCredentialsString = `postgres://${dbCredentials.user}:${dbCredentials.password}@${dbCredentials.host}:${dbCredentials.port}/${dbCredentials.database}`;
 
 export default {
-    out: "./db/migrations",
+    out: "./migrations",
     schema: "**/*.schema.ts",
     breakpoints: false,
     driver: "pg",
