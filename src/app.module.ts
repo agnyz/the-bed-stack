@@ -2,17 +2,13 @@
 // see: https://docs.nestjs.com/modules
 
 import { Elysia } from "elysia";
-import UsersService from "./users/users.service";
-import UsersController from "./users/users.controller";
-import { db } from "@/database.providers";
+import { usersPlugin } from "./users/users.plugin";
 
-// the word 'setup' (instead of  e.g. 'bootstrap') is in correspondence with the official elysiajs docs
-// see: https://elysiajs.com/patterns/dependency-injection.html#dependency-injection
-
-export const setup = () => {
-    const usersService = UsersService(db);
-    const usersController = UsersController(usersService);
-
-    return new Elysia()
-        .use(usersController)
-}
+/**
+ * Add all plugins to the app
+ */
+export const setupApp = () => {
+  return new Elysia()
+    .use(usersPlugin)
+    .post("/", ({ store }) => store.usersService.findAll());
+};
