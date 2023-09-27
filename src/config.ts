@@ -10,5 +10,5 @@ const envSchema = Type.Object({
   JWT_SECRET: Type.String(),
 })
 // TODO: this is ugly, find a better way to do this
-if (!Value.Check(envSchema, process.env)) throw new Error("Invalid env variables");
-export const env = Value.Cast(envSchema, process.env);
+if (!Value.Check(envSchema, Bun.env)) throw new Error("Invalid env variables");
+export const env = Value.Cast(envSchema, Bun.env);

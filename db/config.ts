@@ -1,11 +1,11 @@
 import type { Config } from 'drizzle-kit';
 export const dbCredentials = {
-  host: process.env.POSTGRES_HOST || '0.0.0.0',
-  port: parseInt(process.env.POSTGRES_PORT || '5432'),
-  user: process.env.POSTGRES_USER || 'postgres',
-  password: process.env.POSTGRES_PASSWORD || 'postgres',
-  database: process.env.POSTGRES_DB || 'medium',
-};
+    host: Bun.env.POSTGRES_HOST || "0.0.0.0",
+    port: parseInt(Bun.env.POSTGRES_PORT || '5432'),
+    user: Bun.env.POSTGRES_USER || "postgres",
+    password: Bun.env.POSTGRES_PASSWORD || "postgres",
+    database: Bun.env.POSTGRES_DB || "medium"
+}
 
 export const dbCredentialsString = `postgres://${dbCredentials.user}:${dbCredentials.password}@${dbCredentials.host}:${dbCredentials.port}/${dbCredentials.database}`;
 
