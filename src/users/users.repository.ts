@@ -1,8 +1,8 @@
 // users.repository.ts
 // in charge of database interactions
 
-import { users } from "./users.schema";
-import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
+import { users } from './users.schema';
 
 export class UsersRepository {
   // the type here is

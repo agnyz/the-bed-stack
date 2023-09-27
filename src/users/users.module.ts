@@ -1,7 +1,7 @@
-import { Elysia } from "elysia";
-import { UsersService } from "@/users/users.service";
-import { UsersRepository } from "@/users/users.repository";
-import { db } from "@/database.providers";
+import { db } from '@/database.providers';
+import { UsersRepository } from '@/users/users.repository';
+import { UsersService } from '@/users/users.service';
+import { Elysia } from 'elysia';
 
 export const setupUsers = () => {
   const usersRepository = new UsersRepository(db);

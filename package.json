@@ -1,11 +1,15 @@
 {
   "name": "elysia-realworld-example-app",
+  "title": "Elysia Realworld Example App",
   "version": "1.0.50",
+  "description": "A RealWorld example for an app in the backend created with Bun and Elysia.",
   "scripts": {
     "start": "bun run src/main.ts",
     "dev": "bun run --watch src/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "vitepress dev docs",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "docs": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "db:up": "./scripts/create-start-container-with-env.sh",
@@ -13,7 +17,8 @@
     "db:migrate": "bun run db/migrations/migrate.ts",
     "db:push": "bun drizzle-kit push:pg --config=db/config.ts",
     "db:seed": "bun run db/seed.ts",
-    "db:studio": "bun drizzle-kit studio --config=db/config.ts"
+    "db:studio": "bun drizzle-kit studio --config=db/config.ts",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@elysiajs/swagger": "^0.7.3",
@@ -23,8 +28,11 @@
     "postgres": "^3.3.5"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.2.2",
     "bun-types": "latest",
     "drizzle-kit": "^0.19.13",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "pg": "^8.11.3",
     "vitepress": "^1.0.0-rc.15"
   },
@@ -32,5 +40,9 @@
     "typescript": "^5.0.0"
   },
   "module": "src/index.ts",
-  "type": "module"
+  "type": "module",
+  "lint-staged": {
+    "*": "biome format --write",
+    "*.ts": "biome lint --apply"
+  }
 }
