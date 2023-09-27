@@ -3,6 +3,8 @@ name: Deploy VitePress site to Pages
 on:
   push:
     branches: [main]
+    paths:
+      - "docs/**"
 
   # leave empty, we just want the button
   workflow_dispatch:
