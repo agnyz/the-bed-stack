@@ -2,13 +2,20 @@
 // see: https://docs.nestjs.com/modules
 
 import { Elysia } from "elysia";
-import { usersPlugin } from "./users/users.plugin";
+import { swagger } from "@elysiajs/swagger";
+import { usersPlugin } from "@/users/users.plugin";
 
 /**
  * Add all plugins to the app
  */
 export const setupApp = () => {
   return new Elysia()
-    .use(usersPlugin)
-    .post("/", ({ store }) => store.usersService.findAll());
+    .use(
+      swagger({
+        documentation: {
+          info: { title: "RealWorld Medium backend", version: "v1" },
+        },
+      })
+    )
+    .group("/api", (app) => app.use(usersPlugin));
 };
