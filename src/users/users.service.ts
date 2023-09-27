@@ -2,29 +2,25 @@
 // in charge of business logic - generate slug, fetch data from other services, cache something, etc.
 import { NotFoundError } from "elysia";
 import { UsersRepository } from "@/users/users.repository";
-import { UserToCreate } from "@/users/users.schema";
+import { User, UserToCreate } from "@/users/users.schema";
 import { generateToken } from "@/auth";
 import { AuthenticationError } from "@/errors";
 
 export class UsersService {
   constructor(private readonly repository: UsersRepository) {}
 
-  async findAll() {
-    return this.repository.findAll();
+  async findByEmail(email: string) {
+    const user = await this.repository.findByEmail(email);
+    if (!user) {
+      throw new NotFoundError("User not found");
+    }
+    return await this.generateUserResponse(user);
   }
 
   async createUser(user: UserToCreate) {
     user.password = await Bun.password.hash(user.password);
     const newUser = await this.repository.createUser(user);
-    return {
-      user: {
-        email: newUser.email,
-        bio: newUser.bio,
-        image: newUser.image,
-        username: newUser.username,
-        token: await generateToken(newUser),
-      },
-    };
+    return await this.generateUserResponse(newUser);
   }
 
   async loginUser(email: string, password: string) {
@@ -35,6 +31,10 @@ export class UsersService {
     if (!(await Bun.password.verify(password, user.password))) {
       throw new AuthenticationError("Invalid password");
     }
+    return await this.generateUserResponse(user);
+  }
+
+  private async generateUserResponse(user: User) {
     return {
       user: {
         email: user.email,
