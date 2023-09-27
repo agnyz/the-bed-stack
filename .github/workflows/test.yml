@@ -7,7 +7,6 @@ on:
       # only typescript/json should be linted and formatted
       - "**.json"
       - "**.ts"
-      - "**.mts"
 
 jobs:
   lint:
