@@ -5,9 +5,7 @@ import {
   UserAuthSchema,
   UserLoginSchema,
 } from '@/users/users.schema';
-import { ALG, getUserEmailFromHeader, requireLogin } from '@/auth';
-import { jwt } from '@elysiajs/jwt';
-import { env } from '@/config';
+import { getUserEmailFromHeader, requireLogin } from '@/auth';
 
 export const usersPlugin = new Elysia()
   .use(setupUsers)
@@ -28,23 +26,15 @@ export const usersPlugin = new Elysia()
       ),
   )
   .group('/user', (app) =>
-    app
-      .use(
-        jwt({
-          name: 'jwt',
-          secret: env.JWT_SECRET,
-          alg: ALG,
-        }),
-      )
-      .get(
-        '',
-        async ({ jwt, request, store }) =>
-          store.usersService.findByEmail(
-            await getUserEmailFromHeader({ jwt, request }),
-          ),
-        {
-          beforeHandle: requireLogin,
-          response: UserAuthSchema,
-        },
-      ),
+    app.get(
+      '',
+      async ({ request, store }) =>
+        store.usersService.findByEmail(
+          await getUserEmailFromHeader(request.headers),
+        ),
+      {
+        beforeHandle: requireLogin,
+        response: UserAuthSchema,
+      },
+    ),
   );

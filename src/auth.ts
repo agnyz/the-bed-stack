@@ -1,9 +1,28 @@
 import * as jose from 'jose';
+import { Type } from '@sinclair/typebox';
+import { Value } from '@sinclair/typebox/value';
 import { UserInDb } from '@/users/users.schema';
 import { env } from '@/config';
 import { AuthenticationError } from '@/errors';
 
 export const ALG = 'HS256';
+
+const VerifiedJwtSchema = Type.Object({
+  payload: Type.Object({
+    user: Type.Object({
+      id: Type.Number(),
+      email: Type.String(),
+      username: Type.String(),
+    }),
+    iat: Type.Number(),
+    iss: Type.String(),
+    aud: Type.String(),
+    exp: Type.Number(),
+  }),
+  protectedHeader: Type.Object({
+    alg: Type.Literal(ALG),
+  }),
+});
 
 export async function generateToken(user: UserInDb) {
   const encoder = new TextEncoder();
@@ -20,12 +39,27 @@ export async function generateToken(user: UserInDb) {
     .sign(secret);
 }
 
-// TODO: add typing
-export const getUserFromHeaders = async ({
-  jwt,
-  request: { headers },
-}: // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-any) => {
+export async function verifyToken(token: string) {
+  const encoder = new TextEncoder();
+  const secret = encoder.encode(env.JWT_SECRET);
+
+  let verifiedToken;
+  try {
+    verifiedToken = await jose.jwtVerify(token, secret, {
+      algorithms: [ALG],
+    });
+  } catch (err) {
+    throw new AuthenticationError('Invalid token');
+  }
+  // I'm not sure if this is a good idea, but it at least makes sure that the token is 100% correct
+  // Also adds typings to the token
+  if (!Value.Check(VerifiedJwtSchema, verifiedToken))
+    throw new AuthenticationError('Invalid token');
+  const userToken = Value.Cast(VerifiedJwtSchema, verifiedToken);
+  return userToken;
+}
+
+export async function getUserFromHeaders(headers: Headers) {
   const rawHeader = headers.get('Authorization');
   if (!rawHeader) throw new AuthenticationError('Missing authorization header');
 
@@ -37,18 +71,18 @@ any) => {
     );
 
   const token = tokenParts?.[1];
-  const validatedToken = await jwt.verify(token);
-  if (!validatedToken) throw new AuthenticationError('Invalid token');
-  return validatedToken;
-};
+  return await verifyToken(token);
+}
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export const requireLogin = async ({ jwt, request }: any) => {
-  await getUserFromHeaders({ jwt, request });
-};
+export async function requireLogin({
+  request: { headers },
+}: {
+  request: Request;
+}) {
+  await getUserFromHeaders(headers);
+}
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export const getUserEmailFromHeader = async ({ jwt, request }: any) => {
-  const user = await getUserFromHeaders({ jwt, request });
-  return user.user.email;
-};
+export async function getUserEmailFromHeader(headers: Headers) {
+  const user = await getUserFromHeaders(headers);
+  return user.payload.user.email;
+}
