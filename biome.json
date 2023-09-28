@@ -18,5 +18,8 @@
     "rules": {
       "recommended": true
     }
+  },
+  "files": {
+    "maxSize": 3145728
   }
 }
