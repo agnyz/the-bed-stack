@@ -71,7 +71,8 @@ export async function getUserFromHeaders(headers: Headers) {
     );
 
   const token = tokenParts?.[1];
-  return await verifyToken(token);
+  const userToken = await verifyToken(token);
+  return userToken.payload.user;
 }
 
 export async function requireLogin({
@@ -84,5 +85,5 @@ export async function requireLogin({
 
 export async function getUserEmailFromHeader(headers: Headers) {
   const user = await getUserFromHeaders(headers);
-  return user.payload.user.email;
+  return user.email;
 }
