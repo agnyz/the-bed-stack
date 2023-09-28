@@ -1,4 +1,4 @@
-import { Type } from '@sinclair/typebox';
+import { t } from 'elysia';
 import { sql } from 'drizzle-orm';
 import { date, pgTable, serial, text } from 'drizzle-orm/pg-core';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
@@ -16,19 +16,14 @@ export const users = pgTable('users', {
 
 // Schema for inserting a user - can be used to validate API requests
 const insertUserSchemaRaw = createInsertSchema(users);
-export const InsertUserSchema = Type.Object({
-  user: Type.Omit(insertUserSchemaRaw, ['id', 'created_at', 'updated_at']),
+export const InsertUserSchema = t.Object({
+  user: t.Omit(insertUserSchemaRaw, ['id', 'created_at', 'updated_at']),
 });
 
-export const UserAuthSchema = Type.Object({
-  user: Type.Composite([
-    Type.Omit(insertUserSchemaRaw, [
-      'id',
-      'password',
-      'created_at',
-      'updated_at',
-    ]),
-    Type.Object({ token: Type.String() }),
+export const UserAuthSchema = t.Object({
+  user: t.Composite([
+    t.Omit(insertUserSchemaRaw, ['id', 'password', 'created_at', 'updated_at']),
+    t.Object({ token: t.String() }),
   ]),
 });
 
@@ -36,13 +31,13 @@ export type UserToCreate = typeof users.$inferInsert;
 export type UserInDb = typeof users.$inferSelect;
 export type User = Omit<UserInDb, 'password'>;
 
-export const UserLoginSchema = Type.Object({
-  user: Type.Object({
-    email: Type.String(),
-    password: Type.String(),
+export const UserLoginSchema = t.Object({
+  user: t.Object({
+    email: t.String(),
+    password: t.String(),
   }),
 });
 
 // Schema for selecting a user - can be used to validate API responses
 const selectUserSchemaRaw = createSelectSchema(users);
-export const SelectUserSchema = Type.Omit(selectUserSchemaRaw, ['password']);
+export const SelectUserSchema = t.Omit(selectUserSchemaRaw, ['password']);

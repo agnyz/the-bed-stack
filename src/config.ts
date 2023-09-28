@@ -1,5 +1,5 @@
-import { Type } from "@sinclair/typebox";
-import { Value } from "@sinclair/typebox/value";
+import { Type } from '@sinclair/typebox';
+import { Value } from '@sinclair/typebox/value';
 
 const envSchema = Type.Object({
   POSTGRES_DB: Type.String(),
@@ -8,7 +8,7 @@ const envSchema = Type.Object({
   POSTGRES_HOST: Type.String(),
   POSTGRES_PORT: Type.String(),
   JWT_SECRET: Type.String(),
-})
+});
 // TODO: this is ugly, find a better way to do this
-if (!Value.Check(envSchema, Bun.env)) throw new Error("Invalid env variables");
+if (!Value.Check(envSchema, Bun.env)) throw new Error('Invalid env variables');
 export const env = Value.Cast(envSchema, Bun.env);

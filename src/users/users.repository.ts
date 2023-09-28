@@ -1,10 +1,10 @@
 // users.repository.ts
 // in charge of database interactions
 
-import { users } from "./users.schema";
-import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import { UserToCreate } from "@/users/users.schema";
-import { eq } from "drizzle-orm";
+import { users } from './users.schema';
+import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
+import { UserToCreate } from '@/users/users.schema';
+import { eq } from 'drizzle-orm';
 
 export class UsersRepository {
   constructor(private readonly db: PostgresJsDatabase) {}
@@ -22,7 +22,7 @@ export class UsersRepository {
       return null;
     }
     if (result.length > 1) {
-      throw new Error("More than one user found with the same email: " + email);
+      throw new Error(`More than one user found with the same email: ${email}`);
     }
     return result[0];
   }
