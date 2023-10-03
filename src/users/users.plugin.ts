@@ -14,6 +14,9 @@ export const usersPlugin = new Elysia()
       .post('', ({ body, store }) => store.usersService.createUser(body.user), {
         body: InsertUserSchema,
         response: UserAuthSchema,
+        detail: {
+          summary: 'Create a user',
+        }
       })
       .post(
         '/login',
