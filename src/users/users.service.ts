@@ -3,11 +3,14 @@
 import { NotFoundError } from 'elysia';
 import { UsersRepository } from '@/users/users.repository';
 import { UserInDb, UserToCreate } from '@/users/users.schema';
-import { generateToken } from '@/auth';
 import { AuthenticationError } from '@/errors';
+import { AuthService } from '@/auth/auth.service';
 
 export class UsersService {
-  constructor(private readonly repository: UsersRepository) {}
+  constructor(
+    private readonly repository: UsersRepository,
+    private readonly authService: AuthService,
+  ) {}
 
   async findByEmail(email: string) {
     const user = await this.repository.findByEmail(email);
@@ -41,7 +44,7 @@ export class UsersService {
         bio: user.bio,
         image: user.image,
         username: user.username,
-        token: await generateToken(user),
+        token: await this.authService.generateToken(user),
       },
     };
   }
