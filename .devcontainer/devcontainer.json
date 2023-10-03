@@ -21,7 +21,7 @@
 	// 	5432
 	// ],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "bun i",
+	"postCreateCommand": "bun i",
 	"customizations": {
 		"vscode": {
 			"extensions": [

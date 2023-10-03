@@ -3,7 +3,7 @@
     {
       "previewLimit": 50,
       "server": "localhost",
-      "port": 5431,
+      "port": 5432,
       "driver": "PostgreSQL",
       "name": "Postgres",
       "database": "medium",
