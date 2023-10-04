@@ -21,7 +21,7 @@ export const setupApp = () => {
       AUTHORIZATION: AuthorizationError,
     })
     .onError(({ error, code, set }) => {
-      set.status = ERROR_CODE_STATUS_MAP[code];
+      set.status = ERROR_CODE_STATUS_MAP.get(code);
       const errorType = 'type' in error ? error.type : 'internal';
       return { errors: { [errorType]: error.message } };
     })
