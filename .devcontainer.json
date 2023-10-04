@@ -24,9 +24,9 @@
   "waitFor": "onCreateCommand",
 	"updateContentCommand": "bun i",
 	"postAttachCommand": {
-		"server": "bun dev",
-		"database": "bun db:push"
+		"app": "bun dev"
 	},
+	"postCreateCommand": "bun db:push && bun db:seed",
 	"customizations": {
 		"vscode": {
 			"extensions": [

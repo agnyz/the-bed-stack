@@ -9,6 +9,16 @@
       "database": "medium",
       "username": "postgres",
       "password": "postgres"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5431,
+      "driver": "PostgreSQL",
+      "name": "myconn",
+      "database": "medium",
+      "username": "postgres",
+      "password": "postgres"
     }
   ]
 }
