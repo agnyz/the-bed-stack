@@ -25,6 +25,9 @@ export const usersPlugin = new Elysia()
         {
           body: UserLoginSchema,
           response: ReturnedUserSchema,
+          detail: {
+            summary: 'Log in',
+          },
         },
       ),
   )
@@ -39,6 +42,9 @@ export const usersPlugin = new Elysia()
         {
           beforeHandle: app.store.authService.requireLogin,
           response: ReturnedUserSchema,
+          detail: {
+            summary: 'Get current user',
+          },
         },
       )
       .put(
@@ -52,6 +58,9 @@ export const usersPlugin = new Elysia()
           body: UpdateUserSchema,
           beforeHandle: app.store.authService.requireLogin,
           response: ReturnedUserSchema,
+          detail: {
+            summary: 'Update a user',
+          },
         },
       ),
   );
