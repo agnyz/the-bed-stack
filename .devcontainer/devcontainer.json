@@ -21,7 +21,11 @@
 	// 	5432
 	// ],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "bun i",
+  "waitFor": "onCreateCommand",
+	"updateContentCommand": "bun i",
+	"postAttachCommand": {
+		"server": "bun dev"
+	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -42,9 +46,11 @@
 	},
 	"portsAttributes": {
 		"3000": {
-			"label": "App"
+			"label": "App",
+			"onAutoForward": "openPreview"
 		}
-	}
+	},
+	"forwardPorts": [3000]
 	// Configure tool-specific properties.
 	// "customizations": {},
 	// Needed for bun install (for access to save .lockb). More info: https://aka.ms/dev-containers-non-root.
