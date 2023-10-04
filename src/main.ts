@@ -1,5 +1,5 @@
-import { setupApp } from '@/app.module';
 import { Elysia } from 'elysia';
+import { setupApp } from '@/app.module';
 
 const app = new Elysia({ prefix: '/api' }).use(setupApp).listen(3000);
 
