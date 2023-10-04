@@ -16,7 +16,7 @@ export const usersPlugin = new Elysia()
         response: UserAuthSchema,
         detail: {
           summary: 'Create a user',
-        }
+        },
       })
       .post(
         '/login',
