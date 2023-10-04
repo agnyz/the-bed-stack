@@ -15,6 +15,13 @@
       "when": 1696448227599,
       "tag": "0001_glorious_spectrum",
       "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1696453057809,
+      "tag": "0002_aberrant_the_hunter",
+      "breakpoints": false
     }
   ]
 }
