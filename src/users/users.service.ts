@@ -12,7 +12,7 @@ export class UsersService {
     private readonly authService: AuthService
   ) {}
 
-  async findByEmail(id: number) {
+  async findById(id: number) {
     const user = await this.repository.findById(id);
     if (!user) {
       throw new NotFoundError("User not found");

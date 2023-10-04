@@ -33,7 +33,7 @@ export const usersPlugin = new Elysia()
       .get(
         '',
         async ({ request, store }) =>
-          store.usersService.findByEmail(
+          store.usersService.findById(
             await store.authService.getUserIdFromHeader(request.headers),
           ),
         {
