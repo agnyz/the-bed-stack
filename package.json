@@ -7,8 +7,8 @@
     "start": "bun run src/main.ts",
     "dev": "bun run --watch src/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "biome format --write src",
-    "lint": "biome lint src",
+    "format": "biome format --write src --no-errors-on-unmatched",
+    "lint": "biome lint src --no-errors-on-unmatched",
     "docs": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
@@ -42,7 +42,10 @@
   "module": "src/index.ts",
   "type": "module",
   "lint-staged": {
-    "*.json": "biome format --write",
-    "*.ts": ["biome lint --apply", "biome format --write"]
+    "*.json": "biome format --write --no-errors-on-unmatched",
+    "*.ts": [
+      "biome lint --apply --no-errors-on-unmatched",
+      "biome format --write --no-errors-on-unmatched"
+    ]
   }
 }
