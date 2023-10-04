@@ -8,7 +8,13 @@ export const InsertUserSchema = Type.Object({
   user: Type.Omit(insertUserSchemaRaw, ['id', 'created_at', 'updated_at']),
 });
 
-export const UserAuthSchema = Type.Object({
+export const UpdateUserSchema = Type.Object({
+  user: Type.Partial(
+    Type.Omit(insertUserSchemaRaw, ['id', 'created_at', 'updated_at']),
+  ),
+});
+
+export const ReturnedUserSchema = Type.Object({
   user: Type.Composite([
     Type.Omit(insertUserSchemaRaw, [
       'id',
@@ -21,6 +27,9 @@ export const UserAuthSchema = Type.Object({
 });
 
 export type UserToCreate = typeof users.$inferInsert;
+export type UserToUpdate = Partial<
+  Omit<UserToCreate, 'id' | 'created_at' | 'updated_at'>
+>;
 export type UserInDb = typeof users.$inferSelect;
 export type User = Omit<UserInDb, 'password'>;
 

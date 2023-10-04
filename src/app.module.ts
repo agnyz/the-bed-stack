@@ -5,6 +5,7 @@ import { usersPlugin } from '@/users/users.plugin';
 import {
   AuthenticationError,
   AuthorizationError,
+  BadRequestError,
   ERROR_CODE_STATUS_MAP,
 } from '@/errors';
 
@@ -19,6 +20,7 @@ export const setupApp = () => {
     .error({
       AUTHENTICATION: AuthenticationError,
       AUTHORIZATION: AuthorizationError,
+      BAD_REQUEST: BadRequestError,
     })
     .onError(({ error, code, set }) => {
       set.status = ERROR_CODE_STATUS_MAP.get(code);

@@ -2,8 +2,9 @@ import { Elysia } from 'elysia';
 import { setupUsers } from '@/users/users.module';
 import {
   InsertUserSchema,
-  UserAuthSchema,
+  ReturnedUserSchema,
   UserLoginSchema,
+  UpdateUserSchema,
 } from '@/users/users.schema';
 
 export const usersPlugin = new Elysia()
@@ -12,7 +13,7 @@ export const usersPlugin = new Elysia()
     app
       .post('', ({ body, store }) => store.usersService.createUser(body.user), {
         body: InsertUserSchema,
-        response: UserAuthSchema,
+        response: ReturnedUserSchema,
         detail: {
           summary: 'Create a user',
         },
@@ -23,21 +24,34 @@ export const usersPlugin = new Elysia()
           store.usersService.loginUser(body.user.email, body.user.password),
         {
           body: UserLoginSchema,
-          response: UserAuthSchema,
+          response: ReturnedUserSchema,
         },
       ),
   )
   .group('/user', (app) =>
-    app.get(
-      '',
-      async ({ request, store }) => {
-        return store.usersService.findByEmail(
-          await store.authService.getUserEmailFromHeader(request.headers),
-        );
-      },
-      {
-        beforeHandle: app.store.authService.requireLogin,
-        response: UserAuthSchema,
-      },
-    ),
+    app
+      .get(
+        '',
+        async ({ request, store }) =>
+          store.usersService.findByEmail(
+            await store.authService.getUserIdFromHeader(request.headers),
+          ),
+        {
+          beforeHandle: app.store.authService.requireLogin,
+          response: ReturnedUserSchema,
+        },
+      )
+      .put(
+        '',
+        async ({ request, store, body }) =>
+          store.usersService.updateUser(
+            await store.authService.getUserIdFromHeader(request.headers),
+            body.user,
+          ),
+        {
+          body: UpdateUserSchema,
+          beforeHandle: app.store.authService.requireLogin,
+          response: ReturnedUserSchema,
+        },
+      ),
   );

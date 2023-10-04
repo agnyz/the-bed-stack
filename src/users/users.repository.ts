@@ -1,16 +1,23 @@
 // users.repository.ts
 // in charge of database interactions
-
-import { users } from './users.model';
 import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
-import { UserToCreate } from '@/users/users.schema';
 import { eq } from 'drizzle-orm';
+import { UserToCreate, UserToUpdate } from '@/users/users.schema';
+import { users } from '@/users/users.model';
 
 export class UsersRepository {
   constructor(private readonly db: PostgresJsDatabase) {}
 
   async findAll() {
     return await this.db.select().from(users);
+  }
+
+  async findById(id: number) {
+    const result = await this.db.select().from(users).where(eq(users.id, id));
+    if (result.length === 0) {
+      return null;
+    }
+    return result[0];
   }
 
   async findByEmail(email: string) {
@@ -31,5 +38,14 @@ export class UsersRepository {
     const newUser = await this.db.insert(users).values(user).returning();
     // returning returns the inserted row in an array, so we need to get the first element
     return newUser[0];
+  }
+
+  async updateUser(id: number, user: UserToUpdate) {
+    const updatedUser = await this.db
+      .update(users)
+      .set(user)
+      .where(eq(users.id, id))
+      .returning();
+    return updatedUser[0];
   }
 }
