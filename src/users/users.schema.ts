@@ -3,7 +3,7 @@ import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
 import { users } from '@users/users.model';
 
 // Schema for inserting a user - can be used to validate API requests
-const insertUserSchemaRaw = createInsertSchema(users);
+export const insertUserSchemaRaw = createInsertSchema(users);
 export const InsertUserSchema = Type.Object({
   user: Type.Omit(insertUserSchemaRaw, ['id', 'created_at', 'updated_at']),
 });

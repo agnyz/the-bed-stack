@@ -34,6 +34,22 @@ export class UsersRepository {
     return result[0];
   }
 
+  async findByUsername(username: string) {
+    const result = await this.db
+      .select()
+      .from(users)
+      .where(eq(users.username, username));
+    if (result.length === 0) {
+      return null;
+    }
+    if (result.length > 1) {
+      throw new Error(
+        `More than one user found with the same username: ${username}`,
+      );
+    }
+    return result[0];
+  }
+
   async createUser(user: UserToCreate) {
     const newUser = await this.db.insert(users).values(user).returning();
     // returning returns the inserted row in an array, so we need to get the first element
