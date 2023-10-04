@@ -40,6 +40,7 @@ export class UsersService {
       }
     }
 
+    if (user.password) user.password = await Bun.password.hash(user.password);
     const updatedUser = await this.repository.updateUser(currentUser.id, user);
     return await this.generateUserResponse(updatedUser);
   }
