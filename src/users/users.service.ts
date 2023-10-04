@@ -3,14 +3,17 @@
 import { NotFoundError } from 'elysia';
 import { UsersRepository } from '@/users/users.repository';
 import { AuthService } from '@/auth/auth.service';
-import { UserInDb, UserToCreate, UserToUpdate } from '@/users/users.schema';
+import { UserToCreate, UserToUpdate } from '@/users/users.schema';
 import { AuthenticationError, BadRequestError } from '@/errors';
+import { IUserResponse } from '@/interfaces/userResponse';
 
-export class UsersService {
+export class UsersService extends IUserResponse {
   constructor(
     private readonly repository: UsersRepository,
-    private readonly authService: AuthService,
-  ) {}
+    authService: AuthService,
+  ) {
+    super(authService);
+  }
 
   async findByEmail(id: number) {
     const user = await this.repository.findById(id);
@@ -53,17 +56,5 @@ export class UsersService {
       throw new AuthenticationError('Invalid password');
     }
     return await this.generateUserResponse(user);
-  }
-
-  async generateUserResponse(user: UserInDb) {
-    return {
-      user: {
-        email: user.email,
-        bio: user.bio,
-        image: user.image,
-        username: user.username,
-        token: await this.authService.generateToken(user),
-      },
-    };
   }
 }
