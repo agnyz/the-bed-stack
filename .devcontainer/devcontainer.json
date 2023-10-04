@@ -24,7 +24,8 @@
   "waitFor": "onCreateCommand",
 	"updateContentCommand": "bun i",
 	"postAttachCommand": {
-		"server": "bun dev"
+		"server": "bun dev",
+		"database": "bun db:push"
 	},
 	"customizations": {
 		"vscode": {
@@ -50,9 +51,13 @@
 			"onAutoForward": "openPreview"
 		}
 	},
-	"forwardPorts": [3000]
+	"forwardPorts": [
+		3000,
+		5432
+	]
+	
 	// Configure tool-specific properties.
 	// "customizations": {},
 	// Needed for bun install (for access to save .lockb). More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	// "remoteUser": "yamush"
 }

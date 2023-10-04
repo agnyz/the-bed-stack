@@ -3,21 +3,22 @@ version: '3.8'
 services:
   db:
     image: postgres:16
-    restart: always
+    restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      PGUSER: postgres
-      POSTGRES_DB: medium
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=medium
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready" ]
+      test: [ "CMD-SHELL", "pg_isready -d medium -U postgres" ]
       interval: 1s
       timeout: 5s
       retries: 10
-    # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
-    # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+    # This allows accessing externally from "localhost" in addition to "127.0.0.1"
+    ports:
+      - 5432:5432
 
   app:
     image: node:20-bullseye
