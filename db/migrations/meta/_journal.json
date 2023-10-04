@@ -8,6 +8,13 @@
       "when": 1695849229878,
       "tag": "0000_perpetual_blazing_skull",
       "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1696448227599,
+      "tag": "0001_glorious_spectrum",
+      "breakpoints": false
     }
   ]
 }
