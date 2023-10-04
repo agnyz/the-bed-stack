@@ -14,13 +14,6 @@
 		},
 		"ghcr.io/shyim/devcontainers-features/bun:0": {}
 	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// This can be used to network with other containers or with the host.
-	// "forwardPorts": [
-	// 	3000,
-	// 	5432
-	// ],
-	// Use 'postCreateCommand' to run commands after the container is created.
   "waitFor": "onCreateCommand",
 	"updateContentCommand": "bun i",
 	"postAttachCommand": {
@@ -59,5 +52,5 @@
 	// Configure tool-specific properties.
 	// "customizations": {},
 	// Needed for bun install (for access to save .lockb). More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "yamush"
+	// "remoteUser": "root"
 }
