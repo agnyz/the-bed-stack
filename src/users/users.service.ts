@@ -1,24 +1,21 @@
 // users.service.ts
 // in charge of business logic - generate slug, fetch data from other services, cache something, etc.
-import { NotFoundError } from 'elysia';
-import { UsersRepository } from '@/users/users.repository';
-import { AuthService } from '@/auth/auth.service';
-import { UserToCreate, UserToUpdate } from '@/users/users.schema';
-import { AuthenticationError, BadRequestError } from '@/errors';
-import { IUserResponse } from '@/interfaces/userResponse';
+import { NotFoundError } from "elysia";
+import { UsersRepository } from "@/users/users.repository";
+import { AuthService } from "@/auth/auth.service";
+import { UserInDb, UserToCreate, UserToUpdate } from "@/users/users.schema";
+import { AuthenticationError, BadRequestError } from "@/errors";
 
-export class UsersService extends IUserResponse {
+export class UsersService {
   constructor(
     private readonly repository: UsersRepository,
-    authService: AuthService,
-  ) {
-    super(authService);
-  }
+    private readonly authService: AuthService
+  ) {}
 
   async findByEmail(id: number) {
     const user = await this.repository.findById(id);
     if (!user) {
-      throw new NotFoundError('User not found');
+      throw new NotFoundError("User not found");
     }
     return await this.generateUserResponse(user);
   }
@@ -34,12 +31,12 @@ export class UsersService extends IUserResponse {
     // we need to check if the new email is already taken
     const currentUser = await this.repository.findById(id);
     if (!currentUser) {
-      throw new NotFoundError('User not found');
+      throw new NotFoundError("User not found");
     }
     if (user.email && user.email !== currentUser.email) {
       const userWithEmail = await this.repository.findByEmail(user.email);
       if (userWithEmail) {
-        throw new BadRequestError('Email is already taken');
+        throw new BadRequestError("Email is already taken");
       }
     }
 
@@ -50,11 +47,23 @@ export class UsersService extends IUserResponse {
   async loginUser(email: string, password: string) {
     const user = await this.repository.findByEmail(email);
     if (!user) {
-      throw new NotFoundError('User not found');
+      throw new NotFoundError("User not found");
     }
     if (!(await Bun.password.verify(password, user.password))) {
-      throw new AuthenticationError('Invalid password');
+      throw new AuthenticationError("Invalid password");
     }
     return await this.generateUserResponse(user);
+  }
+
+  async generateUserResponse(user: UserInDb) {
+    return {
+      user: {
+        email: user.email,
+        bio: user.bio,
+        image: user.image,
+        username: user.username,
+        token: await this.authService.generateToken(user),
+      },
+    };
   }
 }
