@@ -15,7 +15,6 @@ services:
       interval: 1s
       timeout: 5s
       retries: 10
-
     # This allows accessing externally from "localhost" in addition to "127.0.0.1"
     ports:
       - 5432:5432
@@ -25,7 +24,7 @@ services:
     restart: unless-stopped
 
     volumes:
-      - ../..:/workspaces:cached
+      - ..:/workspaces:cached
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity

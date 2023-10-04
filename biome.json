@@ -18,6 +18,6 @@
     "rules": {
       "recommended": true
     },
-    "ignore": [".devcontainer/**/*", ".vscode/**/*", "node_modules/**/*"]
+    "ignore": [".devcontainer*", ".vscode/**/*", "node_modules/**/*"]
   }
 }
