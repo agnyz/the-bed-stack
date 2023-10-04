@@ -1,5 +1,3 @@
-// users.service.ts
-// in charge of business logic - generate slug, fetch data from other services, cache something, etc.
 import { NotFoundError } from 'elysia';
 import { ProfilesRepository } from '@/profiles/profiles.repository';
 import { Profile } from '@/profiles/profiles.schema';
