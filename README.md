@@ -23,6 +23,8 @@ The runtime is [Bun](https://bun.sh/) and the code is written in [TypeScript](ht
 
 # Getting started
 
+This project includes support for [Dev Container](https://code.visualstudio.com/docs/remote/containers) in VSCode. If you have VSCode installed, and Docker daemon running, you can simply open the project in VSCode and click on the "_Reopen in Container_" button in the notification that pops up. This will automatically perform the steps below and open a new VSCode window with the project running inside a container ready for development.
+
 1. **Clone and install dependencies**
 
     ```bash
