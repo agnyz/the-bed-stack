@@ -1,7 +1,7 @@
 // users.repository.ts
 // in charge of database interactions
 
-import { users } from './users.schema';
+import { users } from './users.model';
 import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 import { UserToCreate } from '@/users/users.schema';
 import { eq } from 'drizzle-orm';

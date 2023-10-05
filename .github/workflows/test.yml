@@ -7,6 +7,13 @@ on:
       # only typescript/json should be linted and formatted
       - "**.json"
       - "**.ts"
+  push:
+    branches: [main]
+    paths:
+      # only typescript/json should be linted and formatted
+      - "**.json"
+      - "**.ts"
+  workflow_dispatch:
 
 jobs:
   lint:
@@ -17,11 +24,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v1
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v1
+        with:
+          version: 1.2.2
 
-      - name: Lint and format the code
-        run: bunx biome ci --linter-enabled=true --formatter-enabled=true .
+      - name: Run Biome
+        run: biome ci .
 
   test:
     name: Test
