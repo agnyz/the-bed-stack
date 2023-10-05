@@ -30,7 +30,7 @@ jobs:
           version: 1.2.2
 
       - name: Run Biome
-        run: biome ci .
+        run: biome ci . --organize-imports-enabled=false
 
   test:
     name: Test
