@@ -24,7 +24,7 @@
     "@elysiajs/swagger": "^0.7.3",
     "drizzle-orm": "^0.28.6",
     "drizzle-typebox": "^0.1.1",
-    "elysia": "latest",
+    "elysia": "^0.7.15",
     "jose": "^4.14.6",
     "postgres": "^3.3.5"
   },
