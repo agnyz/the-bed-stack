@@ -1,10 +1,10 @@
 // users.repository.ts
 // in charge of database interactions
 
-import { eq } from 'drizzle-orm';
+import { users } from './users.schema';
 import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 import { UserToCreate } from '@/users/users.schema';
-import { users } from '@/users/users.model';
+import { eq } from 'drizzle-orm';
 
 export class UsersRepository {
   constructor(private readonly db: PostgresJsDatabase) {}

@@ -5,7 +5,6 @@ import {
   UserAuthSchema,
   UserLoginSchema,
 } from '@/users/users.schema';
-import { getUserEmailFromHeader, requireLogin } from '@/auth';
 
 export const usersPlugin = new Elysia()
   .use(setupUsers)
@@ -31,12 +30,13 @@ export const usersPlugin = new Elysia()
   .group('/user', (app) =>
     app.get(
       '',
-      async ({ request, store }) =>
-        store.usersService.findByEmail(
-          await getUserEmailFromHeader(request.headers),
-        ),
+      async ({ request, store }) => {
+        return store.usersService.findByEmail(
+          await store.authService.getUserEmailFromHeader(request.headers),
+        );
+      },
       {
-        beforeHandle: requireLogin,
+        beforeHandle: app.store.authService.requireLogin,
         response: UserAuthSchema,
       },
     ),
