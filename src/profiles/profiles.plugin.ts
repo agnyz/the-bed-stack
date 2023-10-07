@@ -1,5 +1,4 @@
 import { Elysia } from 'elysia';
-import { getUserIdFromHeader, requireLogin } from '@/auth';
 import { setupProfiles } from '@/profiles/profiles.module';
 import { ReturnedProfileSchema } from '@/profiles/profiles.schema';
 
@@ -11,11 +10,11 @@ export const profilesPlugin = new Elysia()
         '',
         async ({ params, store, request }) =>
           store.profilesService.findByUsername(
-            await getUserIdFromHeader(request.headers),
+            await store.authService.getUserIdFromHeader(request.headers),
             params.username,
           ),
         {
-          beforeHandle: requireLogin,
+          beforeHandle: app.store.authService.requireLogin,
           response: ReturnedProfileSchema,
           detail: {
             summary: 'Get a profile',
@@ -26,11 +25,11 @@ export const profilesPlugin = new Elysia()
         '/follow',
         async ({ params, store, request }) =>
           store.profilesService.followUser(
-            await getUserIdFromHeader(request.headers),
+            await store.authService.getUserIdFromHeader(request.headers),
             params.username,
           ),
         {
-          beforeHandle: requireLogin,
+          beforeHandle: app.store.authService.requireLogin,
           response: ReturnedProfileSchema,
           detail: {
             summary: 'Follow a profile',
@@ -42,11 +41,11 @@ export const profilesPlugin = new Elysia()
         '/follow',
         async ({ params, store, request }) =>
           store.profilesService.unfollowUser(
-            await getUserIdFromHeader(request.headers),
+            await store.authService.getUserIdFromHeader(request.headers),
             params.username,
           ),
         {
-          beforeHandle: requireLogin,
+          beforeHandle: app.store.authService.requireLogin,
           response: ReturnedProfileSchema,
           detail: {
             summary: 'Unfollow a profile',

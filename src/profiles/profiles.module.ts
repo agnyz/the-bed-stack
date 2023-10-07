@@ -1,3 +1,4 @@
+import { AuthService } from '@/auth/auth.service';
 import { db } from '@/database.providers';
 import { ProfilesRepository } from '@/profiles/profiles.repository';
 import { ProfilesService } from '@/profiles/profiles.service';
@@ -11,5 +12,6 @@ export const setupProfiles = () => {
     profilesepository,
     usersRepository,
   );
-  return new Elysia().state(() => ({ profilesService }));
+  const authService = new AuthService();
+  return new Elysia().state(() => ({ profilesService, authService }));
 };
