@@ -17,7 +17,8 @@
   "waitFor": "onCreateCommand",
 	"updateContentCommand": "bun i",
 	"postAttachCommand": {
-		"app": "bun dev"
+		"app": "bun dev",
+		"studio": "bun db:studio"
 	},
 	"postCreateCommand": "bun db:push && bun db:seed",
 	"customizations": {
@@ -42,12 +43,15 @@
 		"3000": {
 			"label": "App",
 			"onAutoForward": "openPreview"
+		},
+		"4983": {
+			"label": "Studio"
+		},
+		"5432": {
+			"label": "Database"
 		}
 	},
-	"forwardPorts": [
-		3000,
-		5432
-	]
+	"forwardPorts": [5432]
 	
 	// Configure tool-specific properties.
 	// "customizations": {},
