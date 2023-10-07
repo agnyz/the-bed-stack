@@ -1,21 +1,21 @@
 // users.service.ts
 // in charge of business logic - generate slug, fetch data from other services, cache something, etc.
-import { NotFoundError } from "elysia";
-import { UsersRepository } from "@/users/users.repository";
-import { AuthService } from "@/auth/auth.service";
-import { UserInDb, UserToCreate, UserToUpdate } from "@/users/users.schema";
-import { AuthenticationError, BadRequestError } from "@/errors";
+import { NotFoundError } from 'elysia';
+import { UsersRepository } from '@/users/users.repository';
+import { AuthService } from '@/auth/auth.service';
+import { UserInDb, UserToCreate, UserToUpdate } from '@/users/users.schema';
+import { AuthenticationError, BadRequestError } from '@/errors';
 
 export class UsersService {
   constructor(
     private readonly repository: UsersRepository,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
   ) {}
 
   async findById(id: number) {
     const user = await this.repository.findById(id);
     if (!user) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError('User not found');
     }
     return await this.generateUserResponse(user);
   }
@@ -31,12 +31,12 @@ export class UsersService {
     // we need to check if the new email is already taken
     const currentUser = await this.repository.findById(id);
     if (!currentUser) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError('User not found');
     }
     if (user.email && user.email !== currentUser.email) {
       const userWithEmail = await this.repository.findByEmail(user.email);
       if (userWithEmail) {
-        throw new BadRequestError("Email is already taken");
+        throw new BadRequestError('Email is already taken');
       }
     }
 
@@ -48,10 +48,10 @@ export class UsersService {
   async loginUser(email: string, password: string) {
     const user = await this.repository.findByEmail(email);
     if (!user) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError('User not found');
     }
     if (!(await Bun.password.verify(password, user.password))) {
-      throw new AuthenticationError("Invalid password");
+      throw new AuthenticationError('Invalid password');
     }
     return await this.generateUserResponse(user);
   }
