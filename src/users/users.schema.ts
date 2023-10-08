@@ -1,6 +1,5 @@
 import { Type } from '@sinclair/typebox';
-import { sql } from 'drizzle-orm';
-import { date, pgTable, serial, text } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
 
 export const users = pgTable('users', {
@@ -10,8 +9,8 @@ export const users = pgTable('users', {
   image: text('image').notNull(),
   password: text('password').notNull(),
   username: text('username').notNull(),
-  created_at: date('created_at').default(sql`CURRENT_DATE`),
-  updated_at: date('updated_at').default(sql`CURRENT_DATE`),
+  created_at: timestamp('created_at').defaultNow(),
+  updated_at: timestamp('updated_at').defaultNow(),
 });
 
 // Schema for inserting a user - can be used to validate API requests
