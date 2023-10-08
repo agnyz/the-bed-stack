@@ -20,7 +20,7 @@
 		"app": "bun dev",
 		"studio": "bun db:studio"
 	},
-	"postCreateCommand": "bun db:push && bun db:seed",
+	"postCreateCommand": "bun db:migrate && bun db:seed",
 	"customizations": {
 		"vscode": {
 			"extensions": [
