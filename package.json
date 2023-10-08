@@ -14,14 +14,16 @@
     "docs:preview": "vitepress preview docs",
     "up": "./scripts/create-start-container-with-env.sh",
     "db:generate": "bun drizzle-kit generate:pg --config=db/config.ts",
-    "db:migrate": "bun run db/migrations/migrate.ts",
+    "db:migrate": "bun db/migrations/migrate.ts",
     "db:push": "bun drizzle-kit push:pg --config=db/config.ts",
-    "db:seed": "bun run db/seed.ts",
+    "db:seed": "bun db/seed.ts",
     "db:studio": "bun drizzle-kit studio --config=db/config.ts",
+    "db:drop": "bun db/drop.ts",
     "prepare": "husky install"
   },
   "dependencies": {
     "@elysiajs/swagger": "^0.7.3",
+    "commander": "^11.0.0",
     "drizzle-orm": "^0.28.6",
     "drizzle-typebox": "^0.1.1",
     "elysia": "latest",
