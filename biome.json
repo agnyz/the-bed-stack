@@ -13,11 +13,15 @@
       "quoteStyle": "single"
     }
   },
+  "json": {
+    "parser": {
+      "allowComments": true
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true
-    },
-    "ignore": [".devcontainer*", ".vscode/**/*", "node_modules/**/*"]
+    }
   }
 }
