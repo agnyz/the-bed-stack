@@ -51,7 +51,7 @@
 			"label": "Database"
 		}
 	},
-	"forwardPorts": [5432]
+	"forwardPorts": [5432,3000,4983]
 	
 	// Configure tool-specific properties.
 	// "customizations": {},
