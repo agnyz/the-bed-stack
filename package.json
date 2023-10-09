@@ -37,7 +37,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "pg": "^8.11.3",
-    "vitepress": "^1.0.0-rc.15"
+    "vitepress": "^1.0.0-rc.20"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

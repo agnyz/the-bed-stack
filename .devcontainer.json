@@ -53,8 +53,14 @@
       "label": "App",
       "onAutoForward": "openPreview"
     },
+    "4173": {
+      "label": "Docs (Preview)"
+    },
     "4983": {
       "label": "Studio"
+    },
+    "5173": {
+      "label": "Docs"
     },
     "5432": {
       "label": "Database"
