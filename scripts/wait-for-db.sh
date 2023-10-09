@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# wait-for-db.sh modifies wait-for-it.sh to work with postgresql by waiting for a specific database to be ready
+# see original: https://github.com/vishnubob/wait-for-it
+
 # Use this script to test if a given TCP host/port are available
 
 WAITFORIT_cmdname=${0##*/}
@@ -179,4 +183,18 @@ if [[ $WAITFORIT_CLI != "" ]]; then
     exec "${WAITFORIT_CLI[@]}"
 else
     exit $WAITFORIT_RESULT
+fi
+
+# wait for db
+if [ "$WAITFORIT_TIMEOUT" -gt 0 ]; then
+    echo "wait-for-db.sh: timeout occurred after waiting $WAITFORIT_TIMEOUT seconds for $WAITFORIT_HOST:$WAITFORIT_PORT"
+else 
+    echo "wait-for-db.sh: $WAITFORIT_HOST:$WAITFORIT_PORT is available after $((WAITFORIT_end_ts - WAITFORIT_start_ts)) seconds"
+    PGPASSWORD=${POSTGRES_PASSWORD} psql -h $HOST -U ${POSTGRES_USER} -d ${POSTGRES_DB} -c 'SELECT 1;' &>/dev/null
+    if [ $? -eq 0 ]; then
+        echo "wait-for-db.sh: database is ready"
+    else
+        echo "wait-for-db.sh: database is not ready"
+        exit 1
+    fi
 fi

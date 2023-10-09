@@ -11,7 +11,11 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -d medium -U postgres" ]
+      test:
+        [
+          "CMD-SHELL",
+          "PGPASSWORD=$${POSTGRES_PASSWORD} psql -U $${POSTGRES_USER} -d $${POSTGRES_DB} -c 'SELECT 1;' || exit 1"
+        ]
       interval: 1s
       timeout: 5s
       retries: 10
