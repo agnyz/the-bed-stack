@@ -32,7 +32,8 @@
 				"oven.bun-vscode",
 				"antfu.browse-lite",
 				"mtxr.sqltools",
-				"mtxr.sqltools-driver-pg"
+				"mtxr.sqltools-driver-pg",
+				"bierner.markdown-preview-github-styles"
 			],
 			"settings": {
 				"editor.tabSize": 2,

@@ -3,7 +3,8 @@
 This article explains where to get help with remark.
 Please read through the following guidelines.
 
-> 👉 **Note**: before participating in our community, please read our
+> [!NOTE]
+> Before participating in our community, please read our
 > [code of conduct](CODE_OF_CONDUCT.md).
 > By interacting with this repository, organization, or community you agree to
 > abide by its terms.
