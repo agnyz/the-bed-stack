@@ -190,11 +190,26 @@ if [ "$WAITFORIT_TIMEOUT" -gt 0 ]; then
     echo "wait-for-db.sh: timeout occurred after waiting $WAITFORIT_TIMEOUT seconds for $WAITFORIT_HOST:$WAITFORIT_PORT"
 else 
     echo "wait-for-db.sh: $WAITFORIT_HOST:$WAITFORIT_PORT is available after $((WAITFORIT_end_ts - WAITFORIT_start_ts)) seconds"
-    PGPASSWORD=${POSTGRES_PASSWORD} psql -h $HOST -U ${POSTGRES_USER} -d ${POSTGRES_DB} -c 'SELECT 1;' &>/dev/null
-    if [ $? -eq 0 ]; then
+    
+    # Initialize variables for the loop
+    max_retries=5
+    count=0
+
+    # Loop to retry database connection
+    while [[ $count -lt $max_retries ]]
+    do
+      PGPASSWORD=${POSTGRES_PASSWORD} psql -h $WAITFORIT_HOST -U ${POSTGRES_USER} -d ${POSTGRES_DB} -c 'SELECT 1;' &>/dev/null
+      exit_status=$?
+      if [ $exit_status -eq 0 ]; then
         echo "wait-for-db.sh: database is ready"
-    else
-        echo "wait-for-db.sh: database is not ready"
-        exit 1
-    fi
+        exit 0
+      fi
+      echo "wait-for-db.sh: database not ready yet. Retrying... ($((count+1))/$max_retries)"
+      ((count++))
+      sleep 5
+    done
+
+    # If it reaches here, it means it failed to connect to the database after max_retries
+    echo "wait-for-db.sh: Failed to connect to database after $max_retries retries."
+    exit 1
 fi
