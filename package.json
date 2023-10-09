@@ -7,21 +7,23 @@
     "start": "bun run src/main.ts",
     "dev": "bun run --watch src/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "biome format --write .",
-    "lint": "biome lint .",
+    "format": "biome format --write src --no-errors-on-unmatched",
+    "lint": "biome lint src --no-errors-on-unmatched",
     "docs": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "db:up": "./scripts/create-start-container-with-env.sh",
+    "up": "./scripts/create-start-container-with-env.sh",
     "db:generate": "bun drizzle-kit generate:pg --config=db/config.ts",
     "db:migrate": "bun run db/migrate.ts",
     "db:push": "bun drizzle-kit push:pg --config=db/config.ts",
-    "db:seed": "bun run db/seed.ts",
+    "db:seed": "bun db/seed.ts",
     "db:studio": "bun drizzle-kit studio --config=db/config.ts",
+    "db:drop": "bun db/drop.ts",
     "prepare": "husky install"
   },
   "dependencies": {
     "@elysiajs/swagger": "^0.7.3",
+    "commander": "^11.0.0",
     "drizzle-orm": "^0.28.6",
     "drizzle-typebox": "^0.1.1",
     "elysia": "^0.7.15",
@@ -43,7 +45,10 @@
   "module": "src/index.ts",
   "type": "module",
   "lint-staged": {
-    "*.json": "biome format --write",
-    "*.ts": ["biome lint --apply", "biome format --write"]
+    "*.json": "biome format --write --no-errors-on-unmatched",
+    "*.ts": [
+      "biome lint --apply --no-errors-on-unmatched",
+      "biome format --write --no-errors-on-unmatched"
+    ]
   }
 }

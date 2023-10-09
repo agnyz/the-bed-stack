@@ -3,16 +3,16 @@ import { db } from '@/database.providers';
 import { users } from '@/users/users.model';
 
 const data = {
-  id: users.id.default,
+  id: 1, //do not use 'users.id.default', seed should be idempotent
   email: 'test@email.com',
   username: 'test',
   password: 'test',
   bio: 'test',
   image: 'test',
 };
-console.log('Inserting user: ', data);
-await db.insert(users).values(data);
-console.log('User inserted');
+console.log('Upserting user: ', data);
+await db.insert(users).values(data).onConflictDoNothing();
+console.log('User upserted');
 
 const userResult = await db.select().from(users);
 console.log('User result: ', userResult);

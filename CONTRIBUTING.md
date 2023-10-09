@@ -4,8 +4,8 @@
 
 Hey there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great and we truly appreciate your time and effort.
 
-> [!WARNING]
-> Before submitting your contribution, please make sure to take a moment and read through the following guidelines.
+> [!IMPORTANT]
+> Before submitting your contribution, please take a moment and read through the following guidelines.
 
 ## 👨‍💻 Repository Setup
 
