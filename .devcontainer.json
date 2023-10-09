@@ -21,7 +21,7 @@
 		"studio": "bun db:studio"
 	},
 	// "postCreateCommand": "bun db:migrate && bun db:seed",
-	"postCreateCommand": "./scripts/wait-for-it db:5432 -t 60 -- bun db:migrate && bun db:seed",
+	"postCreateCommand": "./scripts/wait-for-it.sh db:5432 -t 60 -- bun db:migrate && bun db:seed",
 	"customizations": {
 		"vscode": {
 			"extensions": [
