@@ -37,15 +37,15 @@ The runtime is [Bun](https://bun.sh/) and the code is written in [TypeScript](ht
     bun i
     ```
 
-2. **Ensure Docker daemon is running and spin up the Postgres container**
+2. **Ensure Docker daemon is running and spin up the Postgres+Bun container**
 
     ```bash
-    bun db:up
+    bun up
     ```
-3. **Push the schema to the database**
+3. **Migrate the schema to the database**
 
     ```bash
-    bun db:push
+    bun db:migrate
     ```
 
 4. **Run the app**
