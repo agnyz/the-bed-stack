@@ -34,7 +34,9 @@
         "mtxr.sqltools",
         "mtxr.sqltools-driver-pg",
         "bierner.markdown-preview-github-styles",
-        "Pandy.bun"
+        "Pandy.bun",
+        "github.vscode-github-actions",
+        "yzhang.markdown-all-in-one"
       ],
       "settings": {
         "editor.tabSize": 2,
