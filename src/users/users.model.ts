@@ -11,7 +11,7 @@ import {
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
   email: text('email').unique().notNull(),
-  bio: text('bio'),
+  bio: text('bio').default(''),
   image: text('image').default(
     'https://api.realworld.io/images/smiley-cyrus.jpg',
   ),

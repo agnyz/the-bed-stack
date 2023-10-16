@@ -6,7 +6,13 @@ import { users } from './users.model';
 // Schema for inserting a user - can be used to validate API requests
 export const insertUserSchemaRaw = createInsertSchema(users);
 export const InsertUserSchema = Type.Object({
-  user: Type.Omit(insertUserSchemaRaw, ['id', 'created_at', 'updated_at']),
+  user: Type.Omit(insertUserSchemaRaw, [
+    'id',
+    'created_at',
+    'updated_at',
+    'bio',
+    'image',
+  ]),
 });
 
 export const UpdateUserSchema = Type.Object({
