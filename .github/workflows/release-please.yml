@@ -17,3 +17,5 @@ jobs:
         with:
           release-type: node
           package-name: elysia-realworld-example-app
+          # stay on 0.x until we have a stable release
+          bump-minor-pre-major: true
