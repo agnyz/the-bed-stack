@@ -51,7 +51,11 @@ export class UsersRepository {
   }
 
   async createUser(user: UserToCreate) {
-    const newUser = await this.db.insert(users).values(user).returning();
+    const newUser = await this.db
+      .insert(users)
+      .values(user)
+      .onConflictDoNothing()
+      .returning();
     // returning returns the inserted row in an array, so we need to get the first element
     return newUser[0];
   }

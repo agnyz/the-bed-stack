@@ -1,4 +1,4 @@
-import { Type } from '@sinclair/typebox';
+import { Type, Static } from '@sinclair/typebox';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
 // Do not use path aliases here (i.e. '@/users/users.model'), as that doesn't work with Drizzle Studio
 import { users } from './users.model';
@@ -33,10 +33,9 @@ export const ReturnedUserSchema = Type.Object({
   ]),
 });
 
-export type UserToCreate = typeof users.$inferInsert;
-export type UserToUpdate = Partial<
-  Omit<UserToCreate, 'id' | 'created_at' | 'updated_at'>
->;
+// export type UserToCreate = typeof users.$inferInsert;
+export type UserToCreate = Static<typeof InsertUserSchema>['user'];
+export type UserToUpdate = Static<typeof UpdateUserSchema>['user'];
 export type UserInDb = typeof users.$inferSelect;
 export type User = Omit<UserInDb, 'password'>;
 

@@ -9,25 +9,29 @@ import {
 } from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {
-  id: serial('id').primaryKey(),
-  email: text('email').unique().notNull(),
-  bio: text('bio').default(''),
-  image: text('image').default(
-    'https://api.realworld.io/images/smiley-cyrus.jpg',
-  ),
+  id: serial('id').primaryKey().notNull(),
+  email: text('email').notNull().unique(),
+  bio: text('bio').default('').notNull(),
+  image: text('image')
+    .default('https://api.realworld.io/images/smiley-cyrus.jpg')
+    .notNull(),
   password: text('password').notNull(),
-  username: text('username').notNull(),
-  created_at: date('created_at').default(sql`CURRENT_DATE`),
-  updated_at: date('updated_at').default(sql`CURRENT_DATE`),
+  username: text('username').notNull().unique(),
+  created_at: date('created_at').default(sql`CURRENT_DATE`).notNull(),
+  updated_at: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
 });
 
 export const userFollows = pgTable(
   'user_follows',
   {
-    user_id: integer('user_id').references(() => users.id),
-    follower_id: integer('follower_id').references(() => users.id),
-    created_at: date('created_at').default(sql`CURRENT_DATE`),
-    updated_at: date('updated_at').default(sql`CURRENT_DATE`),
+    user_id: integer('user_id')
+      .references(() => users.id)
+      .notNull(),
+    follower_id: integer('follower_id')
+      .references(() => users.id)
+      .notNull(),
+    created_at: date('created_at').default(sql`CURRENT_DATE`).notNull(),
+    updated_at: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
   },
   (table) => {
     return {
