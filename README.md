@@ -29,7 +29,7 @@ The runtime is [Bun](https://bun.sh/) and the code is written in [TypeScript](ht
 > [!WARNING]
 > **When using dev containers**:
 > * For now, you must change "file sharing implementation" from **VirtioFS** to **gRPC fuse** in the _Docker settings_. See [oven-sh/bun#4923](https://github.com/oven-sh/bun/issues/4923#issuecomment-1715677390) for more details.
-> * For now, you must _rebuild_ the container using `⌘ + p > Dev Containers: Rebuild Container` after building the container the first time. See [#55](https://github.com/agnyz/elysia-realworld-example-app/issues/55) for details; PRs welcome.
+> * For now, you must _rebuild_ the container using `⌘` `⇧` `P` → `Dev Containers: Rebuild Container` after building the container the first time. See [#55](https://github.com/agnyz/elysia-realworld-example-app/issues/55) for details; PRs welcome.
 
 1. **Clone and install dependencies**
 
