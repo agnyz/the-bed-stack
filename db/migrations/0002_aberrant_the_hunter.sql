@@ -1,0 +1,1 @@
+ALTER TABLE "users" ALTER COLUMN "image" SET DEFAULT 'https://api.realworld.io/images/smiley-cyrus.jpg';

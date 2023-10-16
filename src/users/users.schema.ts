@@ -1,15 +1,27 @@
-import { Type } from '@sinclair/typebox';
+import { Type, Static } from '@sinclair/typebox';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
 // Do not use path aliases here (i.e. '@/users/users.model'), as that doesn't work with Drizzle Studio
 import { users } from './users.model';
 
 // Schema for inserting a user - can be used to validate API requests
-const insertUserSchemaRaw = createInsertSchema(users);
+export const insertUserSchemaRaw = createInsertSchema(users);
 export const InsertUserSchema = Type.Object({
-  user: Type.Omit(insertUserSchemaRaw, ['id', 'created_at', 'updated_at']),
+  user: Type.Omit(insertUserSchemaRaw, [
+    'id',
+    'created_at',
+    'updated_at',
+    'bio',
+    'image',
+  ]),
 });
 
-export const UserAuthSchema = Type.Object({
+export const UpdateUserSchema = Type.Object({
+  user: Type.Partial(
+    Type.Omit(insertUserSchemaRaw, ['id', 'created_at', 'updated_at']),
+  ),
+});
+
+export const ReturnedUserSchema = Type.Object({
   user: Type.Composite([
     Type.Omit(insertUserSchemaRaw, [
       'id',
@@ -21,7 +33,9 @@ export const UserAuthSchema = Type.Object({
   ]),
 });
 
-export type UserToCreate = typeof users.$inferInsert;
+// export type UserToCreate = typeof users.$inferInsert;
+export type UserToCreate = Static<typeof InsertUserSchema>['user'];
+export type UserToUpdate = Static<typeof UpdateUserSchema>['user'];
 export type UserInDb = typeof users.$inferSelect;
 export type User = Omit<UserInDb, 'password'>;
 

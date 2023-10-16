@@ -87,8 +87,8 @@ export class AuthService {
     await this.getUserFromHeaders(headers);
   };
 
-  getUserEmailFromHeader = async (headers: Headers) => {
+  getUserIdFromHeader = async (headers: Headers) => {
     const user = await this.getUserFromHeaders(headers);
-    return user.email;
+    return user.id;
   };
 }

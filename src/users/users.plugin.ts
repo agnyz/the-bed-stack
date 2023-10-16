@@ -2,42 +2,76 @@ import { Elysia } from 'elysia';
 import { setupUsers } from '@/users/users.module';
 import {
   InsertUserSchema,
-  UserAuthSchema,
+  ReturnedUserSchema,
   UserLoginSchema,
+  UpdateUserSchema,
 } from '@/users/users.schema';
 
 export const usersPlugin = new Elysia()
   .use(setupUsers)
-  .group('/users', (app) =>
+  .group(
+    '/users',
+    {
+      detail: {
+        tags: ['Auth'],
+      },
+    },
+    (app) =>
+      app
+        .post(
+          '',
+          ({ body, store }) => store.usersService.createUser(body.user),
+          {
+            body: InsertUserSchema,
+            response: ReturnedUserSchema,
+            detail: {
+              summary: 'Register',
+            },
+          },
+        )
+        .post(
+          '/login',
+          ({ body, store }) =>
+            store.usersService.loginUser(body.user.email, body.user.password),
+          {
+            body: UserLoginSchema,
+            response: ReturnedUserSchema,
+            detail: {
+              summary: 'Login',
+            },
+          },
+        ),
+  )
+  .group('/user', { detail: { tags: ['Auth'] } }, (app) =>
     app
-      .post('', ({ body, store }) => store.usersService.createUser(body.user), {
-        body: InsertUserSchema,
-        response: UserAuthSchema,
-        detail: {
-          summary: 'Create a user',
-        },
-      })
-      .post(
-        '/login',
-        ({ body, store }) =>
-          store.usersService.loginUser(body.user.email, body.user.password),
+      .get(
+        '',
+        async ({ request, store }) =>
+          store.usersService.findById(
+            await store.authService.getUserIdFromHeader(request.headers),
+          ),
         {
-          body: UserLoginSchema,
-          response: UserAuthSchema,
+          beforeHandle: app.store.authService.requireLogin,
+          response: ReturnedUserSchema,
+          detail: {
+            summary: 'Current User',
+          },
+        },
+      )
+      .put(
+        '',
+        async ({ request, store, body }) =>
+          store.usersService.updateUser(
+            await store.authService.getUserIdFromHeader(request.headers),
+            body.user,
+          ),
+        {
+          body: UpdateUserSchema,
+          beforeHandle: app.store.authService.requireLogin,
+          response: ReturnedUserSchema,
+          detail: {
+            summary: 'Update User',
+          },
         },
       ),
-  )
-  .group('/user', (app) =>
-    app.get(
-      '',
-      async ({ request, store }) => {
-        return store.usersService.findByEmail(
-          await store.authService.getUserEmailFromHeader(request.headers),
-        );
-      },
-      {
-        beforeHandle: app.store.authService.requireLogin,
-        response: UserAuthSchema,
-      },
-    ),
   );

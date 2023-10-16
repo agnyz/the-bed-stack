@@ -33,7 +33,8 @@
         "antfu.browse-lite",
         "mtxr.sqltools",
         "mtxr.sqltools-driver-pg",
-        "bierner.markdown-preview-github-styles"
+        "bierner.markdown-preview-github-styles",
+        "Pandy.bun"
       ],
       "settings": {
         "editor.tabSize": 2,

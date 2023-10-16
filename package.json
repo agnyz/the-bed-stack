@@ -2,7 +2,7 @@
   "name": "elysia-realworld-example-app",
   "title": "Elysia Realworld Example App",
   "version": "1.0.50",
-  "description": "A RealWorld example for an app in the backend created with Bun and Elysia.",
+  "description": "A RealWorld example for an app in the backend created with Bun, Elysia, and DrizzleORM.",
   "scripts": {
     "start": "bun run src/main.ts",
     "dev": "bun run --watch src/main.ts",
@@ -28,7 +28,7 @@
     "drizzle-typebox": "^0.1.1",
     "elysia": "^0.7.15",
     "jose": "^4.14.6",
-    "postgres": "^3.3.5"
+    "postgres": "3.3.5"
   },
   "devDependencies": {
     "@biomejs/biome": "1.2.2",
