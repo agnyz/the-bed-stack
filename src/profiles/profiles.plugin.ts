@@ -2,9 +2,14 @@ import { Elysia } from 'elysia';
 import { setupProfiles } from '@/profiles/profiles.module';
 import { ReturnedProfileSchema } from '@/profiles/profiles.schema';
 
-export const profilesPlugin = new Elysia()
-  .use(setupProfiles)
-  .group('/profiles/:username', (app) =>
+export const profilesPlugin = new Elysia().use(setupProfiles).group(
+  '/profiles/:username',
+  {
+    detail: {
+      tags: ['Profiles'],
+    },
+  },
+  (app) =>
     app
       .get(
         '',
@@ -17,7 +22,7 @@ export const profilesPlugin = new Elysia()
           beforeHandle: app.store.authService.requireLogin,
           response: ReturnedProfileSchema,
           detail: {
-            summary: 'Get a profile',
+            summary: 'Profile',
           },
         },
       )
@@ -32,7 +37,7 @@ export const profilesPlugin = new Elysia()
           beforeHandle: app.store.authService.requireLogin,
           response: ReturnedProfileSchema,
           detail: {
-            summary: 'Follow a profile',
+            summary: 'Follow Profile',
           },
         },
       )
@@ -48,8 +53,8 @@ export const profilesPlugin = new Elysia()
           beforeHandle: app.store.authService.requireLogin,
           response: ReturnedProfileSchema,
           detail: {
-            summary: 'Unfollow a profile',
+            summary: 'Unfollow Profile',
           },
         },
       ),
-  );
+);

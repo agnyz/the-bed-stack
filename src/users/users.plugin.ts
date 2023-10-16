@@ -9,29 +9,40 @@ import {
 
 export const usersPlugin = new Elysia()
   .use(setupUsers)
-  .group('/users', (app) =>
-    app
-      .post('', ({ body, store }) => store.usersService.createUser(body.user), {
-        body: InsertUserSchema,
-        response: ReturnedUserSchema,
-        detail: {
-          summary: 'Create a user',
-        },
-      })
-      .post(
-        '/login',
-        ({ body, store }) =>
-          store.usersService.loginUser(body.user.email, body.user.password),
-        {
-          body: UserLoginSchema,
-          response: ReturnedUserSchema,
-          detail: {
-            summary: 'Log in',
+  .group(
+    '/users',
+    {
+      detail: {
+        tags: ['Auth'],
+      },
+    },
+    (app) =>
+      app
+        .post(
+          '',
+          ({ body, store }) => store.usersService.createUser(body.user),
+          {
+            body: InsertUserSchema,
+            response: ReturnedUserSchema,
+            detail: {
+              summary: 'Register',
+            },
           },
-        },
-      ),
+        )
+        .post(
+          '/login',
+          ({ body, store }) =>
+            store.usersService.loginUser(body.user.email, body.user.password),
+          {
+            body: UserLoginSchema,
+            response: ReturnedUserSchema,
+            detail: {
+              summary: 'Login',
+            },
+          },
+        ),
   )
-  .group('/user', (app) =>
+  .group('/user', { detail: { tags: ['Auth'] } }, (app) =>
     app
       .get(
         '',
@@ -43,7 +54,7 @@ export const usersPlugin = new Elysia()
           beforeHandle: app.store.authService.requireLogin,
           response: ReturnedUserSchema,
           detail: {
-            summary: 'Get current user',
+            summary: 'Current User',
           },
         },
       )
@@ -59,7 +70,7 @@ export const usersPlugin = new Elysia()
           beforeHandle: app.store.authService.requireLogin,
           response: ReturnedUserSchema,
           detail: {
-            summary: 'Update a user',
+            summary: 'Update User',
           },
         },
       ),
