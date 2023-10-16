@@ -21,10 +21,10 @@ features:
     
   - title: ElysiaJS
     details: TypeScript framework supercharged by Bun with End-to-End Type Safety, unified type system and outstanding developer experience.
-    link: https://https://elysiajs.com/
+    link: https://elysiajs.com/
 
   - title: DrizzleORM
-    details: A lightweight, performant, typesafe, non lactose, gluten-free, flexible, serverless-ready, and headless TypeScript ORM with both relational and SQL-like query APIs.
+    details: Lightweight, performant, typesafe, non lactose, gluten-free, flexible, serverless-ready, and headless TypeScript ORM with both relational and SQL-like query APIs.
     link: https://orm.drizzle.team/
 
 ---
