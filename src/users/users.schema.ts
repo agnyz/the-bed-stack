@@ -33,7 +33,6 @@ export const ReturnedUserSchema = Type.Object({
   ]),
 });
 
-// export type UserToCreate = typeof users.$inferInsert;
 export type UserToCreate = Static<typeof InsertUserSchema>['user'];
 export type UserToUpdate = Static<typeof UpdateUserSchema>['user'];
 export type UserInDb = typeof users.$inferSelect;

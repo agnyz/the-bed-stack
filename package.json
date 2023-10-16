@@ -1,7 +1,7 @@
 {
   "name": "elysia-realworld-example-app",
   "title": "Elysia Realworld Example App",
-  "version": "1.0.50",
+  "version": "0.0.1",
   "description": "A RealWorld example for an app in the backend created with Bun, Elysia, and DrizzleORM.",
   "scripts": {
     "start": "bun run src/main.ts",
