@@ -33,6 +33,7 @@ export const setupApp = () => {
         documentation: {
           info: { title, version, description },
         },
+        exclude: ['/'],
       }),
     )
     .group('/api', (app) => app.use(usersPlugin).use(profilesPlugin));

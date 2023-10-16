@@ -1,9 +1,12 @@
 import { defineConfig } from 'vitepress';
+import { name, title, description } from '../../package.json';
+
+const isProd = process.env.NODE_ENV === 'production';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'RealWorld Elysia Docs',
-  description: 'A Vite Press docs of Real World',
+  title,
+  description,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -25,4 +28,6 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
     ],
   },
+  // `name` should be the name of the repository
+  base: isProd ? `/${name}/` : undefined,
 });

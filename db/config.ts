@@ -11,6 +11,7 @@ export const dbCredentialsString = `postgres://${dbCredentials.user}:${dbCredent
 
 export default {
   out: './db/migrations',
+  // in our codebase, 'schema' refers to TypeBox objects (abstraction of a JSON schema), while 'model' refers to database entities/tables, which is what drizzle refers to as 'schema'
   schema: '**/*.model.ts',
   breakpoints: false,
   driver: 'pg',
