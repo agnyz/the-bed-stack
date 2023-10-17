@@ -1,6 +1,6 @@
 # Support
 
-This article explains where to get help with remark.
+This article explains where to get help with ElysiaJS RealWorld.
 Please read through the following guidelines.
 
 > [!WARNING]
