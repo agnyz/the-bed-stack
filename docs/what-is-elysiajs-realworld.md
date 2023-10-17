@@ -14,13 +14,13 @@ ElysiaJS RealWorld is a project in the [RealWorld](
 
 ## Why RealWorld?
 
-The RealWorld project is a fantastic because it's suitable for developers across the entire spectrum of experience.
+The RealWorld project is fantastic because it's suitable for developers across the entire spectrum of experience.
 
 **Beginners** will find the dozens of implementations in different languages and frameworks to be a great way to learn new technologies, and to compare their work to the best practices of similar tools. Not sure how to implement a feature? Just look at how [other implementations](https://codebase.show/projects/realworld?category=backend&language=typescript) have done it! They all implement the exact same API, so you can compare them side-by-side.
 
 **Experts** will find satisfaction in contributing best practice examples to the community, and in helping beginners learn the ropes. They'll also find that the RealWorld spec is a great way to test out new technologies, and to compare them to other tools in the same space. A new tool came out that is all the rage? Just follow the well-defined spec and see how it holds up in the RealWorld!
 
-## Why Bun/ElysiaJS/DrizzleORM?
+## Why Bun, ElysiaJS, and DrizzleORM?
 
 When [Bun](https://bun.sh/) was announced, the community expectedly touted it as a [Node.js killer](https://levelup.gitconnected.com/is-bun-js-the-node-js-killer-ffeb0f89196a). It promised to eliminate many of the hassles that come with TypeScript development, and provide an ecosystem that is unified, performant, and easy to use.
 
