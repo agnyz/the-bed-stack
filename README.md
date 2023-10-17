@@ -33,26 +33,26 @@ Check out our documentation by visiting https://agnyz.github.io/elysia-realworld
 1. **Clone and install dependencies**
 
     ```sh
-    $ gh repo clone agnyz/elysia-realworld-example-app
-    $ cd elysia-realworld-example-app
-    $ bun i
+    gh repo clone agnyz/elysia-realworld-example-app
+    cd elysia-realworld-example-app
+    bun i
     ```
 
 2. **Ensure Docker daemon is running and spin up the Postgres+Bun container**
 
     ```sh
-    $ bun up
+    bun up
     ```
 3. **Migrate the schema to the database**
 
     ```sh
-    $ bun db:migrate
+    bun db:migrate
     ```
 
 4. **Run the app**
 
     ```sh
-    $ bun dev
+    bun dev
     ```
 
 # Contributing
