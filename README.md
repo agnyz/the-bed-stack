@@ -21,15 +21,14 @@ It relies on [Postgres.js](https://github.com/porsager/postgres) to store data, 
 
 The runtime is [Bun](https://bun.sh/) and the code is written in [TypeScript](https://www.typescriptlang.org/).
 
+# Documentation
+
+Check out our documentation by visiting https://agnyz.github.io/elysia-realworld-example-app.
+
 # Getting started
 
 > [!NOTE]
-> This project includes support for [Dev Containers](https://code.visualstudio.com/docs/remote/containers) in VSCode. If you have VSCode installed, and Docker daemon running, you can simply open the project in VSCode and click on the "_Reopen in Container_" button in the notification that pops up. This will automatically perform the steps below and open a new VSCode window with the project running inside a container ready for development.
-
-> [!WARNING]
-> **When using dev containers**:
-> * For now, you must change "file sharing implementation" from **VirtioFS** to **gRPC fuse** in the _Docker settings_. See [oven-sh/bun#4923](https://github.com/oven-sh/bun/issues/4923#issuecomment-1715677390) for more details.
-> * For now, you must _rebuild_ the container using `⌘` `⇧` `P` → `Dev Containers: Rebuild Container` after building the container the first time. See [#55](https://github.com/agnyz/elysia-realworld-example-app/issues/55) for details; PRs welcome.
+> This project includes support for [Dev Containers](https://code.visualstudio.com/docs/remote/containers) in VSCode. Read more about it in [Developing in a Dev Container in the docs](https://agnyz.github.io/elysia-realworld-example-app/dev-container.html).
 
 1. **Clone and install dependencies**
 

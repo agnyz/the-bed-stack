@@ -43,3 +43,8 @@ For now, you must _rebuild_ the container using `⌘` `⇧` `P`
     2. Select the project folder.
     3. Wait for the container to build and open the project in a new window.
 
+3. :tada: **You're ready to go!**
+
+## What's Next?
+
+* Please report any issues you encounter with the dev container in [GitHub Issues, with the `devcontainers` label](https://github.com/agnyz/elysia-realworld-example-app/labels/devcontainers).
