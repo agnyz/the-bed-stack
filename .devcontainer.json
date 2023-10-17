@@ -37,7 +37,8 @@
         "bierner.markdown-preview-github-styles",
         "Pandy.bun",
         "github.vscode-github-actions",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "Vue.volar"
       ],
       "settings": {
         "editor.tabSize": 2,
