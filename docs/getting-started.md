@@ -1,10 +1,10 @@
 # Getting started
 
 ::: info
-We are working on a [dev container](https://code.visualstudio.com/docs/remote/containers) experience for ElysiaJS RealWorld. It should make the onboarding process much easier. Stay tuned!
+We are working on a [dev container](https://code.visualstudio.com/docs/remote/containers) experience for ElysiaJS RealWorld. It should make the onboarding process much easier. See progress in [Developing in a Dev Container](./dev-container.md).
 :::
 
-Getting started with this project is as easy as installing a few prerequisites, running a few commands, and opening your favorite text editor. We would love to have you [contribute](https://github.com/agnyz/elysia-realworld-example-app/blob/main/CONTRIBUTING.md) to this project. If you have any questions, please [reach out](
+Getting started with this project is as easy as installing a few prerequisites, running a few commands, and opening your favorite text editor. We'd love to have you [contribute](https://github.com/agnyz/elysia-realworld-example-app/blob/main/CONTRIBUTING.md) to this project. If you have any questions, please [reach out](
   https://github.com/agnyz/elysia-realworld-example-app/discussions
 )!
 
@@ -17,88 +17,36 @@ Getting started with this project is as easy as installing a few prerequisites, 
 * Text Editor with TypeScript support.
   * We recommend [Visual Studio Code](https://code.visualstudio.com/); other IDEs have been reported to cause issues with ElysiaJS's type inference system.
 
-```sh
-$ bun i
-```
+### Setup
 
-### Syntax Highlighting
+1. **Clone and install dependencies**
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+  ```sh
+  $ gh repo clone agnyz/elysia-realworld-example-app
+  $ cd elysia-realworld-example-app
+  $ bun i
+  ```
 
-**Input**
+2. **Ensure Docker daemon is running and spin up the Postgres+Bun container**
 
-````
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
+  ```sh
+  $ bun up
+  ```
+3. **Migrate the schema to the database**
 
-**Output**
+  ```sh
+  $ bun db:migrate
+  ```
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
+4. **Run the app**
 
-### Custom Containers
+  ```sh
+  $ bun dev
+  ```
 
-**Input**
+## What's Next?
 
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-### More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+* Once you're ready to contribute, check out our [contributing guide](https://github.com/agnyz/elysia-realworld-example-app/blob/main/CONTRIBUTING.md). We're excited to have you!
+* If you're looking for a place to start, check out our [good first issues](https://github.com/agnyz/elysia-realworld-example-app/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
+* If you need support, check out our [support page](https://github.com/agnyz/elysia-realworld-example-app/blob/main/SUPPORT.md).
+* If have any questions or just want to chat, join our [Discussions](https://github.com/agnyz/elysia-realworld-example-app/discussions).

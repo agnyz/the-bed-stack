@@ -33,27 +33,27 @@ The runtime is [Bun](https://bun.sh/) and the code is written in [TypeScript](ht
 
 1. **Clone and install dependencies**
 
-    ```bash
-    gh repo clone agnyz/elysia-realworld-example-app
-    cd elysia-realworld-example-app
-    bun i
+    ```sh
+    $ gh repo clone agnyz/elysia-realworld-example-app
+    $ cd elysia-realworld-example-app
+    $ bun i
     ```
 
 2. **Ensure Docker daemon is running and spin up the Postgres+Bun container**
 
-    ```bash
-    bun up
+    ```sh
+    $ bun up
     ```
 3. **Migrate the schema to the database**
 
-    ```bash
-    bun db:migrate
+    ```sh
+    $ bun db:migrate
     ```
 
 4. **Run the app**
 
-    ```bash
-    bun dev
+    ```sh
+    $ bun dev
     ```
 
 # Contributing
