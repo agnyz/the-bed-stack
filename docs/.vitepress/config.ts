@@ -9,17 +9,17 @@ export default defineConfig({
   description,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/getting-started' },
-    ],
+    nav: [{ text: 'Guide', link: '/what-is-elysiajs-realworld' }],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Introduction',
         items: [
-          { text: 'Markdown Examples', link: '/getting-started' },
-          { text: 'Runtime API Examples', link: '/api-examples' },
+          {
+            text: 'What is ElysiaJS RealWorld?',
+            link: '/what-is-elysiajs-realworld',
+          },
+          { text: 'Getting Started', link: '/getting-started' },
         ],
       },
     ],

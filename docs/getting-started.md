@@ -1,8 +1,25 @@
 # Getting started
 
-## Markdown Extension Examples
+::: info
+We are working on a [dev container](https://code.visualstudio.com/docs/remote/containers) experience for ElysiaJS RealWorld. It should make the onboarding process much easier. Stay tuned!
+:::
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+Getting started with this project is as easy as installing a few prerequisites, running a few commands, and opening your favorite text editor. We would love to have you [contribute](https://github.com/agnyz/elysia-realworld-example-app/blob/main/CONTRIBUTING.md) to this project. If you have any questions, please [reach out](
+  https://github.com/agnyz/elysia-realworld-example-app/discussions
+)!
+
+## Installation
+
+### Prerequisites
+
+* [Bun](https://bun.sh/) version 1.0.6 or higher.
+* Terminal for accessing Bun via its command-line interface (CLI).
+* Text Editor with TypeScript support.
+  * We recommend [Visual Studio Code](https://code.visualstudio.com/); other IDEs have been reported to cause issues with ElysiaJS's type inference system.
+
+```sh
+$ bun i
+```
 
 ### Syntax Highlighting
 
