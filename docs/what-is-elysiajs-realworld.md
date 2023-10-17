@@ -28,4 +28,4 @@ We wanted to put it to the test. We thought:
 
 > What better way to test a new tool than to implement a RealWorld app with it?
 
-We chose other tools on the bleeding edge that have been specifically designed with Bun in mind, like [ElysiaJS](https://elysiajs.com/) and [DrizzleORM](https://orm.drizzle.team/). We wanted to see how they would work together, and how they would compare to other implementations in the RealWorld family.
+We chose other tools on the bleeding edge that have been specifically designed with Bun in mind, like [ElysiaJS](https://elysiajs.com/) and [DrizzleORM](https://orm.drizzle.team/). We wanted to see how they would work together, and how they compare to other implementations in the RealWorld family.
