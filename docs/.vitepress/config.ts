@@ -69,6 +69,11 @@ export default defineConfig({
         detailedView: true,
       },
     },
+    editLink: {
+      pattern:
+        'https://github.com/agnyz/elysia-realworld-example-app/edit/main/docs/:path',
+      text: 'Edit this page on GitHub',
+    },
   },
   // `name` should be the name of the repository
   base: isProd ? `/${name}/` : undefined,
