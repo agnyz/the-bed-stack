@@ -1,7 +1,3 @@
-<script setup>
-import KeyboardShortcutHint from './components/KeyboardShortcutHint.vue'
-</script>
-
 # Developing in a Dev Container
 
 This project provides partial support for developing in a [dev container](https://code.visualstudio.com/docs/remote/containers). We are still working on this feature, but once it is ready, it should make the onboarding process much easier. At that point, it would be **the recommended way to develop this project**.
@@ -27,7 +23,7 @@ For now, you must _rebuild_ the container using `⌘` `⇧` `P` → `Dev Contain
 ::: -->
 
 ::: info
-For now, you must _rebuild_ the container using <KeyboardShortcutHint :keys="['⌘', '⇧', 'P']" />
+For now, you must _rebuild_ the container using `⌘` `⇧` `P`
  → `Dev Containers: Rebuild Container` after building the container the first time. See [#55](https://github.com/agnyz/elysia-realworld-example-app/issues/55) for details; PRs welcome.
 :::
 
@@ -36,10 +32,10 @@ For now, you must _rebuild_ the container using <KeyboardShortcutHint :keys="['�
 
 1. **Clone the repository**
 
-   ```sh
-   $ gh repo clone agnyz/elysia-realworld-example-app
-   $ cd elysia-realworld-example-app
-   ```
+  ```sh
+  $ gh repo clone agnyz/elysia-realworld-example-app
+  $ cd elysia-realworld-example-app
+  ```
 
 2. **Open the project in a dev container**
 
