@@ -1,5 +1,5 @@
 import { Type } from '@sinclair/typebox';
-import { User, insertUserSchemaRaw } from '@/users/users.schema';
+import { User, insertUserSchemaRaw } from '@users/users.schema';
 
 export type Profile = Omit<
   User,
