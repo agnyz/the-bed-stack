@@ -63,6 +63,12 @@ export default defineConfig({
         link: 'https://github.com/agnyz/elysia-realworld-example-app',
       },
     ],
+    search: {
+      provider: 'local',
+      options: {
+        detailedView: true,
+      },
+    },
   },
   // `name` should be the name of the repository
   base: isProd ? `/${name}/` : undefined,

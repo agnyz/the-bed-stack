@@ -1,4 +1,4 @@
-# Getting started
+# Getting Started
 
 ::: info
 We are working on a [dev container](https://code.visualstudio.com/docs/remote/containers) experience for ElysiaJS RealWorld. It should make the onboarding process much easier. See progress in [Developing in a Dev Container](./dev-container.md).
