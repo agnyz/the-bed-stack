@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.0](https://github.com/agnyz/elysia-realworld-example-app/compare/v0.0.1...v0.1.0) (2023-10-18)
+
+
+### Features
+
+* data faker ([#69](https://github.com/agnyz/elysia-realworld-example-app/issues/69)) ([528bf3d](https://github.com/agnyz/elysia-realworld-example-app/commit/528bf3d3f803f30abf9dfb18b8de9a0a610cc073))
+* PR template ([581ba87](https://github.com/agnyz/elysia-realworld-example-app/commit/581ba8751434c6afd4c1f95102f5ef4e3d70e2c1)), closes [#39](https://github.com/agnyz/elysia-realworld-example-app/issues/39)
+
 ## 0.0.1 (2023-10-16)
 
 
