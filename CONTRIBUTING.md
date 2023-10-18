@@ -49,13 +49,13 @@ You can run `bun lint --apply` to apply any safe fixes automatically.
 
 Run the tests. We mostly using [Vitest](https://vitest.dev/) - a replacement of [Jest](https://jestjs.io/).
 
-You can filter the tests to be run by `nr test [match]`, for example, `nr test foo` will only run test files that contain `foo`.
+You can filter the tests to be run by `bun test [match]`, for example, `bun test foo` will only run test files that contain `foo`.
 
 Config options are often under the `test` field of `vitest.config.ts` or `vite.config.ts`.
 
-Vitest runs in [watch mode by default](https://vitest.dev/guide/features.html#watch-mode), so you can modify the code and see the test result automatically, which is great for [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development). To run the test only once, you can do `nr test --run`.
+Vitest runs in [watch mode by default](https://vitest.dev/guide/features.html#watch-mode), so you can modify the code and see the test result automatically, which is great for [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development). To run the test only once, you can do `bun test --run`.
 
-For some projects, we might have multiple types of tests set up. For example `nr test:unit` for unit tests, `nr test:e2e` for end-to-end tests. `nr test` commonly run them together, you can run them separately as needed.
+For some projects, we might have multiple types of tests set up. For example `bun test:unit` for unit tests, `bun test:e2e` for end-to-end tests. `bun test` commonly run them together, you can run them separately as needed.
 
 ### `bun docs`
 
@@ -121,9 +121,9 @@ This section is for maintainers with write access, or if you want to maintain yo
 
 Before you do, please make sure you have lastest git commit from upstream and all CI checks pass.
 
-When ready to publish a new release, we run `nr release`. It prompts a list for the target version you want to release. After selecting the desired one, it bumps your `package.json` and commit the changes with git tags, powered by [`@antfi/bumpp`](https://github.com/antfu/bumpp).
+When ready to publish a new release, we run `bun release`. It prompts a list for the target version you want to release. After selecting the desired one, it bumps your `package.json` and commit the changes with git tags, powered by [`@antfi/bumpp`](https://github.com/antfu/bumpp).
 
-There are two kinds of publishing setups, both performed by `nr release`.
+There are two kinds of publishing setups, both performed by `bun release`.
 
 <table><tr><td>
 
@@ -136,7 +136,7 @@ In `package.json`, we usually have:
 ```json
 {
   "scripts": {
-    "prepublishOnly": "nr build"
+    "prepublishOnly": "bun build"
   }
 }
 ```
