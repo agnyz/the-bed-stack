@@ -2,9 +2,12 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node-postgres
 {
   "name": "Bun & Postgres",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "dockerComposeFile": [
+    "docker/docker-compose.yml",
+    "docker/docker-compose.workspace.yml"
+  ],
+  "service": "workspace",
+  "workspaceFolder": "/app",
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
@@ -16,14 +19,6 @@
     "ghcr.io/itsmechlark/features/postgresql:1.3.3": {}
   },
   "waitFor": "onCreateCommand",
-  "updateContentCommand": "bun i",
-  "postAttachCommand": {
-    "app": "bun dev",
-    "studio": "bun db:studio",
-    "docs": "bun docs"
-  },
-  // "postCreateCommand": "bun db:migrate && bun db:seed",
-  "postCreateCommand": "./scripts/create-db.sh",
   "customizations": {
     "vscode": {
       "extensions": [
