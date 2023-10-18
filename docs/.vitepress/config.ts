@@ -84,6 +84,10 @@ export default defineConfig({
         icon: 'github',
         link: 'https://github.com/agnyz/elysia-realworld-example-app',
       },
+      {
+        icon: 'discord',
+        link: 'https://discord.gg/PH4rBdTU',
+      },
     ],
     search: {
       provider: 'local',
