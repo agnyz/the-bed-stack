@@ -12,7 +12,7 @@ for (let i = 0; i < 10; i++) {
     id: faker.datatype.number(),
     email: faker.internet.email(),
     username: faker.internet.userName(),
-    password: faker.internet.password(),
+    password: await Bun.password.hash(faker.internet.password()),
     bio: faker.lorem.text(),
     image: faker.image.imageUrl(),
   };
