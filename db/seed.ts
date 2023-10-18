@@ -18,7 +18,7 @@ for (let i = 0; i < 10; i++) {
   };
   console.log('Upserting user:', data);
 
-  await db.insert(users).values(data).onConflictDoNothing();
+  await db.insert(users).values(data);
   console.log('User upserted');
 }
 const userResult = await db.select().from(users);

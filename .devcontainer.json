@@ -19,7 +19,8 @@
   "updateContentCommand": "bun i",
   "postAttachCommand": {
     "app": "bun dev",
-    "studio": "bun db:studio"
+    "studio": "bun db:studio",
+    "docs": "bun docs"
   },
   // "postCreateCommand": "bun db:migrate && bun db:seed",
   "postCreateCommand": "./scripts/create-db.sh",
@@ -36,7 +37,8 @@
         "bierner.markdown-preview-github-styles",
         "Pandy.bun",
         "github.vscode-github-actions",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "Vue.volar"
       ],
       "settings": {
         "editor.tabSize": 2,
@@ -69,7 +71,7 @@
       "label": "Database"
     }
   },
-  "forwardPorts": [5432, 3000, 4983]
+  "forwardPorts": [5432, 3000, 4983, 4173]
 
   // Configure tool-specific properties.
   // "customizations": {},

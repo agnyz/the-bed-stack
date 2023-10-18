@@ -10,6 +10,7 @@
 
 - [ ] Read the [CONTRIBUTING](
   https://github.com/agnyz/elysia-realworld-example-app/blob/main/CONTRIBUTING.md) guide
+- [ ] Title this PR according to the `type(scope): description` or `type: description` format
 - [ ] Provide description sufficient to understand the changes introduced in this PR, and, if necessary, some screenshots
 - [ ] Reference an issue or discussion where the feature or changes have been previously discussed
 - [ ] Add a failing test that passes with the changes introduced in this PR, or explain why it's not feasible
