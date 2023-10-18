@@ -1,5 +1,5 @@
 import { db } from '@/database.providers';
-import { users } from '@/users/users.schema';
+import { users } from '@users/users.model';
 import { getTableName } from 'drizzle-orm';
 import { exit } from 'process';
 // TODO: use react-ink

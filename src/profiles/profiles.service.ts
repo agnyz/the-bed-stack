@@ -1,7 +1,7 @@
 import { NotFoundError } from 'elysia';
-import { ProfilesRepository } from '@/profiles/profiles.repository';
-import { Profile } from '@/profiles/profiles.schema';
-import { UsersRepository } from '@/users/users.repository';
+import { ProfilesRepository } from '@profiles/profiles.repository';
+import { Profile } from '@profiles/profiles.schema';
+import { UsersRepository } from '@users/users.repository';
 
 export class ProfilesService {
   constructor(

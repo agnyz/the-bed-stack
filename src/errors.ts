@@ -1,4 +1,4 @@
-import { DEFAULT, MapWithDefault } from '@/utils/defaultmap';
+import { DEFAULT, MapWithDefault } from '@utils/defaultmap';
 
 export class AuthenticationError extends Error {
   public status = 401;
