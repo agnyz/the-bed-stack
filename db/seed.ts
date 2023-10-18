@@ -1,19 +1,26 @@
 import { exit } from 'process';
 import { db } from '@/database.providers';
 import { users } from '@/users/users.model';
+import { faker } from '@faker-js/faker';
 
-const data = {
-  id: 1, //do not use 'users.id.default', seed should be idempotent
-  email: 'test@email.com',
-  username: 'test',
-  password: 'test',
-  bio: 'test',
-  image: 'test',
-};
-console.log('Upserting user: ', data);
-await db.insert(users).values(data).onConflictDoNothing();
-console.log('User upserted');
+console.log('Truncating the user database');
+await db.delete(users);
+console.log('The database is empty: ', await db.select().from(users));
 
+for (let i = 0; i < 10; i++) {
+  const data = {
+    id: faker.datatype.number(),
+    email: faker.internet.email(),
+    username: faker.internet.userName(),
+    password: await Bun.password.hash(faker.internet.password()),
+    bio: faker.lorem.text(),
+    image: faker.image.imageUrl(),
+  };
+  console.log('Upserting user:', data);
+
+  await db.insert(users).values(data);
+  console.log('User upserted');
+}
 const userResult = await db.select().from(users);
 console.log('User result: ', userResult);
 
