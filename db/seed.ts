@@ -1,6 +1,6 @@
 import { exit } from 'process';
 import { db } from '@/database.providers';
-import { users } from '@/users/users.model';
+import { users } from '@users/users.model';
 import { faker } from '@faker-js/faker';
 
 console.log('Truncating the user database');

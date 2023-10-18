@@ -1,11 +1,11 @@
 import { Elysia } from 'elysia';
-import { setupUsers } from '@/users/users.module';
+import { setupUsers } from '@users/users.module';
 import {
   InsertUserSchema,
   ReturnedUserSchema,
   UserLoginSchema,
   UpdateUserSchema,
-} from '@/users/users.schema';
+} from '@users/users.schema';
 
 export const usersPlugin = new Elysia()
   .use(setupUsers)

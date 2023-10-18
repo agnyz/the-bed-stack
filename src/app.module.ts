@@ -6,9 +6,9 @@ import {
   AuthorizationError,
   BadRequestError,
   ERROR_CODE_STATUS_MAP,
-} from '@/errors';
-import { usersPlugin } from '@/users/users.plugin';
-import { profilesPlugin } from '@/profiles/profiles.plugin';
+} from '@errors';
+import { usersPlugin } from '@users/users.plugin';
+import { profilesPlugin } from '@profiles/profiles.plugin';
 
 // the file name is in the spirit of NestJS, where app module is the device in charge of putting together all the pieces of the app
 // see: https://docs.nestjs.com/modules
