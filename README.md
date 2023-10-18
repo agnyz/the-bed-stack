@@ -1,8 +1,8 @@
 <div align='center'>
 
-# ElysiaJS RealWorld ![GitHub release (with filter)](https://img.shields.io/github/v/release/agnyz/elysia-realworld-example-app?label&color=orange)
+# ElysiaJS RealWorld [![GitHub release (with filter)](https://img.shields.io/github/v/release/agnyz/elysia-realworld-example-app?label&color=orange)](https://github.com/agnyz/elysia-realworld-example-app/releases)
 
-###### _An exemplary app in the backend crafted with [Bun](https://bun.sh/) + [ElysiaJS](https://elysiajs.com/) + [DrizzleORM](https://orm.drizzle.team/) that adheres to the [RealWorld spec and API](https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction/)._
+###### _Exemplary app in the backend crafted with [Bun](https://bun.sh/) + [ElysiaJS](https://elysiajs.com/) + [DrizzleORM](https://orm.drizzle.team/) adhering to the [RealWorld API spec](https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction/)._
 
 [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/agnyz/elysia-realworld-example-app/test.yml)](https://github.com/agnyz/elysia-realworld-example-app/actions/workflows/test.yml) [![Discord](https://img.shields.io/discord/1164270344115335320?label=Discord)](https://discord.gg/PH4rBdTU) [![Docs](https://img.shields.io/badge/docs-website-blue)](https://agnyz.github.io/elysia-realworld-example-app) [![Demo](https://img.shields.io/badge/demo-website-blue)](https://demo.realworld.io/) [![GitHub License](https://img.shields.io/github/license/agnyz/elysia-realworld-example-app)](https://github.com/agnyz/elysia-realworld-example-app/blob/main/LICENSE)
 
