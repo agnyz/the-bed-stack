@@ -12,6 +12,27 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/what-is-elysiajs-realworld' },
       {
+        text: 'RealWorld',
+        items: [
+          {
+            text: 'GitHub',
+            link: 'https://github.com/gothinkster/realworld',
+          },
+          {
+            text: 'CodebaseShow',
+            link: 'https://codebase.show/projects/realworld?category=backend',
+          },
+          {
+            text: 'Documentation',
+            link: 'https://www.realworld.how/',
+          },
+          {
+            text: 'Backend specs',
+            link: 'https://www.realworld.how/docs/specs/backend-specs/introduction',
+          },
+        ],
+      },
+      {
         text: `v${version}`,
         items: [
           {
@@ -46,6 +67,7 @@ export default defineConfig({
             link: '/dev-container',
           },
         ],
+        collapsed: false,
       },
       {
         text: 'Contributing',
