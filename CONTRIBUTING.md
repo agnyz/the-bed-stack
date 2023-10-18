@@ -1,6 +1,6 @@
 # Contributing Guide
 
-*This guide is **heavily** inspired by [`antfu/contribute`](https://github.com/antfu/contribute#corepack).*
+*This guide is **heavily** inspired by [`antfu/contribute`](https://github.com/antfu/contribute).*
 
 Hey there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great and we truly appreciate your time and effort.
 

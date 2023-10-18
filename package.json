@@ -1,6 +1,6 @@
 {
   "name": "elysia-realworld-example-app",
-  "title": "Elysia Realworld Example App",
+  "title": "ElysiaJS RealWorld",
   "version": "0.0.1",
   "description": "A RealWorld example for an app in the backend created with Bun, Elysia, and DrizzleORM.",
   "scripts": {
@@ -39,7 +39,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^15.0.0",
     "pg": "^8.11.3",
-    "vitepress": "^1.0.0-rc.20"
+    "vitepress": "^1.0.0-rc.22"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
