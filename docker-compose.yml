@@ -24,7 +24,7 @@ services:
       - ${POSTGRES_PORT}:5432
 
   app:
-    image: node:20-bullseye
+    image: node:21-bullseye
     restart: unless-stopped
 
     volumes:
