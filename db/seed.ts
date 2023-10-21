@@ -14,10 +14,7 @@ await usersService.deleteAll();
 const truncateResult = await usersService.findAll();
 console.log('Truncate result: ', truncateResult);
 
-// // in order for the ID's to reset back to 1, we need to manually reset the sequence
-// await db.execute(sql`ALTER SEQUENCE users_id_seq RESTART WITH 1`);
-
-// Create 10 new users
+// Create and update 10 users with random data
 for (let i = 1; i <= 10; i++) {
   // Create a new user
   await usersService.createUser({
