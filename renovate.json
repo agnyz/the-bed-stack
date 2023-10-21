@@ -1,6 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":disableDependencyDashboard"],
+  "extends": [
+    "config:base",
+    ":disableDependencyDashboard",
+    ":automergeStableNonMajor",
+    ":ignoreUnstable"
+  ],
   "vulnerabilityAlerts": {
     "automerge": true,
     "labels": ["security"]
