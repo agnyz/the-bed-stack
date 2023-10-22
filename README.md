@@ -1,6 +1,6 @@
 <div align='center'>
 
-![Logo for The BED Stack RealWorld example](logo.png)
+![Logo for The BED Stack RealWorld example](docs/public/logo.png)
 
 ###### _Example app crafted with [Bun](https://github.com/oven-sh/bun) + [ElysiaJS](https://github.com/elysiajs/elysia) + [DrizzleORM](https://github.com/drizzle-team/drizzle-orm) adhering to the [RealWorld](https://github.com/gothinkster/realworld) [API spec](https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction/)._
 
