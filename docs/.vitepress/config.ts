@@ -7,10 +7,17 @@ const isProd = process.env.NODE_ENV === 'production';
 export default defineConfig({
   title,
   description,
+  head: [['link', { rel: 'icon', href: '/logo-dark.svg' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: {
+      dark: '/logo-dark.svg',
+      light: '/logo-light.svg',
+      width: 24,
+      height: 24,
+    },
     nav: [
-      { text: 'Guide', link: '/what-is-elysiajs-realworld' },
+      { text: 'Guide', link: '/what-is-the-bed-stack' },
       {
         text: 'RealWorld',
         items: [
@@ -52,8 +59,8 @@ export default defineConfig({
         text: 'Introduction',
         items: [
           {
-            text: 'What is ElysiaJS RealWorld?',
-            link: '/what-is-elysiajs-realworld',
+            text: 'What is The BED Stack?',
+            link: '/what-is-the-bed-stack',
           },
           { text: 'Getting Started', link: '/getting-started' },
         ],

@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: ElysiaJS RealWorld
-  text: Bun + ElysiaJS + DrizzleORM in the RealWorld
-  tagline: An exemplary app in the backend, crafted with Bun, ElysiaJS, and DrizzleORM, abiding by the RealWorld spec and API.
+  name: The BED Stack
+  text: Bun + ElysiaJS + DrizzleORM RealWorld Example
+  tagline: Example app crafted with bleeding-edge backend technologies by RealWorld API specification.
   actions:
     - theme: brand
       text: Get Started
@@ -13,6 +13,7 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/agnyz/elysia-realworld-example-app
+  image: /the-bed-stack.png
 
 features:
   - title: Bun
@@ -29,3 +30,25 @@ features:
 
 ---
 
+
+<style>
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #B72A2A 30%, #FF7D1C);
+
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #B72A2A 50%, #FF7D1C 50%);
+  --vp-home-hero-image-filter: blur(40px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(72px);
+  }
+}
+</style>

@@ -1,10 +1,22 @@
-# What is ElysiaJS RealWorld?
+# What is The BED Stack?
 
-ElysiaJS RealWorld is a project in the [RealWorld](
+The BED Stack is a bleeding-edge tech stack for building backend applications with TypeScript. It's an acronym for **B**un + **E**lysiaJS + **D**rizzleORM.
+
+Its core philosophy is simplicity on the surface with immense power underneath; it will make you [fall into the pit of success](https://blog.codinghorror.com/falling-into-the-pit-of-success/). It is typesafe by default, and flexible enough to handle complex use cases as demonstrated by this [RealWorld](
   https://github.com/gothinkster/realworld
-) family of projects. It's an implementation of the [RealWorld backend spec](
+) example project.
+
+This project is an implementation of the [RealWorld backend spec](
   https://www.realworld.how/docs/specs/backend-specs/introduction
-), crafted with the following key technologies:
+). By design, it is completely interchangeable with any of the other [backend implementations](
+  https://codebase.show/projects/realworld?category=backend&language=typescript
+) in the RealWorld family, and can be used with any of the RealWorld [frontend implementations](
+  https://codebase.show/projects/realworld?category=frontend
+).
+
+## Core technologies
+
+We carefully chose some of the latest and greatest technologies from the bleeding edge that share our core philosophy. They are:
 
 * **[Bun](https://bun.sh/)** - All-in-one JavaScript runtime & toolkit designed for speed, complete with a bundler, test runner, and Node.js-compatible package manager.
 
