@@ -1,22 +1,19 @@
 <div align='center'>
 
-![Logo for The BED Stack RealWorld example](docs/public/logo.png)
+<img src="docs/public/logo.png" alt="Logo for The BED Stack RealWorld example" width=500>
 
 ###### _Example app crafted with [Bun](https://github.com/oven-sh/bun) + [ElysiaJS](https://github.com/elysiajs/elysia) + [DrizzleORM](https://github.com/drizzle-team/drizzle-orm) adhering to the [RealWorld](https://github.com/gothinkster/realworld) [API spec](https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction/)._
 
 [![GitHub release (with filter)](https://img.shields.io/github/v/release/agnyz/the-bed-stack?label&color=orange)](https://github.com/agnyz/the-bed-stack/releases)
-[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/agnyz/the-bed-stack/test.yml)](https://github.com/agnyz/the-bed-stack/actions/workflows/test.yml) [![Discord](https://img.shields.io/badge/Discord-Agnyz%20Technologies-%235865F2)](https://discord.gg/PH4rBdTU) [![Docs](https://img.shields.io/badge/docs-website-blue)](https://agnyz.github.io/the-bed-stack) [![Demo](https://img.shields.io/badge/demo-website-blue)](https://demo.realworld.io/) [![GitHub License](https://img.shields.io/github/license/agnyz/the-bed-stack)](https://github.com/agnyz/the-bed-stack/blob/main/LICENSE)
+[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/agnyz/the-bed-stack/test.yml)](https://github.com/agnyz/the-bed-stack/actions/workflows/test.yml) [![Discord](https://img.shields.io/badge/discord-Agnyz%20Technologies-%235865F2)](https://discord.gg/PH4rBdTU) ![Bed Puns](https://img.shields.io/badge/bed%20puns-welcome-limegreen) [![Docs](https://img.shields.io/badge/docs-website-blue)](https://agnyz.github.io/the-bed-stack) [![Demo](https://img.shields.io/badge/demo-website-blue)](https://demo.realworld.io/) [![GitHub License](https://img.shields.io/github/license/agnyz/the-bed-stack)](https://github.com/agnyz/the-bed-stack/blob/main/LICENSE)
 
-### Visit https://agnyz.github.io/the-bed-stack for docs, guides, and more - learn about the stack you don't want to sleep on 🛌💤
+#### Visit https://agnyz.github.io/the-bed-stack to learn more about the stack you don't want to sleep on 🛌💤
 
-### Let's share a BED - join our [Discord server](https://discord.gg/PH4rBdTU) today
-
+## Let's share a BED - join our [Discord server](https://discord.gg/PH4rBdTU) to pillowtalk
 
 </div>
 
----
-
-## Quick Start
+### Quick Start
 
 > [!NOTE]
 > **For an even quicker start**: this project includes experimental support for [Dev Containers](https://code.visualstudio.com/docs/remote/containers) in VSCode. Learn more about it in the docs: [Developing in a Dev Container](https://agnyz.github.io/the-bed-stack/dev-container.html).
@@ -46,10 +43,10 @@
     bun dev
     ```
 
-## Contributing
+### Contributing
 
 See [Contributing Guide](CONTRIBUTING.md).
 
-## License
+### License
 
 [MIT](LICENSE) License © 2023 Agnyz Technologies FC
