@@ -7,10 +7,17 @@ const isProd = process.env.NODE_ENV === 'production';
 export default defineConfig({
   title,
   description,
+  head: [['link', { rel: 'icon', href: '/icon-dark.svg' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: {
+      dark: '/icon-dark.svg',
+      light: '/icon-light.svg',
+      width: 24,
+      height: 24,
+    },
     nav: [
-      { text: 'Guide', link: '/what-is-elysiajs-realworld' },
+      { text: 'Guide', link: '/what-is-the-bed-stack' },
       {
         text: 'RealWorld',
         items: [
@@ -37,11 +44,11 @@ export default defineConfig({
         items: [
           {
             text: 'Changelog',
-            link: 'https://github.com/agnyz/elysia-realworld-example-app/blob/main/CHANGELOG.md',
+            link: 'https://github.com/agnyz/the-bed-stack/blob/main/CHANGELOG.md',
           },
           {
             text: 'Contributing',
-            link: 'https://github.com/agnyz/elysia-realworld-example-app/blob/main/CONTRIBUTING.md',
+            link: 'https://github.com/agnyz/the-bed-stack/blob/main/CONTRIBUTING.md',
           },
         ],
       },
@@ -52,8 +59,8 @@ export default defineConfig({
         text: 'Introduction',
         items: [
           {
-            text: 'What is ElysiaJS RealWorld?',
-            link: '/what-is-elysiajs-realworld',
+            text: 'What is The BED Stack?',
+            link: '/what-is-the-bed-stack',
           },
           { text: 'Getting Started', link: '/getting-started' },
         ],
@@ -71,18 +78,18 @@ export default defineConfig({
       },
       {
         text: 'Contributing',
-        link: 'https://github.com/agnyz/elysia-realworld-example-app/blob/main/CONTRIBUTING.md',
+        link: 'https://github.com/agnyz/the-bed-stack/blob/main/CONTRIBUTING.md',
       },
       {
         text: 'Support',
-        link: 'https://github.com/agnyz/elysia-realworld-example-app/blob/main/SUPPORT.md',
+        link: 'https://github.com/agnyz/the-bed-stack/blob/main/SUPPORT.md',
       },
     ],
 
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/agnyz/elysia-realworld-example-app',
+        link: 'https://github.com/agnyz/the-bed-stack',
       },
       {
         icon: 'discord',
@@ -96,8 +103,7 @@ export default defineConfig({
       },
     },
     editLink: {
-      pattern:
-        'https://github.com/agnyz/elysia-realworld-example-app/edit/main/docs/:path',
+      pattern: 'https://github.com/agnyz/the-bed-stack/edit/main/docs/:path',
       text: 'Edit this page on GitHub',
     },
   },

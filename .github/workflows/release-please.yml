@@ -16,6 +16,6 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         with:
           release-type: node
-          package-name: elysia-realworld-example-app
+          package-name: the-bed-stack
           # stay on 0.x until we have a stable release
           bump-minor-pre-major: true
