@@ -7,7 +7,7 @@
 [![GitHub release (with filter)](https://img.shields.io/github/v/release/agnyz/elysia-realworld-example-app?label&color=orange)](https://github.com/agnyz/elysia-realworld-example-app/releases)
 [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/agnyz/elysia-realworld-example-app/test.yml)](https://github.com/agnyz/elysia-realworld-example-app/actions/workflows/test.yml) [![Discord](https://img.shields.io/badge/Discord-Agnyz%20Technologies-%235865F2)](https://discord.gg/PH4rBdTU) [![Docs](https://img.shields.io/badge/docs-website-blue)](https://agnyz.github.io/elysia-realworld-example-app) [![Demo](https://img.shields.io/badge/demo-website-blue)](https://demo.realworld.io/) [![GitHub License](https://img.shields.io/github/license/agnyz/elysia-realworld-example-app)](https://github.com/agnyz/elysia-realworld-example-app/blob/main/LICENSE)
 
-### Visit https://agnyz.github.io/the-bed-stack for docs, guide, and more - learn about the stack you don't want to sleep on 🛌💤
+### Visit https://agnyz.github.io/the-bed-stack for docs, guides, and more - learn about the stack you don't want to sleep on 🛌💤
 
 ### Let's share a BED - join our [Discord server](https://discord.gg/PH4rBdTU) today
 
