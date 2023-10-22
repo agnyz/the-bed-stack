@@ -13,7 +13,7 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/agnyz/elysia-realworld-example-app
-  image: /the-bed-stack.png
+  image: /logo-mini.png
 
 features:
   - title: Bun

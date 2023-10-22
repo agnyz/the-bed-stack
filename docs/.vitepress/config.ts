@@ -7,12 +7,12 @@ const isProd = process.env.NODE_ENV === 'production';
 export default defineConfig({
   title,
   description,
-  head: [['link', { rel: 'icon', href: '/logo-dark.svg' }]],
+  head: [['link', { rel: 'icon', href: '/icon-dark.svg' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: {
-      dark: '/logo-dark.svg',
-      light: '/logo-light.svg',
+      dark: '/icon-dark.svg',
+      light: '/icon-light.svg',
       width: 24,
       height: 24,
     },
