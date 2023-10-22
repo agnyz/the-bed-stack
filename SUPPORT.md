@@ -1,6 +1,6 @@
 # Support
 
-This article explains where to get help with ElysiaJS RealWorld.
+This article explains where to get help with The Bed Stack.
 Please read through the following guidelines.
 
 > [!WARNING]
@@ -11,7 +11,7 @@ Please read through the following guidelines.
 
 ## Asking quality questions
 
-Questions can go to our [Discord server](https://discord.gg/PH4rBdTU) or [GitHub discussions](https://github.com/agnyz/elysia-realworld-example-app/discussions).
+Questions can go to our [Discord server](https://discord.gg/PH4rBdTU) or [GitHub discussions](https://github.com/agnyz/the-bed-stack/discussions).
 
 Help us help you!
 Spend time framing questions and add links and resources.

@@ -44,11 +44,11 @@ export default defineConfig({
         items: [
           {
             text: 'Changelog',
-            link: 'https://github.com/agnyz/elysia-realworld-example-app/blob/main/CHANGELOG.md',
+            link: 'https://github.com/agnyz/the-bed-stack/blob/main/CHANGELOG.md',
           },
           {
             text: 'Contributing',
-            link: 'https://github.com/agnyz/elysia-realworld-example-app/blob/main/CONTRIBUTING.md',
+            link: 'https://github.com/agnyz/the-bed-stack/blob/main/CONTRIBUTING.md',
           },
         ],
       },
@@ -78,18 +78,18 @@ export default defineConfig({
       },
       {
         text: 'Contributing',
-        link: 'https://github.com/agnyz/elysia-realworld-example-app/blob/main/CONTRIBUTING.md',
+        link: 'https://github.com/agnyz/the-bed-stack/blob/main/CONTRIBUTING.md',
       },
       {
         text: 'Support',
-        link: 'https://github.com/agnyz/elysia-realworld-example-app/blob/main/SUPPORT.md',
+        link: 'https://github.com/agnyz/the-bed-stack/blob/main/SUPPORT.md',
       },
     ],
 
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/agnyz/elysia-realworld-example-app',
+        link: 'https://github.com/agnyz/the-bed-stack',
       },
       {
         icon: 'discord',
@@ -103,8 +103,7 @@ export default defineConfig({
       },
     },
     editLink: {
-      pattern:
-        'https://github.com/agnyz/elysia-realworld-example-app/edit/main/docs/:path',
+      pattern: 'https://github.com/agnyz/the-bed-stack/edit/main/docs/:path',
       text: 'Edit this page on GitHub',
     },
   },

@@ -12,7 +12,7 @@ hero:
       link: /getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/agnyz/elysia-realworld-example-app
+      link: https://github.com/agnyz/the-bed-stack
   image: /logo-mini.png
 
 features:
