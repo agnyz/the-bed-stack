@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/agnyz/the-bed-stack/compare/v0.1.0...v0.2.0) (2023-10-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* the entire repository has been rebranded which might require local changes.
+
+### Documentation
+
+* rebrand to The BED Stack ([#81](https://github.com/agnyz/the-bed-stack/issues/81)) ([97b7602](https://github.com/agnyz/the-bed-stack/commit/97b7602da205e8ed031851d7ee5d06ce080ab27d))
+
 ## [0.1.0](https://github.com/agnyz/the-bed-stack/compare/v0.0.1...v0.1.0) (2023-10-18)
 
 
