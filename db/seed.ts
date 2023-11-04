@@ -1,27 +1,36 @@
 import { exit } from 'process';
 import { db } from '@/database.providers';
-import { users } from '@users/users.model';
 import { faker } from '@faker-js/faker';
+import { UsersRepository } from '@/users/users.repository';
+import { UsersService } from '@/users/users.service';
+import { AuthService } from '@/auth/auth.service';
+
+const usersRepsitory = new UsersRepository(db);
+const authService = new AuthService();
+const usersService = new UsersService(usersRepsitory, authService);
 
 console.log('Truncating the user database');
-await db.delete(users);
-console.log('The database is empty: ', await db.select().from(users));
+await usersService.deleteAll();
+const truncateResult = await usersService.findAll();
+console.log('Truncate result: ', truncateResult);
 
-for (let i = 0; i < 10; i++) {
-  const data = {
-    id: faker.datatype.number(),
+// Create and update 10 users with random data
+for (let i = 1; i <= 10; i++) {
+  // Create a new user
+  await usersService.createUser({
     email: faker.internet.email(),
     username: faker.internet.userName(),
-    password: await Bun.password.hash(faker.internet.password()),
-    bio: faker.lorem.text(),
-    image: faker.image.imageUrl(),
-  };
-  console.log('Upserting user:', data);
+    password: faker.internet.password(),
+  });
 
-  await db.insert(users).values(data);
-  console.log('User upserted');
+  // Update the user's bio and image
+  await usersService.updateUser(i, {
+    bio: faker.lorem.paragraph(),
+    image: faker.internet.avatar(),
+  });
 }
-const userResult = await db.select().from(users);
+
+const userResult = await usersService.findAll();
 console.log('User result: ', userResult);
 
 exit(0);
