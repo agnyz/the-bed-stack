@@ -22,7 +22,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@elysiajs/swagger": "^0.7.3",
+    "@elysiajs/swagger": "^0.8.0",
     "commander": "^11.0.0",
     "drizzle-orm": "^0.28.6",
     "drizzle-typebox": "^0.1.1",
