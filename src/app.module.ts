@@ -32,8 +32,26 @@ export const setupApp = () => {
       swagger({
         documentation: {
           info: { title, version, description },
+          components: {
+            securitySchemes: {
+              bearerAuth: {
+                type: 'http',
+                description: 'Bearer token to access these api endpoints',
+                scheme: 'bearer',
+                bearerFormat: 'JWT',
+              },
+            },
+          },
+          security: [
+            {
+              bearerAuth: [],
+            },
+          ],
         },
         exclude: ['/'],
+        swaggerOptions: {
+          persistAuthorization: true,
+        },
       }),
     )
     .group('/api', (app) => app.use(usersPlugin).use(profilesPlugin));

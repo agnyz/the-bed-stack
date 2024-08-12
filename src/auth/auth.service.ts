@@ -1,6 +1,6 @@
 import * as jose from 'jose';
 import { env } from '@config';
-import { UserInDb } from '@users/users.schema';
+import type { UserInDb } from '@users/users.schema';
 import { Type } from '@sinclair/typebox';
 import { Value } from '@sinclair/typebox/value';
 import { AuthenticationError } from '@errors';
@@ -69,9 +69,9 @@ export class AuthService {
 
     const tokenParts = rawHeader?.split(' ');
     const tokenType = tokenParts?.[0];
-    if (tokenType !== 'Token')
+    if (tokenType !== 'Bearer')
       throw new AuthenticationError(
-        "Invalid token type. Expected header format: 'Token jwt'",
+        "Invalid token type. Expected header format: 'Bearer jwt'",
       );
 
     const token = tokenParts?.[1];
