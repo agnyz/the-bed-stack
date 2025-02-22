@@ -24,7 +24,7 @@
   "dependencies": {
     "@elysiajs/swagger": "^0.7.3",
     "commander": "^11.0.0",
-    "drizzle-orm": "^0.28.6",
+    "drizzle-orm": "^0.39.0",
     "drizzle-typebox": "^0.1.1",
     "elysia": "^0.7.15",
     "jose": "^4.14.6",
