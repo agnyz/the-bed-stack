@@ -1,8 +1,6 @@
 import { users } from '@users/users.model';
 import type { UserToCreate, UserToUpdate } from '@users/users.schema';
 import { eq } from 'drizzle-orm';
-// users.repository.ts
-// in charge of database interactions
 import type { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 
 export class UsersRepository {
