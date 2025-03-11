@@ -1,4 +1,4 @@
-import { exit } from 'process';
+import { exit } from 'node:process';
 import { db } from '@/database.providers';
 import { users } from '@users/users.model';
 import { faker } from '@faker-js/faker';
@@ -9,12 +9,12 @@ console.log('The database is empty: ', await db.select().from(users));
 
 for (let i = 0; i < 10; i++) {
   const data = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     email: faker.internet.email(),
-    username: faker.internet.userName(),
+    username: faker.internet.username(),
     password: await Bun.password.hash(faker.internet.password()),
     bio: faker.lorem.text(),
-    image: faker.image.imageUrl(),
+    image: faker.image.url(),
   };
   console.log('Upserting user:', data);
 
