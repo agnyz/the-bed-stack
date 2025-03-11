@@ -19,7 +19,7 @@
     "db:seed": "bun db/seed.ts",
     "db:studio": "drizzle-kit studio --config=db/config.ts",
     "db:drop": "bun db/drop.ts",
-    "prepare": "husky init"
+    "prepare": "husky"
   },
   "dependencies": {
     "@elysiajs/swagger": "^1.2.2",
