@@ -3,9 +3,7 @@ import { setupApp } from '@/app.module';
 
 const app = new Elysia()
   .use(setupApp)
-  .get('/', ({ set }) => {
-    set.redirect = '/swagger';
-  })
+  .get('/', ({ redirect }) => redirect('/swagger'))
   .listen(3000);
 
 console.log(
