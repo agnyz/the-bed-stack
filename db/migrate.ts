@@ -1,4 +1,4 @@
-import { exit } from 'process';
+import { exit } from 'node:process';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import { migrate } from 'drizzle-orm/postgres-js/migrator';
 import { migrationsClient } from '@/database.providers';
