@@ -1,9 +1,9 @@
 // users.service.ts
 // in charge of business logic - generate slug, fetch data from other services, cache something, etc.
 import { NotFoundError } from 'elysia';
-import { UsersRepository } from '@users/users.repository';
-import { AuthService } from '@auth/auth.service';
-import { UserInDb, UserToCreate, UserToUpdate } from '@users/users.schema';
+import type { UsersRepository } from '@users/users.repository';
+import type { AuthService } from '@auth/auth.service';
+import type { UserInDb, UserToCreate, UserToUpdate } from '@users/users.schema';
 import { AuthenticationError, BadRequestError } from '@errors';
 
 export class UsersService {

@@ -1,7 +1,7 @@
 import { NotFoundError } from 'elysia';
-import { ProfilesRepository } from '@profiles/profiles.repository';
-import { Profile } from '@profiles/profiles.schema';
-import { UsersRepository } from '@users/users.repository';
+import type { ProfilesRepository } from '@profiles/profiles.repository';
+import type { Profile } from '@profiles/profiles.schema';
+import type { UsersRepository } from '@users/users.repository';
 
 export class ProfilesService {
   constructor(
@@ -21,9 +21,8 @@ export class ProfilesService {
   }
 
   async followUser(currentUserId: number, targetUsername: string) {
-    const userToFollow = await this.usersRepository.findByUsername(
-      targetUsername,
-    );
+    const userToFollow =
+      await this.usersRepository.findByUsername(targetUsername);
     if (!userToFollow) {
       throw new NotFoundError('Profile not found');
     }
@@ -42,9 +41,8 @@ export class ProfilesService {
   }
 
   async unfollowUser(currentUserId: number, targetUsername: string) {
-    const userToUnfollow = await this.usersRepository.findByUsername(
-      targetUsername,
-    );
+    const userToUnfollow =
+      await this.usersRepository.findByUsername(targetUsername);
     if (!userToUnfollow) {
       throw new NotFoundError('Profile not found');
     }

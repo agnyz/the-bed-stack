@@ -1,6 +1,6 @@
 import * as jose from 'jose';
 import { env } from '@config';
-import { UserInDb } from '@users/users.schema';
+import type { UserInDb } from '@users/users.schema';
 import { Type } from '@sinclair/typebox';
 import { Value } from '@sinclair/typebox/value';
 import { AuthenticationError } from '@errors';
@@ -47,7 +47,7 @@ export class AuthService {
     const encoder = new TextEncoder();
     const secret = encoder.encode(this.JWT_SECRET);
 
-    let verifiedToken;
+    let verifiedToken: jose.JWTVerifyResult;
     try {
       verifiedToken = await jose.jwtVerify(token, secret, {
         algorithms: [this.ALG],

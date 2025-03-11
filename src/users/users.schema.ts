@@ -1,4 +1,4 @@
-import { Type, Static } from '@sinclair/typebox';
+import { Type, type Static } from '@sinclair/typebox';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
 // Do not use path aliases here (i.e. '@/users/users.model'), as that doesn't work with Drizzle Studio
 import { users } from '@users/users.model';
