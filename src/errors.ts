@@ -24,7 +24,7 @@ export class BadRequestError extends Error {
   }
 }
 
-export const ERROR_CODE_STATUS_MAP = new MapWithDefault<string, number>([
+const ERROR_CODE_STATUS_MAP = new MapWithDefault<string | symbol, number>([
   ['PARSE', 400],
   ['BAD_REQUEST', 400],
   ['VALIDATION', 422],
@@ -36,3 +36,10 @@ export const ERROR_CODE_STATUS_MAP = new MapWithDefault<string, number>([
   ['UNKNOWN', 500],
   [DEFAULT, 500],
 ]);
+
+export function getErrorStatusFromCode(code: string | number): number {
+  return (
+    ERROR_CODE_STATUS_MAP.get(code.toString()) ??
+    ERROR_CODE_STATUS_MAP.get(DEFAULT)
+  );
+}
