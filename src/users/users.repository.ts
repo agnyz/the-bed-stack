@@ -1,8 +1,8 @@
 // users.repository.ts
 // in charge of database interactions
 import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
-import { eq } from 'drizzle-orm';
-import { UserToCreate, UserToUpdate } from '@users/users.schema';
+import { eq, sql } from 'drizzle-orm';
+import { User, UserToCreate, UserToUpdate } from '@users/users.schema';
 import { users } from '@users/users.model';
 
 export class UsersRepository {
@@ -67,5 +67,13 @@ export class UsersRepository {
       .where(eq(users.id, id))
       .returning();
     return updatedUser[0];
+  }
+
+  async deleteAll() {
+    // when deleting all rows, we need to reset the sequence
+    // otherwise, new rows will start with the next ID
+    await this.db.execute(sql`ALTER SEQUENCE users_id_seq RESTART WITH 1`);
+    // we are likely deleting more than one row, return the whole result (and not `result[0]`)
+    return await this.db.delete(users).returning();
   }
 }

@@ -59,6 +59,10 @@ export class UsersService {
     return await this.generateUserResponse(user);
   }
 
+  async deleteAll() {
+    return await this.repository.deleteAll();
+  }
+
   async generateUserResponse(user: UserInDb) {
     return {
       user: {
@@ -69,5 +73,12 @@ export class UsersService {
         token: await this.authService.generateToken(user),
       },
     };
+  }
+
+  async findAll() {
+    const users = await this.repository.findAll();
+    return await Promise.all(
+      users.map((user) => this.generateUserResponse(user)),
+    );
   }
 }
