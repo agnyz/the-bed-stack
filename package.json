@@ -19,30 +19,30 @@
     "db:seed": "bun db/seed.ts",
     "db:studio": "drizzle-kit studio --config=db/config.ts",
     "db:drop": "bun db/drop.ts",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
-    "@elysiajs/swagger": "^0.7.3",
-    "commander": "^11.0.0",
-    "drizzle-orm": "^0.28.6",
-    "drizzle-typebox": "^0.1.1",
-    "elysia": "^0.7.15",
-    "jose": "^4.14.6",
-    "postgres": "3.4.5"
+    "@elysiajs/swagger": "^1.2.2",
+    "commander": "^13.1.0",
+    "drizzle-orm": "^0.40.0",
+    "drizzle-typebox": "^0.3.0",
+    "elysia": "^1.2.25",
+    "jose": "^6.0.9",
+    "postgres": "^3.4.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@faker-js/faker": "^8.2.0",
-    "@types/node": "^20.8.3",
+    "@biomejs/biome": "^1.9.4",
+    "@faker-js/faker": "^9.6.0",
+    "@types/node": "^22.13.10",
     "bun-types": "latest",
-    "drizzle-kit": "^0.19.13",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.0.0",
-    "pg": "^8.11.3",
-    "vitepress": "^1.0.0-rc.22"
+    "drizzle-kit": "^0.30.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "pg": "^8.13.3",
+    "vitepress": "^1.6.3"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.8.2"
   },
   "module": "src/index.ts",
   "type": "module",
