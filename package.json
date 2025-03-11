@@ -49,7 +49,7 @@
   "lint-staged": {
     "*.json": "biome format --write --no-errors-on-unmatched",
     "*.ts": [
-      "biome lint --apply --no-errors-on-unmatched",
+      "biome lint --write --no-errors-on-unmatched",
       "biome format --write --no-errors-on-unmatched"
     ]
   }
