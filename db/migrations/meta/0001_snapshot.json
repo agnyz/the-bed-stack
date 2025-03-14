@@ -1,10 +1,8 @@
 {
-  "version": "5",
-  "dialect": "pg",
-  "id": "37bce8eb-cbc0-456a-be7c-dd4a351999b2",
-  "prevId": "8ed456d0-e522-4f1a-a07e-a19b3cd900bc",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "user_follows": {
+    "public.user_follows": {
       "name": "user_follows",
       "schema": "",
       "columns": {
@@ -40,20 +38,20 @@
         "user_follows_user_id_users_id_fk": {
           "name": "user_follows_user_id_users_id_fk",
           "tableFrom": "user_follows",
-          "tableTo": "users",
           "columnsFrom": ["user_id"],
+          "tableTo": "users",
           "columnsTo": ["id"],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "user_follows_follower_id_users_id_fk": {
           "name": "user_follows_follower_id_users_id_fk",
           "tableFrom": "user_follows",
-          "tableTo": "users",
           "columnsFrom": ["follower_id"],
+          "tableTo": "users",
           "columnsTo": ["id"],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -62,9 +60,12 @@
           "columns": ["user_id", "follower_id"]
         }
       },
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "users": {
+    "public.users": {
       "name": "users",
       "schema": "",
       "columns": {
@@ -125,10 +126,13 @@
       "uniqueConstraints": {
         "users_email_unique": {
           "name": "users_email_unique",
-          "nullsNotDistinct": false,
-          "columns": ["email"]
+          "columns": ["email"],
+          "nullsNotDistinct": false
         }
-      }
+      },
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     }
   },
   "enums": {},
@@ -137,5 +141,11 @@
     "schemas": {},
     "tables": {},
     "columns": {}
-  }
+  },
+  "id": "37bce8eb-cbc0-456a-be7c-dd4a351999b2",
+  "prevId": "8ed456d0-e522-4f1a-a07e-a19b3cd900bc",
+  "sequences": {},
+  "policies": {},
+  "views": {},
+  "roles": {}
 }
