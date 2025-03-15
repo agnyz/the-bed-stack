@@ -32,8 +32,6 @@ It also lints JSON.
 
 You can also run `bun fix` to apply any safe fixes automatically.
 
-[**We don't use Prettier**](#no-prettier).
-
 ### `bun test`
 
 > [!NOTE]
