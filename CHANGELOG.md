@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.1](https://github.com/agnyz/the-bed-stack/compare/v0.2.0...v0.2.1) (2025-03-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency postgres to v3.4.1 ([#83](https://github.com/agnyz/the-bed-stack/issues/83)) ([9688863](https://github.com/agnyz/the-bed-stack/commit/9688863f91c4646f31c11c81ae33d7d1e7450301))
+* **deps:** update dependency postgres to v3.4.2 ([#86](https://github.com/agnyz/the-bed-stack/issues/86)) ([8a5d7c5](https://github.com/agnyz/the-bed-stack/commit/8a5d7c5b006d19f7fc85fb8b1b04c5433354a666))
+* **deps:** update dependency postgres to v3.4.3 ([#89](https://github.com/agnyz/the-bed-stack/issues/89)) ([8f25621](https://github.com/agnyz/the-bed-stack/commit/8f25621c1f72df65e02bb3c6a179d572ceddbb44))
+* **deps:** update dependency postgres to v3.4.4 ([#104](https://github.com/agnyz/the-bed-stack/issues/104)) ([a6f82ea](https://github.com/agnyz/the-bed-stack/commit/a6f82eaffbbd0bb6d957c45214143af41df750f2))
+* **deps:** update dependency postgres to v3.4.5 ([#110](https://github.com/agnyz/the-bed-stack/issues/110)) ([21489c3](https://github.com/agnyz/the-bed-stack/commit/21489c3196c6afe4e95bbb0a563bbaefd73bda5f))
+
 ## [0.2.0](https://github.com/agnyz/the-bed-stack/compare/v0.1.0...v0.2.0) (2023-10-22)
 
 

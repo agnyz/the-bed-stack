@@ -1,7 +1,7 @@
 {
   "name": "the-bed-stack",
   "title": "The BED Stack",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A RealWorld example for an app in the backend created with Bun, Elysia, and DrizzleORM.",
   "scripts": {
     "start": "bun run src/main.ts",
