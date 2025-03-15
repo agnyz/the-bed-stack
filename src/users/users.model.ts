@@ -17,8 +17,8 @@ export const users = pgTable('users', {
     .notNull(),
   password: text('password').notNull(),
   username: text('username').notNull().unique(),
-  created_at: date('created_at').default(sql`CURRENT_DATE`).notNull(),
-  updated_at: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
+  createdAt: date('created_at').default(sql`CURRENT_DATE`).notNull(),
+  updatedAt: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
 });
 
 export const userRelations = relations(users, ({ many }) => ({
@@ -29,26 +29,26 @@ export const userRelations = relations(users, ({ many }) => ({
 export const userFollows = pgTable(
   'user_follows',
   {
-    followed_id: integer('followed_id')
+    followedId: integer('followed_id')
       .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
-    follower_id: integer('follower_id')
+    followerId: integer('follower_id')
       .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
-    created_at: date('created_at').default(sql`CURRENT_DATE`).notNull(),
-    updated_at: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
+    createdAt: date('created_at').default(sql`CURRENT_DATE`).notNull(),
+    updatedAt: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
   },
-  (table) => [primaryKey({ columns: [table.followed_id, table.follower_id] })],
+  (table) => [primaryKey({ columns: [table.followedId, table.followerId] })],
 );
 
 export const userFollowsRelations = relations(userFollows, ({ one }) => ({
   follower: one(users, {
-    fields: [userFollows.follower_id],
+    fields: [userFollows.followerId],
     references: [users.id],
     relationName: 'follower',
   }),
   followed: one(users, {
-    fields: [userFollows.followed_id],
+    fields: [userFollows.followedId],
     references: [users.id],
     relationName: 'followed',
   }),

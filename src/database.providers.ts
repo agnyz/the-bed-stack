@@ -11,4 +11,5 @@ export const CombinedSchemas = { ...usersSchema };
 export type DatabaseSchema = PostgresJsDatabase<typeof CombinedSchemas>;
 export const db: DatabaseSchema = drizzle(queryClient, {
   schema: CombinedSchemas,
+  logger: true,
 });

@@ -8,8 +8,8 @@ export const insertUserSchemaRaw = createInsertSchema(users);
 export const InsertUserSchema = Type.Object({
   user: Type.Omit(insertUserSchemaRaw, [
     'id',
-    'created_at',
-    'updated_at',
+    'createdAt',
+    'updatedAt',
     'bio',
     'image',
   ]),
@@ -17,7 +17,7 @@ export const InsertUserSchema = Type.Object({
 
 export const UpdateUserSchema = Type.Object({
   user: Type.Partial(
-    Type.Omit(insertUserSchemaRaw, ['id', 'created_at', 'updated_at']),
+    Type.Omit(insertUserSchemaRaw, ['id', 'createdAt', 'updatedAt']),
   ),
 });
 
@@ -26,8 +26,8 @@ export const ReturnedUserSchema = Type.Object({
     Type.Omit(insertUserSchemaRaw, [
       'id',
       'password',
-      'created_at',
-      'updated_at',
+      'createdAt',
+      'updatedAt',
     ]),
     Type.Object({ token: Type.String() }),
   ]),

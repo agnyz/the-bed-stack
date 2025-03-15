@@ -62,7 +62,7 @@ export class ProfilesService {
         image: user.image,
         username: user.username,
         following: !!user.followers.find(
-          (follower) => follower.follower_id === currentUserId,
+          (follower) => follower.followerId === currentUserId,
         ),
       },
     };

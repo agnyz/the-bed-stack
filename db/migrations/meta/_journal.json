@@ -43,6 +43,13 @@
       "when": 1742021370316,
       "tag": "0005_little_paladin",
       "breakpoints": false
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1742050755293,
+      "tag": "0006_goofy_diamondback",
+      "breakpoints": false
     }
   ]
 }
