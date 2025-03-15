@@ -171,4 +171,4 @@ VS Code's `settings.json`
 
 ## 💖 Thanks / Inspiration
 
-*This guide is **heavily** inspired by [`antfu/contribute`](https://github.com/antfu/contribute).*
+This guide is inspired by [`antfu/contribute`](https://github.com/antfu/contribute).
