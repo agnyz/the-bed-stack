@@ -28,12 +28,12 @@ Start the development environment in watch mode.
 
 Build the project for production. The result is under `dist/`.
 
-### `bun lint`
+### `bun check`
 
 We use [Biome](https://biomejs.dev/) for **both linting and formatting**. It is an ultra-fast, Rust based linter and formatter. 
 It also lints JSON.
 
-You can run `bun lint --apply` to apply any safe fixes automatically.
+You can also run `bun fix` to apply any safe fixes automatically.
 
 [**We don't use Prettier**](#no-prettier).
 
@@ -181,31 +181,6 @@ VS Code's `settings.json`
 ```
 
 </td></tr></table>
-
-### No Prettier
-
-> [!WARNING]
-> Since ESLint is already configured to format the code, there is no need to duplicate the functionality with Prettier ([*Why I don't Use Prettier*](https://antfu.me/posts/why-not-prettier)). To format the code, you can run `bun lint --apply` or refer to the [Lint section](#lint) for IDE Setup.
->
-> If you have Prettier installed in your editor, we recommend you disable it when working on the project to avoid conflict.
-> Instead, you may use the [Biome VS Code extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome).
-
-## 🗒 Additional Info
-
-In case you are interested in, here are some interesting tools, many of which inspired or created by [antfu](https://github.com/antfu).
-
-* **Configurations**
-
-  - [antfu/dotfiles](https://github.com/antfu/dotfiles) - ZSH configs and other dotfiles
-  - [antfu/vscode-settings](https://github.com/antfu/vscode-settings) - VS Code settings
-  - [antfu/eslint-config](https://github.com/antfu/eslint-config) - ESLint config
-
-* **CLI Tools**
-
-  - [ni](https://github.com/antfu/ni) - package manager alias
-  - [esno](https://github.com/antfu/esno) - TypeScript runner
-  - [taze](https://github.com/antfu/taze) - dependency updater
-  - [bumpp](https://github.com/antfu/bumpp) - version bumpper
 
 ## 💖 Thanks / Inspiration
 
