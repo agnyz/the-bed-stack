@@ -5,7 +5,7 @@ layout: home
 hero:
   name: The BED Stack
   text: Bun + ElysiaJS + DrizzleORM
-  tagline: RealWorld example app for the stack you don't want to sleep on 🛌💤
+  tagline: RealWorld example app for the stack you don't want to sleep on
   actions:
     - theme: brand
       text: Get Started

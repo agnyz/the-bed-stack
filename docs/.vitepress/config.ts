@@ -38,7 +38,7 @@ export default defineConfig({
             link: 'https://realworld-docs.netlify.app/specifications/backend/introduction/',
           },
         ],
-      }
+      },
     ],
 
     sidebar: [
@@ -64,7 +64,7 @@ export default defineConfig({
         collapsed: true,
       },
       {
-        text: 'Developer\'s Guide',
+        text: "Developer's Guide",
         link: 'https://github.com/agnyz/the-bed-stack/blob/main/CONTRIBUTING.md',
       },
       {
