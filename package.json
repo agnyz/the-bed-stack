@@ -2,7 +2,7 @@
   "name": "bedstack",
   "title": "Bedstack",
   "version": "",
-  "description": "RealWorld example app for Bun + ElysiaJS + DrizzleORM, the stack you don't want to sleep on",
+  "description": "RealWorld example app for Bun + ElysiaJS + Drizzle, the stack you don't want to sleep on",
   "module": "src/main.ts",
   "type": "module",
   "scripts": {

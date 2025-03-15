@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: Bedstack
-  text: Bun + ElysiaJS + DrizzleORM
+  text: Bun + ElysiaJS + Drizzle
   tagline: RealWorld example app for the stack you don't want to sleep on
   actions:
     - theme: brand
@@ -31,7 +31,7 @@ features:
     icon:
       src: /elysiajs-logo.png
 
-  - title: DrizzleORM
+  - title: Drizzle
     details: Lightweight, performant, typesafe, non lactose, gluten-free, flexible, serverless-ready, and headless TypeScript ORM with both relational and SQL-like query APIs.
     link: https://orm.drizzle.team/
     icon:
