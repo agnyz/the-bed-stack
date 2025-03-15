@@ -1,21 +1,28 @@
 import { exit } from 'node:process';
 import { db } from '@/database.providers';
-import { users } from '@users/users.model';
-import { getTableName } from 'drizzle-orm';
+import { userFollows, users } from '@users/users.model';
+import { getTableName, sql } from 'drizzle-orm';
 
-const tables = [users];
+const tables = [users, userFollows];
+console.log('Dropping all tables from the database');
 
-console.log('Dropping the entire database');
+try {
+  // Use a transaction to ensure all deletions succeed or none do
+  await db.transaction(async (tx) => {
+    for (const table of tables) {
+      const name = getTableName(table);
+      console.log(`Dropping ${name}`);
+      await tx.execute(
+        sql`DROP TABLE IF EXISTS ${sql.identifier(name)} CASCADE;`,
+      );
+      console.log(`Dropped ${name}`);
+    }
+  });
 
-for (const table of tables) {
-  const name = getTableName(table);
-  console.log(`Dropping ${name}`);
-  await db.delete(users);
-  console.log(`Dropped ${name}`);
-  const tableResult = await db.select().from(table);
-  console.log(`${name} result: `, tableResult);
+  console.log('All tables dropped');
+
+  exit(0);
+} catch (error) {
+  console.error('Failed to drop tables:', error);
+  exit(1);
 }
-
-console.log('Database dropped');
-
-exit(0);
