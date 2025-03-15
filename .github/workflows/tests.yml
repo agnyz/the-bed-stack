@@ -1,4 +1,4 @@
-name: Tests
+name: tests
 description: "Run tests (e.g. build) on pull requests"
 
 on:
