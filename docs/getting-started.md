@@ -1,9 +1,5 @@
 # Getting Started
 
-::: info
-We are working on a [dev container](https://code.visualstudio.com/docs/remote/containers) experience for The Bed Stack. It should make the onboarding process much easier. See progress in [Developing in a Dev Container](./dev-container.md).
-:::
-
 Getting started with this RealWorld project is as easy as installing a few prerequisites, running a few commands, and opening your favorite text editor. We'd love to have you [contribute](https://github.com/agnyz/the-bed-stack/blob/main/CONTRIBUTING.md) to this project. If you have any questions, please reach out on [Discord](https://discord.gg/PH4rBdTU) or [GitHub Discussions](
   https://github.com/agnyz/the-bed-stack/discussions
 )!

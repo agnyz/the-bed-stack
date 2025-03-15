@@ -1,10 +1,11 @@
+import type { AuthService } from '@auth/auth.service';
+import { AuthenticationError, BadRequestError } from '@errors';
+import type { UsersRepository } from '@users/users.repository';
+import type { UserInDb, UserToCreate, UserToUpdate } from '@users/users.schema';
+import { NotFoundError } from 'elysia';
+
 // users.service.ts
 // in charge of business logic - generate slug, fetch data from other services, cache something, etc.
-import { NotFoundError } from 'elysia';
-import type { UsersRepository } from '@users/users.repository';
-import type { AuthService } from '@auth/auth.service';
-import type { UserInDb, UserToCreate, UserToUpdate } from '@users/users.schema';
-import { AuthenticationError, BadRequestError } from '@errors';
 
 export class UsersService {
   constructor(

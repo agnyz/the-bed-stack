@@ -3,12 +3,14 @@
   "title": "The BED Stack",
   "version": "0.2.0",
   "description": "A RealWorld example for an app in the backend created with Bun, Elysia, and DrizzleORM.",
+  "type": "module",
+  "module": "src/index.ts",
   "scripts": {
     "start": "bun run src/main.ts",
     "dev": "bun run --watch src/main.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "biome format --write src --no-errors-on-unmatched",
-    "lint": "biome lint src --no-errors-on-unmatched",
+    "fix": "biome check --fix",
+    "check": "biome check",
+    "check:errors": "biome check --diagnostic-level=error",
     "docs": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
@@ -18,12 +20,10 @@
     "db:push": "drizzle-kit push --config=db/config.ts",
     "db:seed": "bun db/seed.ts",
     "db:studio": "drizzle-kit studio --config=db/config.ts",
-    "db:drop": "bun db/drop.ts",
-    "prepare": "husky"
+    "db:drop": "bun db/drop.ts"
   },
   "dependencies": {
     "@elysiajs/swagger": "^1.2.2",
-    "commander": "^13.1.0",
     "drizzle-orm": "^0.40.0",
     "drizzle-typebox": "^0.3.0",
     "elysia": "^1.2.25",
@@ -36,21 +36,10 @@
     "@types/node": "^22.13.10",
     "bun-types": "latest",
     "drizzle-kit": "^0.30.5",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
     "pg": "^8.13.3",
     "vitepress": "^1.6.3"
   },
   "peerDependencies": {
     "typescript": "^5.8.2"
-  },
-  "module": "src/index.ts",
-  "type": "module",
-  "lint-staged": {
-    "*.json": "biome format --write --no-errors-on-unmatched",
-    "*.ts": [
-      "biome lint --write --no-errors-on-unmatched",
-      "biome format --write --no-errors-on-unmatched"
-    ]
   }
 }

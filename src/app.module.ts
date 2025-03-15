@@ -1,14 +1,14 @@
-import { Elysia } from 'elysia';
 import { swagger } from '@elysiajs/swagger';
-import { title, version, description } from '../package.json';
 import {
   AuthenticationError,
   AuthorizationError,
   BadRequestError,
   getErrorStatusFromCode,
 } from '@errors';
-import { usersPlugin } from '@users/users.plugin';
 import { profilesPlugin } from '@profiles/profiles.plugin';
+import { usersPlugin } from '@users/users.plugin';
+import { Elysia } from 'elysia';
+import { description, title, version } from '../package.json';
 
 // the file name is in the spirit of NestJS, where app module is the device in charge of putting together all the pieces of the app
 // see: https://docs.nestjs.com/modules

@@ -4,19 +4,15 @@
 
 ###### _Example app crafted with [Bun](https://github.com/oven-sh/bun) + [ElysiaJS](https://github.com/elysiajs/elysia) + [DrizzleORM](https://github.com/drizzle-team/drizzle-orm) adhering to the [RealWorld](https://github.com/gothinkster/realworld) [API spec](https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction/)._
 
-[![GitHub release (with filter)](https://img.shields.io/github/v/release/agnyz/the-bed-stack?label&color=orange)](https://github.com/agnyz/the-bed-stack/releases)
-[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/agnyz/the-bed-stack/test.yml)](https://github.com/agnyz/the-bed-stack/actions/workflows/test.yml) [![Discord](https://img.shields.io/badge/discord-Agnyz%20Technologies-%235865F2)](https://discord.gg/PH4rBdTU) ![Bed Puns](https://img.shields.io/badge/bed%20puns-welcome-limegreen) [![Docs](https://img.shields.io/badge/docs-website-blue)](https://agnyz.github.io/the-bed-stack) [![Demo](https://img.shields.io/badge/demo-website-blue)](https://demo.realworld.io/) [![GitHub License](https://img.shields.io/github/license/agnyz/the-bed-stack)](https://github.com/agnyz/the-bed-stack/blob/main/LICENSE)
+[![Tests Status](https://github.com/agnyz/the-bed-stack/actions/workflows/tests.yml/badge.svg?event=push&branch=main)](https://github.com/agnyz/the-bed-stack/actions/workflows/tests.yml?query=branch%3Amain) ![Bed Puns](https://img.shields.io/badge/bed%20puns-welcome-limegreen) [![Demo](https://img.shields.io/badge/demo-live-blue)](https://demo.realworld.io/) [![GitHub License](https://img.shields.io/github/license/agnyz/the-bed-stack)](https://github.com/agnyz/the-bed-stack/blob/main/LICENSE) ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/agnyz/the-bed-stack?utm_source=oss&utm_medium=github&utm_campaign=agnyz%2Fthe-bed-stack&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 
 #### Visit https://agnyz.github.io/the-bed-stack to learn more about the stack you don't want to sleep on 🛌💤
 
-## Let's share a BED - join our [Discord server](https://discord.gg/PH4rBdTU) to pillowtalk
+## Let's share a BED - join our [Discord server](https://discord.gg/PH4rBdTU) 
 
 </div>
 
-### Quick Start
-
-> [!NOTE]
-> **For an even quicker start**: this project includes experimental support for [Dev Containers](https://code.visualstudio.com/docs/remote/containers) in VSCode. Learn more about it in the docs: [Developing in a Dev Container](https://agnyz.github.io/the-bed-stack/dev-container.html).
+### Quickstart
 
 1. **Clone and install dependencies**
 
@@ -26,7 +22,15 @@
     bun i
     ```
 
-2. **Ensure Docker daemon is running and spin up the Postgres+Bun container**
+2. **Create a `.env` file**
+
+    ```sh
+    cp .env.example .env
+    ```
+
+    Use the provided example values or replace them with your own.
+
+3. **Ensure Docker daemon is running and spin up the Postgres+Bun container**
 
     ```sh
     bun up
@@ -45,8 +49,4 @@
 
 ### Contributing
 
-See [Contributing Guide](CONTRIBUTING.md).
-
-### License
-
-[MIT](LICENSE) License © 2023 Agnyz Technologies FC
+See [Developer's Guide](CONTRIBUTING.md).

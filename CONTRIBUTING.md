@@ -1,6 +1,4 @@
-# Contributing Guide
-
-*This guide is **heavily** inspired by [`antfu/contribute`](https://github.com/antfu/contribute).*
+# Developer's Guide
 
 Hey there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great and we truly appreciate your time and effort.
 
@@ -9,19 +7,13 @@ Hey there! We're thrilled that you'd like to contribute to this project. Your he
 
 ## 👨‍💻 Repository Setup
 
-> [!NOTE]
-> **Windows users**: see [special note](#special-note-for-windows-users) below.
-
-This project uses [Bun](https://bun.sh) as a runtime as well as a package manager. It's a modern, fast, and lightweight alternative to [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/). To install Bun, run the following command:
+This project uses [Bun](https://bun.sh) as a runtime as well as a package manager. It's a modern, fast, and lightweight alternative to [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/). To install Bun on POSIX systems (like Ubuntu or macOS), run the following command:
 
   ```sh
   curl -fsSL https://bun.sh/install | bash
   ```
 
-
-### Special note for Windows users
-
-This guide assumes you are using a Unix-like environment, since [Bun is working on a Windows port](https://bun.sh/docs/installation#windows). If you are using Windows, you can use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or [Git Bash](https://gitforwindows.org/).
+Otherwise, visit the [Bun installation page](https://bun.sh/docs/installation) for installation options.
 
 ## 💡 Commands
 
@@ -29,16 +21,16 @@ This guide assumes you are using a Unix-like environment, since [Bun is working 
 
 Start the development environment in watch mode.
 
-### `bun build`
+### `bun run build`
 
 Build the project for production. The result is under `dist/`.
 
-### `bun lint`
+### `bun check`
 
 We use [Biome](https://biomejs.dev/) for **both linting and formatting**. It is an ultra-fast, Rust based linter and formatter. 
 It also lints JSON.
 
-You can run `bun lint --write` to apply any safe fixes automatically.
+You can also run `bun fix` to apply any safe fixes automatically.
 
 [**We don't use Prettier**](#no-prettier).
 
@@ -117,14 +109,6 @@ It's ok to have multiple commits in a single PR, you don't need to rebase or for
 
 This section is for maintainers with write access, or if you want to maintain your own forks.
 
-### Release
-
-Before you do, please make sure you have lastest git commit from upstream and all CI checks pass.
-
-When ready to publish a new release, we run `bun release`. It prompts a list for the target version you want to release. After selecting the desired one, it bumps your `package.json` and commit the changes with git tags, powered by [`@antfi/bumpp`](https://github.com/antfu/bumpp).
-
-There are two kinds of publishing setups, both performed by `bun release`.
-
 <table><tr><td>
 
 #### Build Locally
@@ -136,7 +120,7 @@ In `package.json`, we usually have:
 ```json
 {
   "scripts": {
-    "prepublishOnly": "bun build"
+    "prepack": "bun run build"
   }
 }
 ```
@@ -187,27 +171,6 @@ VS Code's `settings.json`
 
 </td></tr></table>
 
-### No Prettier
+## 💖 Thanks / Inspiration
 
-> [!WARNING]
-> Since ESLint is already configured to format the code, there is no need to duplicate the functionality with Prettier ([*Why I don't Use Prettier*](https://antfu.me/posts/why-not-prettier)). To format the code, you can run `bun lint --write` or refer to the [Lint section](#lint) for IDE Setup.
->
-> If you have Prettier installed in your editor, we recommend you disable it when working on the project to avoid conflict.
-> Instead, you may use the [Biome VS Code extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome).
-
-## 🗒 Additional Info
-
-In case you are interested in, here are some interesting tools, many of which inspired or created by [antfu](https://github.com/antfu).
-
-* **Configurations**
-
-  - [antfu/dotfiles](https://github.com/antfu/dotfiles) - ZSH configs and other dotfiles
-  - [antfu/vscode-settings](https://github.com/antfu/vscode-settings) - VS Code settings
-  - [antfu/eslint-config](https://github.com/antfu/eslint-config) - ESLint config
-
-* **CLI Tools**
-
-  - [ni](https://github.com/antfu/ni) - package manager alias
-  - [esno](https://github.com/antfu/esno) - TypeScript runner
-  - [taze](https://github.com/antfu/taze) - dependency updater
-  - [bumpp](https://github.com/antfu/bumpp) - version bumpper
+*This guide is **heavily** inspired by [`antfu/contribute`](https://github.com/antfu/contribute).*

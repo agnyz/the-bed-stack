@@ -1,9 +1,9 @@
-import * as jose from 'jose';
 import { env } from '@config';
-import type { UserInDb } from '@users/users.schema';
+import { AuthenticationError } from '@errors';
 import { Type } from '@sinclair/typebox';
 import { Value } from '@sinclair/typebox/value';
-import { AuthenticationError } from '@errors';
+import type { UserInDb } from '@users/users.schema';
+import * as jose from 'jose';
 
 export class AuthService {
   private readonly ALG = env.JWT_ALGORITHM;
