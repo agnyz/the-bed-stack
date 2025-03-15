@@ -1,5 +1,6 @@
+# Deploy VitePress site to Pages
+
 name: docs
-description: "Deploy VitePress site to Pages"
 
 on:
   push:

@@ -1,5 +1,6 @@
+# Check linting on pull requests
+
 name: lint
-description: "Check linting on pull requests"
 
 on:
   pull_request:
