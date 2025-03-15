@@ -50,7 +50,7 @@ export default defineConfig({
       {
         text: 'Support',
         link: 'https://github.com/agnyz/the-bed-stack/blob/main/SUPPORT.md',
-      }
+      },
     ],
 
     socialLinks: [
