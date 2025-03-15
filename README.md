@@ -41,10 +41,27 @@
     bun db:migrate
     ```
 
-4. **Run the app**
+4. **Run the development server**
 
     ```sh
     bun dev
+    ```
+
+### Building for production
+
+> [!TIP]
+> See more info in ElysiaJS's [Building for production](https://elysiajs.com/tutorial.html#build-for-production) guide.
+
+1. **Build the app**
+
+    ```sh
+    bun build
+    ```
+
+2. **Run the server**
+
+    ```sh
+    bun preview
     ```
 
 ### Contributing

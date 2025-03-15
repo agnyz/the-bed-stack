@@ -8,6 +8,8 @@
   "scripts": {
     "start": "bun run src/main.ts",
     "dev": "bun run --watch src/main.ts",
+    "build": "./scripts/build.sh",
+    "preview": "./server",
     "fix": "biome check --fix",
     "check": "biome check",
     "check:errors": "biome check --diagnostic-level=error",
