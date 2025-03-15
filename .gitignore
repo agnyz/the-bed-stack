@@ -38,5 +38,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment
-.env*.local
+# env files (can opt-in for committing if needed)
+.env*

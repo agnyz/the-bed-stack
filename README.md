@@ -22,7 +22,15 @@
     bun i
     ```
 
-2. **Ensure Docker daemon is running and spin up the Postgres+Bun container**
+2. **Create a `.env` file**
+
+    ```sh
+    cp .env.example .env
+    ```
+
+    Use the provided example values or replace them with your own.
+
+3. **Ensure Docker daemon is running and spin up the Postgres+Bun container**
 
     ```sh
     bun up
@@ -41,4 +49,4 @@
 
 ### Contributing
 
-See [Contributing Guide](CONTRIBUTING.md).
+See [Developer's Guide](CONTRIBUTING.md).
