@@ -23,7 +23,7 @@
     "db:drop": "bun db/drop.ts"
   },
   "dependencies": {
-    "@elysiajs/swagger": "^0.7.3",
+    "@elysiajs/swagger": "^1.2.2",
     "drizzle-orm": "^0.40.0",
     "drizzle-typebox": "^0.3.0",
     "elysia": "^0.7.15",
