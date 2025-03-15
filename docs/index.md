@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: The BED Stack
-  text: Bun + ElysiaJS + DrizzleORM RealWorld Example
-  tagline: Example app crafted with bleeding-edge backend technologies by RealWorld API specification.
+  text: Bun + ElysiaJS + DrizzleORM
+  tagline: RealWorld example app for the stack you don't want to sleep on 🛌💤
   actions:
     - theme: brand
       text: Get Started
