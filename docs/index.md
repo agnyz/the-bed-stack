@@ -8,7 +8,10 @@ hero:
   tagline: RealWorld example app for the stack you don't want to sleep on
   actions:
     - theme: brand
-      text: Get Started
+      text: What is The BED Stack?
+      link: /what-is-the-bed-stack
+    - theme: alt
+      text: Quickstart
       link: /getting-started
     - theme: alt
       text: View on GitHub
@@ -19,14 +22,20 @@ features:
   - title: Bun
     details: All-in-one JavaScript runtime & toolkit designed for speed, complete with a bundler, test runner, and Node.js-compatible package manager.
     link: https://bun.sh/
+    icon: 
+      src: /bun-press-kit/logo-centered.svg
     
   - title: ElysiaJS
     details: TypeScript framework supercharged by Bun with End-to-End Type Safety, unified type system and outstanding developer experience.
     link: https://elysiajs.com/
+    icon:
+      src: /elysiajs-logo.png
 
   - title: DrizzleORM
     details: Lightweight, performant, typesafe, non lactose, gluten-free, flexible, serverless-ready, and headless TypeScript ORM with both relational and SQL-like query APIs.
     link: https://orm.drizzle.team/
+    icon:
+      src: /drizzle-logo.png
 
 ---
 

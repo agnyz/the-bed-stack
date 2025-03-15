@@ -18,27 +18,7 @@ export default defineConfig({
     },
     nav: [
       { text: 'Guide', link: '/what-is-the-bed-stack' },
-      {
-        text: 'RealWorld',
-        items: [
-          {
-            text: 'GitHub',
-            link: 'https://github.com/gothinkster/realworld',
-          },
-          {
-            text: 'CodebaseShow',
-            link: 'https://codebase.show/projects/realworld?category=backend',
-          },
-          {
-            text: 'Documentation',
-            link: 'https://realworld-docs.netlify.app/',
-          },
-          {
-            text: 'Backend specs',
-            link: 'https://realworld-docs.netlify.app/specifications/backend/introduction/',
-          },
-        ],
-      },
+      { text: 'RealWorld apps', link: 'https://realworld-docs.netlify.app/' },
     ],
 
     sidebar: [
