@@ -1,10 +1,10 @@
 {
   "name": "the-bed-stack",
   "title": "The BED Stack",
-  "version": "0.2.0",
-  "description": "A RealWorld example for an app in the backend created with Bun, Elysia, and DrizzleORM.",
+  "version": "",
+  "description": "RealWorld example app for Bun + ElysiaJS + DrizzleORM, the stack you don't want to sleep on 🛌💤",
+  "module": "src/main.ts",
   "type": "module",
-  "module": "src/index.ts",
   "scripts": {
     "start": "bun run src/main.ts",
     "dev": "bun run --watch src/main.ts",
@@ -39,9 +39,7 @@
     "bun-types": "latest",
     "drizzle-kit": "^0.30.5",
     "pg": "^8.13.3",
-    "vitepress": "^1.6.3"
-  },
-  "peerDependencies": {
+    "vitepress": "^1.6.3",
     "typescript": "^5.8.2"
   }
 }

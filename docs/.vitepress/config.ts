@@ -38,20 +38,7 @@ export default defineConfig({
             link: 'https://www.realworld.how/docs/specs/backend-specs/introduction',
           },
         ],
-      },
-      {
-        text: `v${version}`,
-        items: [
-          {
-            text: 'Changelog',
-            link: 'https://github.com/agnyz/the-bed-stack/blob/main/CHANGELOG.md',
-          },
-          {
-            text: 'Contributing',
-            link: 'https://github.com/agnyz/the-bed-stack/blob/main/CONTRIBUTING.md',
-          },
-        ],
-      },
+      }
     ],
 
     sidebar: [
@@ -74,10 +61,10 @@ export default defineConfig({
             link: '/dev-container',
           },
         ],
-        collapsed: false,
+        collapsed: true,
       },
       {
-        text: 'Contributing',
+        text: 'Developer\'s Guide',
         link: 'https://github.com/agnyz/the-bed-stack/blob/main/CONTRIBUTING.md',
       },
       {
