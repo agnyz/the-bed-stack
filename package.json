@@ -35,7 +35,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@faker-js/faker": "^8.2.0",
-    "@types/node": "^20.8.3",
+    "@types/node": "^22.13.10",
     "bun-types": "latest",
     "drizzle-kit": "^0.30.5",
     "pg": "^8.11.3",
