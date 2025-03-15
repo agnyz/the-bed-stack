@@ -14,6 +14,8 @@ export default defineConfig({
     // Fallback for browsers that don't support SVG favicons
     ['link', { rel: 'alternate icon', href: `${base}favicon.ico` }],
   ],
+  base,
+  appearance: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: {
@@ -80,5 +82,11 @@ export default defineConfig({
       text: 'Edit this page on GitHub',
     },
   },
-  base,
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => tag.includes('-'),
+      },
+    },
+  },
 });
