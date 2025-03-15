@@ -24,7 +24,7 @@ Otherwise, visit the [Bun installation page](https://bun.sh/docs/installation) f
 
 Start the development environment in watch mode.
 
-### `bun build`
+### `bun run build`
 
 Build the project for production. The result is under `dist/`.
 
@@ -123,7 +123,7 @@ In `package.json`, we usually have:
 ```json
 {
   "scripts": {
-    "prepack": "bun build"
+    "prepack": "bun run build"
   }
 }
 ```
