@@ -1,20 +1,15 @@
+import type { DatabaseSchema } from '@/database.providers';
 import { userFollows, users } from '@users/users.model';
-import { and, eq, sql } from 'drizzle-orm';
-import type { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
+import { and, eq } from 'drizzle-orm';
 
 export class ProfilesRepository {
-  constructor(private readonly db: PostgresJsDatabase) {}
+  constructor(private readonly db: DatabaseSchema) {}
 
-  async findByUsername(currentUserId: number, targetUsername: string) {
-    const result = await this.db
-      .select({
-        username: users.username,
-        bio: users.bio,
-        image: users.image,
-        following: sql<boolean>`EXISTS(SELECT 1 FROM user_follows WHERE user_id = ${users.id} AND follower_id = ${currentUserId})`,
-      })
-      .from(users)
-      .where(eq(users.username, targetUsername));
+  async findByUsername(targetUsername: string) {
+    const result = await this.db.query.users.findMany({
+      where: eq(users.username, targetUsername),
+      with: { followers: true },
+    });
     if (result.length === 0) {
       return null;
     }

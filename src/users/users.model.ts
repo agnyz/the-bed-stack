@@ -1,4 +1,4 @@
-import { sql } from 'drizzle-orm';
+import { relations, sql } from 'drizzle-orm';
 import {
   date,
   integer,
@@ -21,17 +21,27 @@ export const users = pgTable('users', {
   updated_at: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
 });
 
+export const userRelations = relations(users, ({ many }) => ({
+  followers: many(userFollows),
+  following: many(userFollows),
+}));
+
 export const userFollows = pgTable(
   'user_follows',
   {
     user_id: integer('user_id')
-      .references(() => users.id)
+      .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
     follower_id: integer('follower_id')
-      .references(() => users.id)
+      .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
     created_at: date('created_at').default(sql`CURRENT_DATE`).notNull(),
     updated_at: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
   },
   (table) => [primaryKey({ columns: [table.user_id, table.follower_id] })],
 );
+
+export const userFollowsRelations = relations(userFollows, ({ many }) => ({
+  followers: many(users),
+  following: many(users),
+}));

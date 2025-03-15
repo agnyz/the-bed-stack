@@ -1,9 +1,9 @@
 import { exit } from 'node:process';
 import { db } from '@/database.providers';
-import { users } from '@users/users.model';
+import { userFollows, users } from '@users/users.model';
 import { getTableName } from 'drizzle-orm';
 
-const tables = [users];
+const tables = [users, userFollows];
 
 console.log('Dropping the entire database');
 

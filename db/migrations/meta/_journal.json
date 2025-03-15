@@ -36,6 +36,13 @@
       "when": 1697465890546,
       "tag": "0004_abandoned_maestro",
       "breakpoints": false
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1742021370316,
+      "tag": "0005_little_paladin",
+      "breakpoints": false
     }
   ]
 }
