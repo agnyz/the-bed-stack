@@ -112,14 +112,6 @@ It's ok to have multiple commits in a single PR, you don't need to rebase or for
 
 This section is for maintainers with write access, or if you want to maintain your own forks.
 
-### Release
-
-Before you do, please make sure you have lastest git commit from upstream and all CI checks pass.
-
-When ready to publish a new release, we run `bun release`. It prompts a list for the target version you want to release. After selecting the desired one, it bumps your `package.json` and commit the changes with git tags, powered by [`@antfi/bumpp`](https://github.com/antfu/bumpp).
-
-There are two kinds of publishing setups, both performed by `bun release`.
-
 <table><tr><td>
 
 #### Build Locally
@@ -131,7 +123,7 @@ In `package.json`, we usually have:
 ```json
 {
   "scripts": {
-    "prepublishOnly": "bun build"
+    "prepack": "bun build"
   }
 }
 ```
