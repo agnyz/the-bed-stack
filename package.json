@@ -3,6 +3,8 @@
   "title": "The BED Stack",
   "version": "0.2.0",
   "description": "A RealWorld example for an app in the backend created with Bun, Elysia, and DrizzleORM.",
+  "type": "module",
+  "module": "src/index.ts",
   "scripts": {
     "start": "bun run src/main.ts",
     "dev": "bun run --watch src/main.ts",
@@ -19,8 +21,7 @@
     "db:push": "drizzle-kit push:pg --config=db/config.ts",
     "db:seed": "bun db/seed.ts",
     "db:studio": "drizzle-kit studio --config=db/config.ts",
-    "db:drop": "bun db/drop.ts",
-    "prepare": "husky install"
+    "db:drop": "bun db/drop.ts"
   },
   "dependencies": {
     "@elysiajs/swagger": "^0.7.3",
@@ -37,21 +38,10 @@
     "@types/node": "^20.8.3",
     "bun-types": "latest",
     "drizzle-kit": "^0.19.13",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.0.0",
     "pg": "^8.11.3",
     "vitepress": "^1.0.0-rc.22"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  },
-  "module": "src/index.ts",
-  "type": "module",
-  "lint-staged": {
-    "*.json": "biome format --write --no-errors-on-unmatched",
-    "*.ts": [
-      "biome lint --apply --no-errors-on-unmatched",
-      "biome format --write --no-errors-on-unmatched"
-    ]
   }
 }

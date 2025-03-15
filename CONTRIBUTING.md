@@ -1,7 +1,5 @@
 # Contributing Guide
 
-*This guide is **heavily** inspired by [`antfu/contribute`](https://github.com/antfu/contribute).*
-
 Hey there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great and we truly appreciate your time and effort.
 
 > [!IMPORTANT]
@@ -12,16 +10,13 @@ Hey there! We're thrilled that you'd like to contribute to this project. Your he
 > [!NOTE]
 > **Windows users**: see [special note](#special-note-for-windows-users) below.
 
-This project uses [Bun](https://bun.sh) as a runtime as well as a package manager. It's a modern, fast, and lightweight alternative to [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/). To install Bun, run the following command:
+This project uses [Bun](https://bun.sh) as a runtime as well as a package manager. It's a modern, fast, and lightweight alternative to [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/). To install Bun on POSIX systems (like Ubuntu or macOS), run the following command:
 
   ```sh
   curl -fsSL https://bun.sh/install | bash
   ```
 
-
-### Special note for Windows users
-
-This guide assumes you are using a Unix-like environment, since [Bun is working on a Windows port](https://bun.sh/docs/installation#windows). If you are using Windows, you can use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) or [Git Bash](https://gitforwindows.org/).
+Otherwise, visit the [Bun installation page](https://bun.sh/docs/installation) for installation options.
 
 ## 💡 Commands
 
@@ -211,3 +206,7 @@ In case you are interested in, here are some interesting tools, many of which in
   - [esno](https://github.com/antfu/esno) - TypeScript runner
   - [taze](https://github.com/antfu/taze) - dependency updater
   - [bumpp](https://github.com/antfu/bumpp) - version bumpper
+
+## 💖 Thanks / Inspiration
+
+*This guide is **heavily** inspired by [`antfu/contribute`](https://github.com/antfu/contribute).*
