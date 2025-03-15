@@ -9,14 +9,11 @@
 
 #### Visit https://agnyz.github.io/the-bed-stack to learn more about the stack you don't want to sleep on 🛌💤
 
-## Let's share a BED - join our [Discord server](https://discord.gg/PH4rBdTU) to pillowtalk
+## Let's share a BED - join our [Discord server](https://discord.gg/PH4rBdTU) 
 
 </div>
 
 ### Quick Start
-
-> [!NOTE]
-> **For an even quicker start**: this project includes experimental support for [Dev Containers](https://code.visualstudio.com/docs/remote/containers) in VSCode. Learn more about it in the docs: [Developing in a Dev Container](https://agnyz.github.io/the-bed-stack/dev-container.html).
 
 1. **Clone and install dependencies**
 
