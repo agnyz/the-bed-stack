@@ -1,6 +1,6 @@
 # Support
 
-This article explains where to get help with The Bed Stack.
+This article explains where to get help with Bedstack.
 Please read through the following guidelines.
 
 > [!WARNING]
@@ -11,7 +11,7 @@ Please read through the following guidelines.
 
 ## Asking quality questions
 
-Questions can go to our [Discord server](https://discord.gg/PH4rBdTU) or [GitHub discussions](https://github.com/agnyz/the-bed-stack/discussions).
+Questions can go to our [Discord server](https://discord.gg/PH4rBdTU) or [GitHub discussions](https://github.com/agnyz/bedstack/discussions).
 
 Help us help you!
 Spend time framing questions and add links and resources.

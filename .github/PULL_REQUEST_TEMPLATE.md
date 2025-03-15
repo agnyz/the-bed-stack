@@ -9,7 +9,7 @@
 ### PR Checklist (Please do not remove)
 
 - [ ] Read the [CONTRIBUTING](
-  https://github.com/agnyz/the-bed-stack/blob/main/CONTRIBUTING.md) guide
+  https://github.com/agnyz/bedstack/blob/main/CONTRIBUTING.md) guide
 - [ ] Title this PR according to the `type(scope): description` or `type: description` format
 - [ ] Provide description sufficient to understand the changes introduced in this PR, and, if necessary, some screenshots
 - [ ] Reference an issue or discussion where the feature or changes have been previously discussed

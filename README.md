@@ -1,12 +1,12 @@
 <div align='center'>
 
-<img src="docs/public/logo.png" alt="Logo for The BED Stack RealWorld example" width=500>
+<img src="docs/public/logo.png" alt="Logo for Bedstack RealWorld example" width=500>
 
 ###### _[RealWorld](https://realworld-docs.netlify.app/) example app for [Bun](https://bun.sh/) + [ElysiaJS](https://elysiajs.com/) + [DrizzleORM](https://orm.drizzle.team/)_
 
-[![Tests Status](https://github.com/agnyz/the-bed-stack/actions/workflows/tests.yml/badge.svg?event=push&branch=main)](https://github.com/agnyz/the-bed-stack/actions/workflows/tests.yml?query=branch%3Amain) [![RealWorld](https://img.shields.io/badge/RealWorld-compliant-success?labelColor=2f1c42)](https://github.com/gothinkster/realworld) [![Bed Puns](https://img.shields.io/badge/bed%20puns-welcome-limegreen)](https://discord.gg/PH4rBdTU) [![GitHub License](https://img.shields.io/github/license/agnyz/the-bed-stack)](https://github.com/agnyz/the-bed-stack/blob/main/LICENSE) [![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/agnyz/the-bed-stack?utm_source=oss&utm_medium=github&utm_campaign=agnyz%2Fthe-bed-stack&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)](https://github.com/agnyz/the-bed-stack/pulls) 
+[![Tests Status](https://github.com/agnyz/bedstack/actions/workflows/tests.yml/badge.svg?event=push&branch=main)](https://github.com/agnyz/bedstack/actions/workflows/tests.yml?query=branch%3Amain) [![RealWorld](https://img.shields.io/badge/RealWorld-compliant-success?labelColor=2f1c42)](https://github.com/gothinkster/realworld) [![Bed Puns](https://img.shields.io/badge/bed%20puns-welcome-limegreen)](https://discord.gg/PH4rBdTU) [![GitHub License](https://img.shields.io/github/license/agnyz/bedstack)](https://github.com/agnyz/bedstack/blob/main/LICENSE) [![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/agnyz/bedstack?utm_source=oss&utm_medium=github&utm_campaign=agnyz%2Fbedstack&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)](https://github.com/agnyz/bedstack/pulls) 
 
-#### Visit https://agnyz.github.io/the-bed-stack to learn more about the stack you don't want to sleep on 🛌💤
+#### Visit https://agnyz.github.io/bedstack to learn more about the stack you don't want to sleep on 🛌💤
 
 ## Let's share a BED - join our [Discord server](https://discord.gg/PH4rBdTU) 
 
@@ -17,8 +17,8 @@
 1. **Clone and install dependencies**
 
     ```sh
-    gh repo clone agnyz/the-bed-stack
-    cd the-bed-stack
+    gh repo clone agnyz/bedstack
+    cd bedstack
     bun i
     ```
 

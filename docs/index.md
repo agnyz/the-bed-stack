@@ -3,19 +3,19 @@
 layout: home
 
 hero:
-  name: The BED Stack
+  name: Bedstack
   text: Bun + ElysiaJS + DrizzleORM
   tagline: RealWorld example app for the stack you don't want to sleep on
   actions:
     - theme: brand
-      text: What is The BED Stack?
-      link: /what-is-the-bed-stack
+      text: What is Bedstack?
+      link: /what-is-bedstack
     - theme: alt
       text: Quickstart
       link: /getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/agnyz/the-bed-stack
+      link: https://github.com/agnyz/bedstack
   image: /logo-mini.png
 
 features:

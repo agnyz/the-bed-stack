@@ -1,6 +1,6 @@
 {
-  "name": "the-bed-stack",
-  "title": "The BED Stack",
+  "name": "bedstack",
+  "title": "Bedstack",
   "version": "",
   "description": "RealWorld example app for Bun + ElysiaJS + DrizzleORM, the stack you don't want to sleep on",
   "module": "src/main.ts",

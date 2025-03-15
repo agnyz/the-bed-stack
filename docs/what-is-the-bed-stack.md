@@ -1,6 +1,6 @@
-# What is The BED Stack?
+# What is Bedstack?
 
-The BED Stack is a bleeding-edge tech stack for building backend applications with TypeScript. It's an acronym for **B**un + **E**lysiaJS + **D**rizzleORM.
+Bedstack is a bleeding-edge tech stack for building backend applications with TypeScript. It's an acronym for **B**un + **E**lysiaJS + **D**rizzleORM.
 
 Its core philosophy is simplicity on the surface with immense power underneath; it will make you [fall into the pit of success](https://blog.codinghorror.com/falling-into-the-pit-of-success/). It is typesafe by default, and flexible enough to handle complex use cases as demonstrated by this [RealWorld](
   https://github.com/gothinkster/realworld
