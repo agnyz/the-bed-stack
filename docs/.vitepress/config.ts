@@ -10,7 +10,10 @@ export default defineConfig({
   title,
   description,
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}icon-dark.svg` }],
+    [
+      'link',
+      { rel: 'icon', type: 'image/svg+xml', href: `${base}icon-dark.svg` },
+    ],
     // Fallback for browsers that don't support SVG favicons
     ['link', { rel: 'alternate icon', href: `${base}favicon.ico` }],
   ],
