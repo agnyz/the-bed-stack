@@ -1,5 +1,6 @@
+# Run tests (e.g. build) on pull requests
+
 name: tests
-description: "Run tests (e.g. build) on pull requests"
 
 on:
   pull_request:
@@ -9,10 +10,21 @@ on:
 jobs:
   test-build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        bun: ['1.1.43', 'latest']
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ matrix.bun }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.bun }}-bun-
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ matrix.bun }}
       - name: Install dependencies
         run: bun install
       - name: Build

@@ -7,14 +7,16 @@ console.log('Truncating the user database');
 await db.delete(users);
 console.log('The database is empty: ', await db.select().from(users));
 
+// TODO: consider using drizzle seed
+// https://orm.drizzle.team/docs/seed-overview
 for (let i = 0; i < 10; i++) {
   const data = {
-    id: faker.datatype.number(),
+    id: faker.number.int({ min: 1, max: 2147483647 }),
     email: faker.internet.email(),
-    username: faker.internet.userName(),
+    username: faker.internet.username(),
     password: await Bun.password.hash(faker.internet.password()),
     bio: faker.lorem.text(),
-    image: faker.image.imageUrl(),
+    image: faker.image.url(),
   };
   console.log('Upserting user:', data);
 

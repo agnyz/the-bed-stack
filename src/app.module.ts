@@ -3,7 +3,7 @@ import {
   AuthenticationError,
   AuthorizationError,
   BadRequestError,
-  ERROR_CODE_STATUS_MAP,
+  getErrorStatusFromCode,
 } from '@errors';
 import { profilesPlugin } from '@profiles/profiles.plugin';
 import { usersPlugin } from '@users/users.plugin';
@@ -24,9 +24,13 @@ export const setupApp = () => {
       BAD_REQUEST: BadRequestError,
     })
     .onError(({ error, code, set }) => {
-      set.status = ERROR_CODE_STATUS_MAP.get(code);
+      set.status = getErrorStatusFromCode(code);
       const errorType = 'type' in error ? error.type : 'internal';
-      return { errors: { [errorType]: error.message } };
+      return {
+        errors: {
+          [errorType]: 'message' in error ? error.message : 'An error occurred',
+        },
+      };
     })
     .use(
       swagger({

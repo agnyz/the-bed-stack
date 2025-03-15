@@ -33,9 +33,5 @@ export const userFollows = pgTable(
     created_at: date('created_at').default(sql`CURRENT_DATE`).notNull(),
     updated_at: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
   },
-  (table) => {
-    return {
-      pk: primaryKey(table.user_id, table.follower_id),
-    };
-  },
+  (table) => [primaryKey({ columns: [table.user_id, table.follower_id] })],
 );
