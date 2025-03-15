@@ -7,9 +7,6 @@ Hey there! We're thrilled that you'd like to contribute to this project. Your he
 
 ## 👨‍💻 Repository Setup
 
-> [!NOTE]
-> **Windows users**: see [special note](#special-note-for-windows-users) below.
-
 This project uses [Bun](https://bun.sh) as a runtime as well as a package manager. It's a modern, fast, and lightweight alternative to [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/). To install Bun on POSIX systems (like Ubuntu or macOS), run the following command:
 
   ```sh
