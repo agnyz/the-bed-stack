@@ -1,6 +1,7 @@
 <div align='center'>
 
-<img src="docs/public/logo.png" alt="Logo for Bedstack RealWorld example" width=500>
+<img src="docs/public/logo-mini.png" alt="Logo for Bedstack RealWorld example" width=500>
+<h1>Bedstack</h1>
 
 ###### _[RealWorld](https://realworld-docs.netlify.app/) example app for [Bun](https://bun.sh/) + [ElysiaJS](https://elysiajs.com/) + [DrizzleORM](https://orm.drizzle.team/)_
 
