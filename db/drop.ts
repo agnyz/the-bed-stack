@@ -1,7 +1,7 @@
+import { exit } from 'node:process';
 import { db } from '@/database.providers';
 import { users } from '@users/users.model';
 import { getTableName } from 'drizzle-orm';
-import { exit } from 'process';
 // TODO: use react-ink
 
 const tables = [users];

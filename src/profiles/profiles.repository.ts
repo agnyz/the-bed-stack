@@ -1,6 +1,6 @@
-import { eq, and, sql } from 'drizzle-orm';
-import { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
-import { users, userFollows } from '@users/users.model';
+import { userFollows, users } from '@users/users.model';
+import { and, eq, sql } from 'drizzle-orm';
+import type { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 
 export class ProfilesRepository {
   constructor(private readonly db: PostgresJsDatabase) {}

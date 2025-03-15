@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress';
-import { name, title, description, version } from '../../package.json';
+import { description, name, title, version } from '../../package.json';
 
 const isProd = process.env.NODE_ENV === 'production';
 

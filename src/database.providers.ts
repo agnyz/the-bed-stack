@@ -1,5 +1,5 @@
 import { dbCredentialsString } from '@db/config';
-import { PostgresJsDatabase, drizzle } from 'drizzle-orm/postgres-js';
+import { type PostgresJsDatabase, drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 
 export const migrationsClient = postgres(dbCredentialsString, { max: 1 });

@@ -1,6 +1,6 @@
-import { Elysia } from 'elysia';
 import { setupProfiles } from '@profiles/profiles.module';
 import { ReturnedProfileSchema } from '@profiles/profiles.schema';
+import { Elysia } from 'elysia';
 
 export const profilesPlugin = new Elysia().use(setupProfiles).group(
   '/profiles/:username',
