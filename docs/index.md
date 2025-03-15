@@ -66,6 +66,7 @@ features:
 .VPButton.brand {
   background-image: linear-gradient(160deg, var(--vp-c-brand-1), var(--vp-c-brand-2)) !important;
   opacity: 0.9;
+  transition: opacity 0.25s;
 }
 
 .VPButton.brand:hover {
