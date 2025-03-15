@@ -19,8 +19,8 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: {
-      dark: `${base}icon-dark.svg`,
-      light: `${base}icon-light.svg`,
+      dark: 'icon-dark.svg',
+      light: 'icon-light.svg',
       width: 24,
       height: 24,
     },
