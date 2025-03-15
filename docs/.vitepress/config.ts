@@ -1,18 +1,29 @@
 import { defineConfig } from 'vitepress';
-import { description, name, title, version } from '../../package.json';
+import { description, name, title } from '../../package.json';
 
 const isProd = process.env.NODE_ENV === 'production';
+// `name` should be the name of the repository
+const base = isProd ? `/${name}/` : '';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title,
   description,
-  head: [['link', { rel: 'icon', href: '/icon-dark.svg' }]],
+  head: [
+    [
+      'link',
+      { rel: 'icon', type: 'image/svg+xml', href: `${base}icon-dark.svg` },
+    ],
+    // Fallback for browsers that don't support SVG favicons
+    ['link', { rel: 'alternate icon', href: `${base}favicon.ico` }],
+  ],
+  base,
+  appearance: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: {
-      dark: '/icon-dark.svg',
-      light: '/icon-light.svg',
+      dark: 'icon-dark.svg',
+      light: 'icon-light.svg',
       width: 24,
       height: 24,
     },
@@ -74,6 +85,11 @@ export default defineConfig({
       text: 'Edit this page on GitHub',
     },
   },
-  // `name` should be the name of the repository
-  base: isProd ? `/${name}/` : undefined,
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => tag.includes('-'),
+      },
+    },
+  },
 });

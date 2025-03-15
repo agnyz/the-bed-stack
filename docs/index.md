@@ -43,10 +43,12 @@ features:
 <style>
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #B72A2A 30%, #FF7D1C);
-
-  --vp-home-hero-image-background-image: linear-gradient(-45deg, #B72A2A 50%, #FF7D1C 50%);
-  --vp-home-hero-image-filter: blur(40px);
+  --vp-home-hero-name-background: -webkit-linear-gradient(-60deg, var(--vp-c-brand-1) 30%, var(--vp-c-brand-2));
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, 
+    rgb(from var(--vp-c-brand-1) r g b / 0.25) 20%,
+    rgb(from var(--vp-c-brand-2) r g b / 0.5) 20%
+  );
+  --vp-home-hero-image-filter: blur(80px);
 }
 
 @media (min-width: 640px) {
@@ -59,5 +61,15 @@ features:
   :root {
     --vp-home-hero-image-filter: blur(72px);
   }
+}
+
+.VPButton.brand {
+  background-image: linear-gradient(160deg, var(--vp-c-brand-1), var(--vp-c-brand-2)) !important;
+  opacity: 0.9;
+  transition: opacity 0.25s;
+}
+
+.VPButton.brand:hover {
+  opacity: 1;
 }
 </style>
