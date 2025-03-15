@@ -9,7 +9,7 @@
 
 #### Visit https://agnyz.github.io/bedstack to learn more about the stack you don't want to sleep on 🛌💤
 
-## Let's share a BED - join our [Discord server](https://discord.gg/PH4rBdTU) 
+## Let's share a BED - join our [Discord server](https://discord.gg/8UcP9QB5AV) 
 
 </div>
 
