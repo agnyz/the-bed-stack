@@ -1,6 +1,6 @@
 import { type Static, Type } from '@sinclair/typebox';
 // Do not use path aliases here (i.e. '@/users/users.model'), as that doesn't work with Drizzle Studio
-import { users } from '@users/users.model';
+import { type userFollows, users } from '@users/users.model';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
 
 // Schema for inserting a user - can be used to validate API requests
