@@ -19,7 +19,7 @@ export class ProfilesRepository {
   async followUser(currentUserId: number, userToFollow: number) {
     const result = await this.db
       .insert(userFollows)
-      .values({ user_id: userToFollow, follower_id: currentUserId })
+      .values({ followed_id: userToFollow, follower_id: currentUserId })
       .returning();
     return result[0];
   }
@@ -29,7 +29,7 @@ export class ProfilesRepository {
       .delete(userFollows)
       .where(
         and(
-          eq(userFollows.user_id, userToUnfollow),
+          eq(userFollows.followed_id, userToUnfollow),
           eq(userFollows.follower_id, currentUserId),
         ),
       )

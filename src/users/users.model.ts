@@ -22,14 +22,14 @@ export const users = pgTable('users', {
 });
 
 export const userRelations = relations(users, ({ many }) => ({
-  followers: many(userFollows),
-  following: many(userFollows),
+  followers: many(userFollows, { relationName: 'followed' }),
+  following: many(userFollows, { relationName: 'follower' }),
 }));
 
 export const userFollows = pgTable(
   'user_follows',
   {
-    user_id: integer('user_id')
+    followed_id: integer('followed_id')
       .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
     follower_id: integer('follower_id')
@@ -38,10 +38,18 @@ export const userFollows = pgTable(
     created_at: date('created_at').default(sql`CURRENT_DATE`).notNull(),
     updated_at: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
   },
-  (table) => [primaryKey({ columns: [table.user_id, table.follower_id] })],
+  (table) => [primaryKey({ columns: [table.followed_id, table.follower_id] })],
 );
 
-export const userFollowsRelations = relations(userFollows, ({ many }) => ({
-  followers: many(users),
-  following: many(users),
+export const userFollowsRelations = relations(userFollows, ({ one }) => ({
+  follower: one(users, {
+    fields: [userFollows.follower_id],
+    references: [users.id],
+    relationName: 'follower',
+  }),
+  followed: one(users, {
+    fields: [userFollows.followed_id],
+    references: [users.id],
+    relationName: 'followed',
+  }),
 }));
