@@ -7,7 +7,7 @@ Its core philosophy is simplicity on the surface with immense power underneath; 
 ) example project.
 
 This project is an implementation of the [RealWorld backend spec](
-  https://www.realworld.how/docs/specs/backend-specs/introduction
+  https://realworld-docs.netlify.app/specifications/backend/introduction/
 ). By design, it is completely interchangeable with any of the other [backend implementations](
   https://codebase.show/projects/realworld?category=backend&language=typescript
 ) in the RealWorld family, and can be used with any of the RealWorld [frontend implementations](

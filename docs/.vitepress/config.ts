@@ -31,11 +31,11 @@ export default defineConfig({
           },
           {
             text: 'Documentation',
-            link: 'https://www.realworld.how/',
+            link: 'https://realworld-docs.netlify.app/',
           },
           {
             text: 'Backend specs',
-            link: 'https://www.realworld.how/docs/specs/backend-specs/introduction',
+            link: 'https://realworld-docs.netlify.app/specifications/backend/introduction/',
           },
         ],
       }
