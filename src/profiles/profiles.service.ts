@@ -61,7 +61,7 @@ export class ProfilesService {
         bio: user.bio,
         image: user.image,
         username: user.username,
-        following: user.followers.some(
+        following: !!user.followers.find(
           (follower) => follower.follower_id === currentUserId,
         ),
       },
