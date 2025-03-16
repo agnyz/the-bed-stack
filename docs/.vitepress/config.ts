@@ -1,23 +1,15 @@
 import { defineConfig } from 'vitepress';
 import { description, name, title } from '../../package.json';
 
-const isProd = process.env.NODE_ENV === 'production';
-// `name` should be the name of the repository
-const base = isProd ? `/${name}/` : '';
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title,
   description,
   head: [
-    [
-      'link',
-      { rel: 'icon', type: 'image/svg+xml', href: `${base}icon-dark.svg` },
-    ],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/icon-dark.svg' }],
     // Fallback for browsers that don't support SVG favicons
-    ['link', { rel: 'alternate icon', href: `${base}favicon.ico` }],
+    ['link', { rel: 'alternate icon', href: '/favicon.ico' }],
   ],
-  base,
   appearance: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
