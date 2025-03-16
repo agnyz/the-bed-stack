@@ -1,6 +1,6 @@
 # Getting Started
 
-Getting started with this RealWorld project is as easy as installing a few prerequisites, running a few commands, and opening your favorite text editor. We'd love to have you [contribute](https://github.com/agnyz/bedstack/blob/main/CONTRIBUTING.md) to this project. If you have any questions, please reach out on [Discord](https://discord.gg/PH4rBdTU) or [GitHub Discussions](
+Getting started with this RealWorld project is as easy as installing a few prerequisites, running a few commands, and opening your favorite text editor. We'd love to have you [contribute](https://github.com/agnyz/bedstack/blob/main/CONTRIBUTING.md) to this project. If you have any questions, please reach out on [Discord](https://discord.gg/8UcP9QB5AV) or [GitHub Discussions](
   https://github.com/agnyz/bedstack/discussions
 )!
 
@@ -45,4 +45,4 @@ Getting started with this RealWorld project is as easy as installing a few prere
 * Once you're ready to contribute, check out our [contributing guide](https://github.com/agnyz/bedstack/blob/main/CONTRIBUTING.md). We're excited to have you!
 * If you're looking for a place to start, check out our [good first issues](https://github.com/agnyz/bedstack/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
 * If you need support, check out our [support page](https://github.com/agnyz/bedstack/blob/main/SUPPORT.md).
-* If have any questions or just want to chat, join our [Discord server](https://discord.gg/PH4rBdTU) or [GitHub Discussions](https://github.com/agnyz/bedstack/discussions).
+* If have any questions or just want to chat, join our [Discord server](https://discord.gg/8UcP9QB5AV) or [GitHub Discussions](https://github.com/agnyz/bedstack/discussions).

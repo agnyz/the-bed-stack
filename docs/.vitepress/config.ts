@@ -63,7 +63,7 @@ export default defineConfig({
       },
       {
         icon: 'discord',
-        link: 'https://discord.gg/PH4rBdTU',
+        link: 'https://discord.gg/8UcP9QB5AV',
       },
     ],
     search: {
