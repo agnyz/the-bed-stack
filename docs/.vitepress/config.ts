@@ -28,7 +28,7 @@ export default defineConfig({
       height: 24,
     },
     nav: [
-      { text: 'Guide', link: '/what-is-the-bed-stack' },
+      { text: 'Guide', link: '/what-is-bedstack' },
       { text: 'RealWorld apps', link: 'https://realworld-docs.netlify.app/' },
     ],
 
@@ -37,8 +37,8 @@ export default defineConfig({
         text: 'Introduction',
         items: [
           {
-            text: 'What is The BED Stack?',
-            link: '/what-is-the-bed-stack',
+            text: 'What is Bedstack?',
+            link: '/what-is-bedstack',
           },
           { text: 'Getting Started', link: '/getting-started' },
         ],
@@ -56,18 +56,18 @@ export default defineConfig({
       },
       {
         text: "Developer's Guide",
-        link: 'https://github.com/agnyz/the-bed-stack/blob/main/CONTRIBUTING.md',
+        link: 'https://github.com/agnyz/bedstack/blob/main/CONTRIBUTING.md',
       },
       {
         text: 'Support',
-        link: 'https://github.com/agnyz/the-bed-stack/blob/main/SUPPORT.md',
+        link: 'https://github.com/agnyz/bedstack/blob/main/SUPPORT.md',
       },
     ],
 
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/agnyz/the-bed-stack',
+        link: 'https://github.com/agnyz/bedstack',
       },
       {
         icon: 'discord',
@@ -81,7 +81,7 @@ export default defineConfig({
       },
     },
     editLink: {
-      pattern: 'https://github.com/agnyz/the-bed-stack/edit/main/docs/:path',
+      pattern: 'https://github.com/agnyz/bedstack/edit/main/docs/:path',
       text: 'Edit this page on GitHub',
     },
   },

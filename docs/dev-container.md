@@ -19,12 +19,12 @@ For now, you must change "file sharing implementation" from **VirtioFS** to **gR
 :::
 
 <!-- ::: info
-For now, you must _rebuild_ the container using `⌘` `⇧` `P` → `Dev Containers: Rebuild Container` after building the container the first time. See [#55](https://github.com/agnyz/the-bed-stack/issues/55) for details; PRs welcome.
+For now, you must _rebuild_ the container using `⌘` `⇧` `P` → `Dev Containers: Rebuild Container` after building the container the first time. See [#55](https://github.com/agnyz/bedstack/issues/55) for details; PRs welcome.
 ::: -->
 
 ::: info
 For now, you must _rebuild_ the container using `⌘` `⇧` `P`
- → `Dev Containers: Rebuild Container` after building the container the first time. See [#55](https://github.com/agnyz/the-bed-stack/issues/55) for details; PRs welcome.
+ → `Dev Containers: Rebuild Container` after building the container the first time. See [#55](https://github.com/agnyz/bedstack/issues/55) for details; PRs welcome.
 :::
 
 
@@ -33,8 +33,8 @@ For now, you must _rebuild_ the container using `⌘` `⇧` `P`
 1. **Clone the repository**
 
   ```sh
-  $ gh repo clone agnyz/the-bed-stack
-  $ cd the-bed-stack
+  $ gh repo clone agnyz/bedstack
+  $ cd bedstack
   ```
 
 2. **Open the project in a dev container**
@@ -47,4 +47,4 @@ For now, you must _rebuild_ the container using `⌘` `⇧` `P`
 
 ## What's Next?
 
-* Please report any issues you encounter with the dev container in [GitHub Issues, with the `devcontainers` label](https://github.com/agnyz/the-bed-stack/labels/devcontainers).
+* Please report any issues you encounter with the dev container in [GitHub Issues, with the `devcontainers` label](https://github.com/agnyz/bedstack/labels/devcontainers).

@@ -4,8 +4,8 @@ contact_links:
     url: https://discord.gg/PH4rBdTU
     about: Use Discord for instantly connecting with other developers on this project.
   - name: Discussions
-    url: https://github.com/agnyz/the-bed-stack/discussions
+    url: https://github.com/agnyz/bedstack/discussions
     about: Use GitHub discussions for a message board-style forum for the project, discussing ideas, questions, etc.
   - name: Q&A
-    url: https://github.com/agnyz/the-bed-stack/discussions/categories/q-a?discussions_q=
+    url: https://github.com/agnyz/bedstack/discussions/categories/q-a?discussions_q=
     about: See the full list of questions and answers, or ask your own.
