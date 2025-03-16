@@ -1,9 +1,9 @@
-import type { DatabaseSchema } from '@/database.providers';
+import type { Database } from '@/database.providers';
 import { userFollows, users } from '@users/users.model';
 import { and, eq } from 'drizzle-orm';
 
 export class ProfilesRepository {
-  constructor(private readonly db: DatabaseSchema) {}
+  constructor(private readonly db: Database) {}
 
   async findByUsername(targetUsername: string) {
     const result = await this.db.query.users.findMany({

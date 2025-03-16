@@ -1,10 +1,10 @@
-import type { DatabaseSchema } from '@/database.providers';
+import type { Database } from '@/database.providers';
 import { users } from '@users/users.model';
 import type { UserToCreate, UserToUpdate } from '@users/users.schema';
 import { eq } from 'drizzle-orm';
 
 export class UsersRepository {
-  constructor(private readonly db: DatabaseSchema) {}
+  constructor(private readonly db: Database) {}
 
   async findAll() {
     return await this.db.query.users.findMany({
