@@ -91,4 +91,13 @@ export class AuthService {
     const user = await this.getUserFromHeaders(headers);
     return user.id;
   };
+
+  getOptionalUserIdFromHeader = async (headers: Headers) => {
+    try {
+      const user = await this.getUserFromHeaders(headers);
+      return user.id;
+    } catch (error) {
+      return null;
+    }
+  };
 }

@@ -1,9 +1,11 @@
 import { exit } from 'node:process';
 import { db } from '@/database.providers';
+import { articles, favoriteArticles } from '@articles/articles.model';
+import dbConfig from '@db/config';
 import { userFollows, users } from '@users/users.model';
 import { getTableName, sql } from 'drizzle-orm';
 
-const tables = [users, userFollows];
+const tables = [userFollows, favoriteArticles, articles, users];
 console.log('Dropping all tables from the database');
 
 try {
@@ -16,6 +18,13 @@ try {
         sql`DROP TABLE IF EXISTS ${sql.identifier(name)} CASCADE;`,
       );
       console.log(`Dropped ${name}`);
+    }
+    if (dbConfig.migrations?.table) {
+      // Clean up migrations
+      console.log('Dropping migrations table');
+      await tx.execute(
+        sql`DROP TABLE IF EXISTS ${sql.identifier(dbConfig.migrations.table)} CASCADE;`,
+      );
     }
   });
 

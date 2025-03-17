@@ -37,6 +37,7 @@
       "@auth/*": ["./src/auth/*"],
       "@profiles/*": ["./src/profiles/*"],
       "@utils/*": ["./src/utils/*"],
+      "@articles/*": ["./src/articles/*"],
       "@errors": ["./src/errors.ts"],
       "@config": ["./src/config.ts"]
     },
