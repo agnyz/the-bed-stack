@@ -12,9 +12,9 @@
 
 <!-- Mark each item with an "x" ([ ] becomes [x]) -->
 
-- [ ] Read the [CONTRIBUTING](https://github.com/agnyz/bedstack/blob/main/CONTRIBUTING.md) guide
-- [ ] Title this PR according to the `type(scope): description` or `type: description` format
-- [ ] Provide description sufficient to understand the changes introduced in this PR, and, if necessary, some screenshots
+- [ ] Read the Developer's Guide in [CONTRIBUTING.md](https://github.com/agnyz/bedstack/blob/main/CONTRIBUTING.md)
+- [ ] Use a concise title to represent the changes introduced in this PR
+- [ ] Provide a detailed description of the changes introduced in this PR, and, if necessary, some screenshots
 - [ ] Reference an issue or discussion where the feature or changes have been previously discussed
 - [ ] Add a failing test that passes with the changes introduced in this PR, or explain why it's not feasible
 - [ ] Add documentation for the feature or changes introduced in this PR to the docs; you can run them with `bun docs`
