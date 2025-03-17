@@ -17,8 +17,8 @@ head:
 
 <script setup>
 import Header from './components/header.vue'
-import Hero from './components/Hero.vue'
-import Features from './components/Features.vue'
+import Hero from './components/hero.vue'
+import Features from './components/features.vue'
 </script>
 
 <Hero />
@@ -26,26 +26,6 @@ import Features from './components/Features.vue'
 <Features />
 
 <style>
-:root {
-  --vp-home-hero-image-background-image: linear-gradient(-45deg, 
-    rgb(from var(--vp-c-brand-1) r g b / 0.25) 20%,
-    rgb(from var(--vp-c-brand-2) r g b / 0.5) 20%
-  );
-  --vp-home-hero-image-filter: blur(80px);
-}
-
-@media (min-width: 640px) {
-  :root {
-    --vp-home-hero-image-filter: blur(56px);
-  }
-}
-
-@media (min-width: 960px) {
-  :root {
-    --vp-home-hero-image-filter: blur(72px);
-  }
-}
-
 .VPButton.brand {
   background-image: linear-gradient(160deg, var(--vp-c-brand-1), var(--vp-c-brand-2)) !important;
   opacity: 0.8;
