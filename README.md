@@ -48,10 +48,10 @@
     bun dev
     ```
 
-5. **Run the tests**
+5. **Run the API tests**
 
     ```sh
-    APIURL=http://localhost:3000/api ./scripts/api-tests/run-api-tests.sh
+    bun run test # not `bun test`!
     ```
 
 ### Building for production
