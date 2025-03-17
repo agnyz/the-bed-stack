@@ -6,7 +6,11 @@
 
 ---
 
-### PR Checklist (Please do not remove)
+### PR Checklist
+
+<!-- Please do not remove this section -->
+
+<!-- Mark each item with an "x" ([ ] becomes [x]) -->
 
 - [ ] Read the [CONTRIBUTING](
   https://github.com/agnyz/bedstack/blob/main/CONTRIBUTING.md) guide
