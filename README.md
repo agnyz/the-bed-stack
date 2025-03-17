@@ -48,6 +48,12 @@
     bun dev
     ```
 
+5. **Run the tests**
+
+    ```sh
+    APIURL=http://localhost:3000/api ./scripts/api-tests/run-api-tests.sh
+    ```
+
 ### Building for production
 
 > [!TIP]
@@ -63,7 +69,6 @@
 
     ```sh
     bun preview
-    ```
 
 ### Contributing
 

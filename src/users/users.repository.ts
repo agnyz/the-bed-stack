@@ -1,30 +1,29 @@
+import type { Database } from '@/database.providers';
 import { users } from '@users/users.model';
 import type { UserToCreate, UserToUpdate } from '@users/users.schema';
 import { eq } from 'drizzle-orm';
-// users.repository.ts
-// in charge of database interactions
-import type { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
 
 export class UsersRepository {
-  constructor(private readonly db: PostgresJsDatabase) {}
+  constructor(private readonly db: Database) {}
 
   async findAll() {
-    return await this.db.select().from(users);
+    return await this.db.query.users.findMany({
+      with: { followers: true, following: true },
+    });
   }
 
   async findById(id: number) {
-    const result = await this.db.select().from(users).where(eq(users.id, id));
-    if (result.length === 0) {
-      return null;
-    }
-    return result[0];
+    const result = await this.db.query.users.findFirst({
+      where: eq(users.id, id),
+    });
+    if (!result) return null;
+    return result;
   }
 
   async findByEmail(email: string) {
-    const result = await this.db
-      .select()
-      .from(users)
-      .where(eq(users.email, email));
+    const result = await this.db.query.users.findMany({
+      where: eq(users.email, email),
+    });
     if (result.length === 0) {
       return null;
     }
@@ -35,10 +34,9 @@ export class UsersRepository {
   }
 
   async findByUsername(username: string) {
-    const result = await this.db
-      .select()
-      .from(users)
-      .where(eq(users.username, username));
+    const result = await this.db.query.users.findMany({
+      where: eq(users.username, username),
+    });
     if (result.length === 0) {
       return null;
     }

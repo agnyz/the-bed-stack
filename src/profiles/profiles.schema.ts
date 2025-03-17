@@ -1,11 +1,12 @@
-import { Type } from '@sinclair/typebox';
-import { type User, insertUserSchemaRaw } from '@users/users.schema';
+import { type Static, Type } from '@sinclair/typebox';
+import {
+  type FollowerSchema,
+  type SelectUserSchema,
+  insertUserSchemaRaw,
+} from '@users/users.schema';
 
-export type Profile = Omit<
-  User,
-  'id' | 'email' | 'created_at' | 'updated_at'
-> & {
-  following: boolean;
+export type Profile = Static<typeof SelectUserSchema> & {
+  followers: FollowerSchema[];
 };
 
 export const ReturnedProfileSchema = Type.Object({
@@ -14,9 +15,11 @@ export const ReturnedProfileSchema = Type.Object({
       'id',
       'email',
       'password',
-      'created_at',
-      'updated_at',
+      'createdAt',
+      'updatedAt',
     ]),
     Type.Object({ following: Type.Boolean() }),
   ]),
 });
+
+export type ParsedProfileSchema = Static<typeof ReturnedProfileSchema>;
