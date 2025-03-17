@@ -15,11 +15,5 @@
       "password": "postgres"
     }
   ],
-  "cSpell.words": [
-    "bedstack",
-    "Elysia",
-    "elysiajs",
-    "favicons",
-    "typesafe"
-  ]
+  "cSpell.words": ["bedstack", "Elysia", "elysiajs", "favicons", "typesafe"]
 }
