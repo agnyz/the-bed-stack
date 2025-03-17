@@ -1,9 +1,14 @@
 import { dbCredentialsString } from '@db/config';
-import { type PostgresJsDatabase, drizzle } from 'drizzle-orm/postgres-js';
+import * as usersSchema from '@users/users.model';
+import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 
 export const migrationsClient = postgres(dbCredentialsString, { max: 1 });
 
 export const queryClient = postgres(dbCredentialsString);
 
-export const db: PostgresJsDatabase = drizzle(queryClient);
+export const db = drizzle(queryClient, {
+  schema: { ...usersSchema },
+  logger: true,
+});
+export type Database = typeof db;

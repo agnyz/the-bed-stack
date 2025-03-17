@@ -1,20 +1,15 @@
+import type { Database } from '@/database.providers';
 import { userFollows, users } from '@users/users.model';
-import { and, eq, sql } from 'drizzle-orm';
-import type { PostgresJsDatabase } from 'drizzle-orm/postgres-js';
+import { and, eq } from 'drizzle-orm';
 
 export class ProfilesRepository {
-  constructor(private readonly db: PostgresJsDatabase) {}
+  constructor(private readonly db: Database) {}
 
-  async findByUsername(currentUserId: number, targetUsername: string) {
-    const result = await this.db
-      .select({
-        username: users.username,
-        bio: users.bio,
-        image: users.image,
-        following: sql<boolean>`EXISTS(SELECT 1 FROM user_follows WHERE user_id = ${users.id} AND follower_id = ${currentUserId})`,
-      })
-      .from(users)
-      .where(eq(users.username, targetUsername));
+  async findByUsername(targetUsername: string) {
+    const result = await this.db.query.users.findMany({
+      where: eq(users.username, targetUsername),
+      with: { followers: true },
+    });
     if (result.length === 0) {
       return null;
     }
@@ -24,7 +19,7 @@ export class ProfilesRepository {
   async followUser(currentUserId: number, userToFollow: number) {
     const result = await this.db
       .insert(userFollows)
-      .values({ user_id: userToFollow, follower_id: currentUserId })
+      .values({ followedId: userToFollow, followerId: currentUserId })
       .returning();
     return result[0];
   }
@@ -34,8 +29,8 @@ export class ProfilesRepository {
       .delete(userFollows)
       .where(
         and(
-          eq(userFollows.user_id, userToUnfollow),
-          eq(userFollows.follower_id, currentUserId),
+          eq(userFollows.followedId, userToUnfollow),
+          eq(userFollows.followerId, currentUserId),
         ),
       )
       .returning();
