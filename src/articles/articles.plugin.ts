@@ -119,7 +119,6 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
           },
         },
       )
-      // Comment routes
       .post(
         '/:slug/comments',
         async ({ body, params, store, request }) => {

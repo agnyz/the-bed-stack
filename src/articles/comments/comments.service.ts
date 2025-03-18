@@ -16,7 +16,7 @@ export class CommentsService {
     commentBody: { body: string },
     userId: number,
   ): Promise<ReturnedComment> {
-    const article = await this.commentsRepository.getArticleBySlug(articleSlug);
+    const article = await this.commentsRepository.findBySlug(articleSlug);
 
     if (!article) {
       throw new BadRequestError(`Article with slug ${articleSlug} not found`);
@@ -28,7 +28,7 @@ export class CommentsService {
       articleId: article.id,
     };
 
-    const comment = await this.commentsRepository.createComment(commentData);
+    const comment = await this.commentsRepository.create(commentData);
     const authorUsername = await this.getAuthorUsername(comment.authorId);
     const authorProfile = await this.profilesService.findByUsername(
       userId,
@@ -48,13 +48,13 @@ export class CommentsService {
     articleSlug: string,
     currentUserId?: number,
   ): Promise<ReturnedComment[]> {
-    const article = await this.commentsRepository.getArticleBySlug(articleSlug);
+    const article = await this.commentsRepository.findBySlug(articleSlug);
 
     if (!article) {
       throw new BadRequestError(`Article with slug ${articleSlug} not found`);
     }
 
-    const comments = await this.commentsRepository.getCommentsByArticleId(
+    const comments = await this.commentsRepository.findManyByArticleId(
       article.id,
     );
 
@@ -84,13 +84,13 @@ export class CommentsService {
     commentId: number,
     userId: number,
   ): Promise<void> {
-    const article = await this.commentsRepository.getArticleBySlug(articleSlug);
+    const article = await this.commentsRepository.findBySlug(articleSlug);
 
     if (!article) {
       throw new BadRequestError(`Article with slug ${articleSlug} not found`);
     }
 
-    const comment = await this.commentsRepository.getCommentById(commentId);
+    const comment = await this.commentsRepository.findById(commentId);
 
     if (!comment) {
       throw new BadRequestError(`Comment with id ${commentId} not found`);
@@ -108,7 +108,7 @@ export class CommentsService {
       );
     }
 
-    await this.commentsRepository.deleteComment(commentId, userId);
+    await this.commentsRepository.delete(commentId, userId);
   }
 
   private async getAuthorUsername(userId: number): Promise<string> {

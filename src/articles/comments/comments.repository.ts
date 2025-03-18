@@ -7,44 +7,38 @@ import type { CommentToCreate } from './comments.schema';
 export class CommentsRepository {
   constructor(private readonly db: Database) {}
 
-  async createComment(commentData: CommentToCreate) {
+  async create(commentData: CommentToCreate) {
     const [comment] = await this.db
       .insert(comments)
       .values(commentData)
       .returning();
-
     return comment;
   }
 
-  async getCommentById(id: number) {
-    const [comment] = await this.db
-      .select()
-      .from(comments)
-      .where(eq(comments.id, id));
-
-    return comment;
+  async findById(id: number) {
+    const result = await this.db.query.comments.findFirst({
+      where: eq(comments.id, id),
+    });
+    return result;
   }
 
-  async getCommentsByArticleId(articleId: number) {
-    const articleComments = await this.db
-      .select()
-      .from(comments)
-      .where(eq(comments.articleId, articleId))
-      .orderBy(desc(comments.createdAt));
-
-    return articleComments;
+  async findManyByArticleId(articleId: number) {
+    const result = await this.db.query.comments.findMany({
+      where: eq(comments.articleId, articleId),
+      orderBy: [desc(comments.createdAt)],
+    });
+    return result;
   }
 
-  async getArticleBySlug(slug: string) {
-    const [article] = await this.db
-      .select()
-      .from(articles)
-      .where(eq(articles.slug, slug));
+  async findBySlug(slug: string) {
+    const result = await this.db.query.articles.findFirst({
+      where: eq(articles.slug, slug),
+    });
 
-    return article;
+    return result;
   }
 
-  async deleteComment(commentId: number, authorId: number) {
+  async delete(commentId: number, authorId: number) {
     await this.db
       .delete(comments)
       .where(and(eq(comments.id, commentId), eq(comments.authorId, authorId)));
