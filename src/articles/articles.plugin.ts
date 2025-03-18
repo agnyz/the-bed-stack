@@ -8,7 +8,13 @@ import {
   ReturnedArticleResponseSchema,
   UpdateArticleSchema,
 } from '@articles/articles.schema';
-import { Elysia } from 'elysia';
+import { Elysia, t } from 'elysia';
+import {
+  AddCommentSchema,
+  DeleteCommentResponse,
+  ReturnedCommentResponse,
+  ReturnedCommentsResponse,
+} from './comments/comments.schema';
 
 export const articlesPlugin = new Elysia().use(setupArticles).group(
   '/articles',
@@ -66,7 +72,7 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
           query: ArticleFeedQuerySchema,
           response: ReturnedArticleListSchema,
           detail: {
-            summary: 'Artifle Feed',
+            summary: 'Article Feed',
           },
         },
       )
@@ -110,6 +116,74 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
           response: DeleteArticleResponse,
           detail: {
             summary: 'Delete Article',
+          },
+        },
+      )
+      // Comment routes
+      .post(
+        '/:slug/comments',
+        async ({ body, params, store, request }) => {
+          const comment = await store.commentsService.createComment(
+            params.slug,
+            body.comment,
+            await store.authService.getUserIdFromHeader(request.headers),
+          );
+          return { comment };
+        },
+        {
+          beforeHandle: app.store.authService.requireLogin,
+          params: t.Object({
+            slug: t.String(),
+          }),
+          body: AddCommentSchema,
+          response: ReturnedCommentResponse,
+          detail: {
+            summary: 'Add Comment to Article',
+          },
+        },
+      )
+      .get(
+        '/:slug/comments',
+        async ({ params, store, request }) => {
+          const userId = await store.authService.getOptionalUserIdFromHeader(
+            request.headers,
+          );
+          return {
+            comments: await store.commentsService.getComments(
+              params.slug,
+              userId === null ? undefined : userId,
+            ),
+          };
+        },
+        {
+          params: t.Object({
+            slug: t.String(),
+          }),
+          response: ReturnedCommentsResponse,
+          detail: {
+            summary: 'Get Comments from Article',
+          },
+        },
+      )
+      .delete(
+        '/:slug/comments/:id',
+        async ({ params, store, request }) => {
+          await store.commentsService.deleteComment(
+            params.slug,
+            Number.parseInt(params.id, 10),
+            await store.authService.getUserIdFromHeader(request.headers),
+          );
+          return {};
+        },
+        {
+          beforeHandle: app.store.authService.requireLogin,
+          params: t.Object({
+            slug: t.String(),
+            id: t.String(),
+          }),
+          response: DeleteCommentResponse,
+          detail: {
+            summary: 'Delete Comment',
           },
         },
       ),

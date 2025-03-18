@@ -1,8 +1,7 @@
+import { articles, type favoriteArticles } from '@articles/articles.model';
 import type { Profile } from '@profiles/profiles.schema';
 import { type Static, Type } from '@sinclair/typebox';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
-// Do not use path aliases here (i.e. '@/users/users.model'), as that doesn't work with Drizzle Studio
-import { articles, type favoriteArticles } from './articles.model';
 
 export const insertArticleSchemaRaw = createInsertSchema(articles);
 export const selectArticleSchemaRaw = createSelectSchema(articles);
@@ -24,44 +23,38 @@ export type ArticleToCreate = ArticleToCreateData & {
 
 export const UpdateArticleSchema = Type.Object({
   article: Type.Partial(
-    Type.Pick(insertArticleSchemaRaw, [
-      'title',
-      'description',
-      'body',
-      'tagList',
-    ]),
+    Type.Pick(insertArticleSchemaRaw, ['title', 'description', 'body']),
   ),
 });
 
-export type ArticleToUpdateRequest = Static<
-  typeof UpdateArticleSchema
->['article'];
-export type ArticleToUpdate = ArticleToUpdateRequest & {
-  slug: string;
-};
+export type ArticleToUpdate = Static<typeof UpdateArticleSchema>['article'];
 
-export const ReturnedArticleSchema = Type.Composite([
-  Type.Omit(selectArticleSchemaRaw, ['id', 'authorId']),
+const returnArticleSchemaRaw = Type.Composite([
   Type.Object({
-    author: Type.Object({
-      username: Type.String(),
-      bio: Type.String(),
-      image: Type.String(),
-      following: Type.Boolean(),
-    }),
+    slug: Type.String(),
+    title: Type.String(),
+    description: Type.String(),
+    body: Type.String(),
+    tagList: Type.Array(Type.String()),
+    createdAt: Type.String({ format: 'date-time' }),
+    updatedAt: Type.String({ format: 'date-time' }),
     favorited: Type.Boolean(),
     favoritesCount: Type.Number(),
   }),
+  Type.Object({
+    author: Type.Any(),
+  }),
 ]);
+
+export const ReturnedArticleSchema = returnArticleSchemaRaw;
 
 export const ReturnedArticleResponseSchema = Type.Object({
   article: ReturnedArticleSchema,
 });
 
+export const DeleteArticleResponse = Type.Object({});
+
 export type ReturnedArticle = Static<typeof ReturnedArticleSchema>;
-export type ReturnedArticleResponse = Static<
-  typeof ReturnedArticleResponseSchema
->;
 
 export type ArticleInDb = Omit<
   typeof articles.$inferSelect,
@@ -71,12 +64,13 @@ export type ArticleInDb = Omit<
   favoritedBy: ArticleFavoritedBy[];
 };
 
-type ArticleFavoritedBy = typeof favoriteArticles.$inferSelect;
+export type ArticleFavoritedBy = typeof favoriteArticles.$inferSelect;
 
 export const ArticleFeedQuerySchema = Type.Object({
   limit: Type.Optional(Type.Number({ minimum: 1, default: 20 })),
   offset: Type.Optional(Type.Number({ minimum: 0, default: 0 })),
 });
+
 export const ListArticlesQuerySchema = Type.Composite([
   ArticleFeedQuerySchema,
   Type.Object({
@@ -92,8 +86,3 @@ export const ReturnedArticleListSchema = Type.Object({
 });
 
 export type ReturnedArticleList = Static<typeof ReturnedArticleListSchema>;
-
-export const DeleteArticleResponse = Type.Object({
-  message: Type.String(),
-  slug: Type.String(),
-});
