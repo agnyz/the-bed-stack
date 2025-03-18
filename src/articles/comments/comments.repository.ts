@@ -39,7 +39,7 @@ export class CommentsRepository {
   }
 
   async delete(commentId: number, authorId: number) {
-    await this.db
+    return await this.db
       .delete(comments)
       .where(and(eq(comments.id, commentId), eq(comments.authorId, authorId)));
   }
