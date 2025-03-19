@@ -172,19 +172,15 @@ export class ArticlesRepository {
     article: ArticleToUpdate,
     currentUserId: number,
   ) {
-    const valuesToSet = Object.entries(article).reduce(
-      (acc: { [key: string]: string | string[] | Date }, [key, value]) => {
-        if (value !== undefined) {
-          acc[key] = value;
-        }
-        return acc;
-      },
-      {},
+    const filteredArticle = Object.fromEntries(
+      Object.entries(article).filter(([_, value]) => value !== undefined),
     );
-    valuesToSet.updatedAt = new Date();
     await this.db
       .update(articles)
-      .set(valuesToSet)
+      .set({
+        ...filteredArticle,
+        updatedAt: new Date(),
+      })
       .where(
         and(eq(articles.id, articleId), eq(articles.authorId, currentUserId)),
       );
