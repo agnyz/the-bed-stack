@@ -4,9 +4,9 @@ CREATE TABLE "articles" (
 	"title" text NOT NULL,
 	"description" text NOT NULL,
 	"body" text NOT NULL,
-	"tag_list" text[] DEFAULT '{}'::text[] NOT NULL,
-	"created_at" timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	"updated_at" timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	"tag_list" text[] DEFAULT '{}' NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL,
 	"author_id" integer NOT NULL,
 	CONSTRAINT "articles_slug_unique" UNIQUE("slug")
 );
@@ -14,8 +14,8 @@ CREATE TABLE "articles" (
 CREATE TABLE "favorite_articles" (
 	"article_id" integer NOT NULL,
 	"user_id" integer NOT NULL,
-	"created_at" date DEFAULT CURRENT_DATE NOT NULL,
-	"updated_at" date DEFAULT CURRENT_DATE NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT "favorite_articles_article_id_user_id_pk" PRIMARY KEY("article_id","user_id")
 );
 

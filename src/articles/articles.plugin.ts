@@ -26,7 +26,7 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
   (app) =>
     app
       .get(
-        '',
+        '/',
         async ({ query, store, request }) =>
           store.articlesService.find({
             ...query,
@@ -43,7 +43,7 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
         },
       )
       .post(
-        '',
+        '/',
         async ({ body, request, store }) =>
           store.articlesService.createArticle(
             body.article,
@@ -66,6 +66,7 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
             currentUserId: await store.authService.getUserIdFromHeader(
               request.headers,
             ),
+            followedAuthors: true,
           }),
         {
           beforeHandle: app.store.authService.requireLogin,

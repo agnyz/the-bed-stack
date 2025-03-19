@@ -1,5 +1,5 @@
 {
-  "id": "a387bcf4-fc25-4a7c-9467-3f76e9356261",
+  "id": "842ed756-50d5-4cf1-b4dd-cbd31e340af4",
   "prevId": "c621d843-d221-4084-a3e3-361c92f1c7bf",
   "version": "7",
   "dialect": "postgresql",
@@ -43,21 +43,21 @@
           "type": "text[]",
           "primaryKey": false,
           "notNull": true,
-          "default": "'{}'::text[]"
+          "default": "'{}'"
         },
         "created_at": {
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "default": "CURRENT_TIMESTAMP"
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "default": "CURRENT_TIMESTAMP"
+          "default": "now()"
         },
         "author_id": {
           "name": "author_id",
@@ -108,17 +108,17 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "date",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "default": "CURRENT_DATE"
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "date",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "default": "CURRENT_DATE"
+          "default": "now()"
         }
       },
       "indexes": {},

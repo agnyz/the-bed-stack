@@ -12,14 +12,14 @@ import {
 import { users } from '@users/users.model';
 
 export const articles = pgTable('articles', {
-  id: serial('id').primaryKey().notNull(),
+  id: serial('id').primaryKey(),
   slug: text('slug').notNull().unique(),
   title: text('title').notNull(),
   description: text('description').notNull(),
   body: text('body').notNull(),
-  tagList: text('tag_list').array().default(sql`'{}'::text[]`).notNull(),
-  createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
-  updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`).notNull(),
+  tagList: text('tag_list').array().default([]).notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
   authorId: integer('author_id')
     .references(() => users.id, { onDelete: 'cascade' })
     .notNull(),
@@ -48,8 +48,8 @@ export const favoriteArticles = pgTable(
     userId: integer('user_id')
       .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
-    createdAt: date('created_at').default(sql`CURRENT_DATE`).notNull(),
-    updatedAt: date('updated_at').default(sql`CURRENT_DATE`).notNull(),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
   },
   (table) => [primaryKey({ columns: [table.articleId, table.userId] })],
 );
@@ -62,7 +62,7 @@ export const favoriteArticleRelations = relations(
       references: [articles.id],
       relationName: 'favoriteArticle',
     }),
-    users: one(users, {
+    user: one(users, {
       fields: [favoriteArticles.userId],
       references: [users.id],
       relationName: 'favoritedBy',

@@ -5,7 +5,7 @@ import type {
 import type { Database } from '@/database.providers';
 import { userFollows, users } from '@/users/users.model';
 import { articles, favoriteArticles } from '@articles/articles.model';
-import { and, arrayContains, desc, eq, sql } from 'drizzle-orm';
+import { and, arrayContains, count, desc, eq, inArray, sql } from 'drizzle-orm';
 
 export class ArticlesRepository {
   constructor(private readonly db: Database) {}
@@ -17,6 +17,7 @@ export class ArticlesRepository {
     tag,
     author,
     favorited,
+    followedAuthors,
   }: {
     currentUserId: number | null;
     offset: number;
@@ -24,10 +25,22 @@ export class ArticlesRepository {
     tag?: string;
     author?: string;
     favorited?: string;
+    followedAuthors?: boolean;
   }) {
     const authorFilters = [];
     if (author) {
       authorFilters.push(eq(users.username, author));
+    }
+    if (followedAuthors && currentUserId) {
+      authorFilters.push(
+        inArray(
+          users.id,
+          this.db
+            .select({ followedAuthors: userFollows.followedId })
+            .from(userFollows)
+            .where(eq(userFollows.followerId, currentUserId)),
+        ),
+      );
     }
 
     const authorsWithFollowersCTE = this.db.$with('authorsWithFollowers').as(
@@ -73,7 +86,7 @@ export class ArticlesRepository {
         .groupBy(articles.id),
     );
 
-    const results = await this.db
+    const resultsQuery = this.db
       .with(authorsWithFollowersCTE, articlesWithLikesCTE)
       .select({
         slug: articles.slug,
@@ -100,11 +113,20 @@ export class ArticlesRepository {
         authorsWithFollowersCTE,
         eq(authorsWithFollowersCTE.authorId, articles.authorId),
       )
-      .limit(limit)
-      .offset(offset)
-      .orderBy(desc(articles.createdAt));
+      .orderBy(desc(articles.createdAt))
+      .as('results');
 
-    return results;
+    const limitedResults = await this.db
+      .select()
+      .from(resultsQuery)
+      .limit(limit)
+      .offset(offset);
+
+    const resultsCount = await this.db
+      .select({ count: count() })
+      .from(resultsQuery);
+
+    return { articles: limitedResults, articlesCount: resultsCount[0].count };
   }
 
   async findBySlug(slug: string) {
@@ -119,6 +141,7 @@ export class ArticlesRepository {
         favoritedBy: true,
       },
     });
+    if (!result) return null;
     return result;
   }
 
@@ -134,6 +157,7 @@ export class ArticlesRepository {
         favoritedBy: true,
       },
     });
+    if (!result) return null;
     return result;
   }
 
@@ -148,19 +172,15 @@ export class ArticlesRepository {
     article: ArticleToUpdate,
     currentUserId: number,
   ) {
-    const valuesToSet = Object.entries(article).reduce(
-      (acc: { [key: string]: string | string[] | Date }, [key, value]) => {
-        if (value !== undefined) {
-          acc[key] = value;
-        }
-        return acc;
-      },
-      {},
+    const filteredArticle = Object.fromEntries(
+      Object.entries(article).filter(([_, value]) => value !== undefined),
     );
-    valuesToSet.updatedAt = new Date();
     await this.db
       .update(articles)
-      .set(valuesToSet)
+      .set({
+        ...filteredArticle,
+        updatedAt: new Date(),
+      })
       .where(
         and(eq(articles.id, articleId), eq(articles.authorId, currentUserId)),
       );

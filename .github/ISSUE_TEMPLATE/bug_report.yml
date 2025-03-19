@@ -11,13 +11,6 @@ body:
         - Read the `README.md`
         - Ask on [Discord](https://discord.gg/8UcP9QB5AV)
         - Ask on [GitHub Discussions](https://github.com/agnyz/bedstack/discussions)
-
-  - type: input
-    id: version
-    attributes:
-      label: Version
-    validations:
-      required: true
   - type: textarea
     id: bug-description
     attributes:

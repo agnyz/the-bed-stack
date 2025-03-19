@@ -10,6 +10,7 @@
     "dev": "bun run --watch src/main.ts",
     "build": "./scripts/build.sh",
     "preview": "./server",
+    "test": "APIURL=http://localhost:3000/api ./scripts/api-tests/run-api-tests.sh",
     "fix": "biome check --fix",
     "check": "biome check",
     "check:errors": "biome check --diagnostic-level=error",
