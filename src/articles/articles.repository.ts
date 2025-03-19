@@ -119,6 +119,7 @@ export class ArticlesRepository {
         favoritedBy: true,
       },
     });
+    if (!result) return null;
     return result;
   }
 
@@ -134,6 +135,7 @@ export class ArticlesRepository {
         favoritedBy: true,
       },
     });
+    if (!result) return null;
     return result;
   }
 
