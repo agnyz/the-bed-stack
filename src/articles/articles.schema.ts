@@ -23,7 +23,12 @@ export type ArticleToCreate = ArticleToCreateData & {
 
 export const UpdateArticleSchema = Type.Object({
   article: Type.Partial(
-    Type.Pick(insertArticleSchemaRaw, ['title', 'description', 'body']),
+    Type.Pick(insertArticleSchemaRaw, [
+      'title',
+      'description',
+      'body',
+      'tagList',
+    ]),
   ),
 });
 
