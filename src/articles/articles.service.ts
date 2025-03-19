@@ -28,11 +28,7 @@ export class ArticlesService {
   }): Promise<ReturnedArticleList> {
     const limit = query.limit || 20;
     const offset = query.offset || 0;
-    const results = await this.repository.find({ ...query, limit, offset });
-    return {
-      articles: results,
-      articlesCount: results.length,
-    };
+    return await this.repository.find({ ...query, limit, offset });
   }
 
   async findBySlug(slug: string) {

@@ -5,7 +5,7 @@ import type {
 import type { Database } from '@/database.providers';
 import { userFollows, users } from '@/users/users.model';
 import { articles, favoriteArticles } from '@articles/articles.model';
-import { and, arrayContains, desc, eq, sql } from 'drizzle-orm';
+import { and, arrayContains, desc, eq, sql, count } from 'drizzle-orm';
 
 export class ArticlesRepository {
   constructor(private readonly db: Database) {}
@@ -73,7 +73,7 @@ export class ArticlesRepository {
         .groupBy(articles.id),
     );
 
-    const results = await this.db
+    const resultsQuery = this.db
       .with(authorsWithFollowersCTE, articlesWithLikesCTE)
       .select({
         slug: articles.slug,
@@ -100,11 +100,17 @@ export class ArticlesRepository {
         authorsWithFollowersCTE,
         eq(authorsWithFollowersCTE.authorId, articles.authorId),
       )
-      .limit(limit)
-      .offset(offset)
-      .orderBy(desc(articles.createdAt));
+      .orderBy(desc(articles.createdAt))
+      .as('results');
 
-    return results;
+
+      const limitedResults =  await this.db.select().from(resultsQuery) 
+      .limit(limit)
+      .offset(offset);
+
+      const resultsCount = await this.db.select({count: count()}).from(resultsQuery);
+
+    return {articles: limitedResults, articlesCount: resultsCount[0].count};
   }
 
   async findBySlug(slug: string) {
