@@ -38,8 +38,7 @@
         "Pandy.bun",
         "github.vscode-github-actions",
         "yzhang.markdown-all-in-one",
-        "Vue.volar",
-        "vivaxy.vscode-conventional-commits"
+        "Vue.volar"
       ],
       "settings": {
         "editor.tabSize": 2,
