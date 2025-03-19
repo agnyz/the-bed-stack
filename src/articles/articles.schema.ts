@@ -34,24 +34,19 @@ export const UpdateArticleSchema = Type.Object({
 
 export type ArticleToUpdate = Static<typeof UpdateArticleSchema>['article'];
 
-const returnArticleSchemaRaw = Type.Composite([
+export const ReturnedArticleSchema = Type.Composite([
+  Type.Omit(selectArticleSchemaRaw, ['id', 'authorId']),
   Type.Object({
-    slug: Type.String(),
-    title: Type.String(),
-    description: Type.String(),
-    body: Type.String(),
-    tagList: Type.Array(Type.String()),
-    createdAt: Type.String({ format: 'date-time' }),
-    updatedAt: Type.String({ format: 'date-time' }),
+    author: Type.Object({
+      username: Type.String(),
+      bio: Type.String(),
+      image: Type.String(),
+      following: Type.Boolean(),
+    }),
     favorited: Type.Boolean(),
     favoritesCount: Type.Number(),
   }),
-  Type.Object({
-    author: Type.Any(),
-  }),
 ]);
-
-export const ReturnedArticleSchema = returnArticleSchemaRaw;
 
 export const ReturnedArticleResponseSchema = Type.Object({
   article: ReturnedArticleSchema,
