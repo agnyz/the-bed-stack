@@ -9,7 +9,7 @@ import type {
   ReturnedArticleResponse,
 } from '@articles/articles.schema';
 import type { ProfilesService } from '@profiles/profiles.service';
-import { slugify } from '@utils/slug';
+import { slugify } from '@/utils/slugify';
 import { NotFoundError } from 'elysia';
 
 export class ArticlesService {
