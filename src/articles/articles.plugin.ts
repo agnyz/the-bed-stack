@@ -20,7 +20,7 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
   (app) =>
     app
       .get(
-        '',
+        '/',
         async ({ query, store, request }) =>
           store.articlesService.find({
             ...query,
@@ -37,7 +37,7 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
         },
       )
       .post(
-        '',
+        '/',
         async ({ body, request, store }) =>
           store.articlesService.createArticle(
             body.article,
