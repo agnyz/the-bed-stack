@@ -61,7 +61,10 @@ export type ReturnedArticleResponse = Static<
   typeof ReturnedArticleResponseSchema
 >;
 
-export const DeleteArticleResponse = Type.Object({});
+export const DeleteArticleResponse = Type.Object({
+  message: Type.String(),
+  slug: Type.String(),
+});
 
 export type ReturnedArticle = Static<typeof ReturnedArticleSchema>;
 
