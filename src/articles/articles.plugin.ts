@@ -60,6 +60,7 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
             currentUserId: await store.authService.getUserIdFromHeader(
               request.headers,
             ),
+            followedAuthors: true,
           }),
         {
           beforeHandle: app.store.authService.requireLogin,

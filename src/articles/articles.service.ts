@@ -1,4 +1,5 @@
 import { AuthorizationError, BadRequestError } from '@/errors';
+import { slugify } from '@/utils/slugify';
 import type { ArticlesRepository } from '@articles/articles.repository';
 import type {
   ArticleInDb,
@@ -9,7 +10,6 @@ import type {
   ReturnedArticleResponse,
 } from '@articles/articles.schema';
 import type { ProfilesService } from '@profiles/profiles.service';
-import { slugify } from '@/utils/slugify';
 import { NotFoundError } from 'elysia';
 
 export class ArticlesService {
@@ -25,6 +25,7 @@ export class ArticlesService {
     tag?: string;
     author?: string;
     favorited?: string;
+    followedAuthors?: boolean;
   }): Promise<ReturnedArticleList> {
     const limit = query.limit || 20;
     const offset = query.offset || 0;
