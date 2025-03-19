@@ -32,7 +32,12 @@ export const UpdateArticleSchema = Type.Object({
   ),
 });
 
-export type ArticleToUpdate = Static<typeof UpdateArticleSchema>['article'];
+export type ArticleToUpdateRequest = Static<
+  typeof UpdateArticleSchema
+>['article'];
+export type ArticleToUpdate = ArticleToUpdateRequest & {
+  slug: string;
+};
 
 export const ReturnedArticleSchema = Type.Composite([
   Type.Omit(selectArticleSchemaRaw, ['id', 'authorId']),
@@ -51,6 +56,10 @@ export const ReturnedArticleSchema = Type.Composite([
 export const ReturnedArticleResponseSchema = Type.Object({
   article: ReturnedArticleSchema,
 });
+
+export type ReturnedArticleResponse = Static<
+  typeof ReturnedArticleResponseSchema
+>;
 
 export const DeleteArticleResponse = Type.Object({});
 
