@@ -21,9 +21,9 @@ try {
     }
     if (dbConfig.migrations?.table) {
       // Clean up migrations
-      console.log('Dropping migrations table');
+      console.log('Dropping migrations table: ', dbConfig.migrations.table);
       await tx.execute(
-        sql`DROP TABLE IF EXISTS ${sql.identifier(dbConfig.migrations.table)} CASCADE;`,
+        sql`DROP TABLE IF EXISTS ${sql.identifier(dbConfig.migrations.schema ?? 'public')}.${sql.identifier(dbConfig.migrations.table)} CASCADE;`,
       );
     }
   });
