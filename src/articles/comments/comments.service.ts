@@ -59,10 +59,9 @@ export class CommentsService {
 
     const returnedComments = await Promise.all(
       comments.map(async (comment) => {
-        const authorUsername = await this.getAuthorUsername(comment.authorId);
-        const authorProfile = await this.profilesService.findByUsername(
+        const authorProfile = await this.profilesService.findByUserId(
           currentUserId || 0,
-          authorUsername,
+          comment.authorId,
         );
 
         return {
