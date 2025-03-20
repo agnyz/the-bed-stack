@@ -108,12 +108,4 @@ export class CommentsService {
 
     await this.commentsRepository.delete(commentId, userId);
   }
-
-  private async getAuthorUsername(userId: number): Promise<string> {
-    const user = await this.usersRepository.findById(userId);
-    if (!user) {
-      throw new BadRequestError(`User with id ${userId} not found`);
-    }
-    return user.username;
-  }
 }
