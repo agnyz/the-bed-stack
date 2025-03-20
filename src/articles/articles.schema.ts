@@ -1,7 +1,7 @@
-import { articles, type favoriteArticles } from '@articles/articles.model';
 import type { Profile } from '@profiles/profiles.schema';
 import { type Static, Type } from '@sinclair/typebox';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
+import { articles, type favoriteArticles } from './articles.model';
 
 export const insertArticleSchemaRaw = createInsertSchema(articles);
 export const selectArticleSchemaRaw = createSelectSchema(articles);
@@ -57,16 +57,10 @@ export const ReturnedArticleResponseSchema = Type.Object({
   article: ReturnedArticleSchema,
 });
 
+export type ReturnedArticle = Static<typeof ReturnedArticleSchema>;
 export type ReturnedArticleResponse = Static<
   typeof ReturnedArticleResponseSchema
 >;
-
-export const DeleteArticleResponse = Type.Object({
-  message: Type.String(),
-  slug: Type.String(),
-});
-
-export type ReturnedArticle = Static<typeof ReturnedArticleSchema>;
 
 export type ArticleInDb = Omit<
   typeof articles.$inferSelect,
@@ -82,7 +76,6 @@ export const ArticleFeedQuerySchema = Type.Object({
   limit: Type.Optional(Type.Number({ minimum: 1, default: 20 })),
   offset: Type.Optional(Type.Number({ minimum: 0, default: 0 })),
 });
-
 export const ListArticlesQuerySchema = Type.Composite([
   ArticleFeedQuerySchema,
   Type.Object({
@@ -98,3 +91,8 @@ export const ReturnedArticleListSchema = Type.Object({
 });
 
 export type ReturnedArticleList = Static<typeof ReturnedArticleListSchema>;
+
+export const DeleteArticleResponse = Type.Object({
+  message: Type.String(),
+  slug: Type.String(),
+});
