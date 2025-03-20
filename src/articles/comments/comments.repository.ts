@@ -18,6 +18,19 @@ export class CommentsRepository {
   async findById(id: number) {
     const result = await this.db.query.comments.findFirst({
       where: eq(comments.id, id),
+      with: {
+        author: {
+          columns: {
+            id: true,
+            username: true,
+            bio: true,
+            image: true,
+          },
+          with: {
+            followers: true,
+          },
+        },
+      },
     });
     return result;
   }
