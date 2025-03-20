@@ -43,6 +43,12 @@ export class CommentsService {
     };
   }
 
+  /**
+   * Get all comments for an article
+   * @param articleSlug - The slug of the article
+   * @param currentUserId - The id of the current user. If provided, the profile of the author will be returned
+   * @returns An array of comments
+   */
   async getComments(
     articleSlug: string,
     currentUserId?: number,
@@ -60,7 +66,7 @@ export class CommentsService {
     const returnedComments = await Promise.all(
       comments.map(async (comment) => {
         const authorProfile = await this.profilesService.findByUserId(
-          currentUserId || 0,
+          currentUserId ?? null,
           comment.authorId,
         );
 

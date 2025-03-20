@@ -17,7 +17,7 @@ export class ProfilesService {
     return await this.generateProfileResponse(user, currentUserId);
   }
 
-  async findByUserId(currentUserId: number, targetUserId: number) {
+  async findByUserId(currentUserId: number | null, targetUserId: number) {
     const user = await this.repository.findByUserId(targetUserId);
     if (!user) {
       throw new NotFoundError('Profile not found');
