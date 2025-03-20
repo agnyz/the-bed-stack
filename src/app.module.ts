@@ -1,3 +1,4 @@
+import { articlesPlugin } from '@articles/articles.plugin';
 import { swagger } from '@elysiajs/swagger';
 import {
   AuthenticationError,
@@ -36,9 +37,29 @@ export const setupApp = () => {
       swagger({
         documentation: {
           info: { title, version, description },
+          components: {
+            securitySchemes: {
+              tokenAuth: {
+                type: 'apiKey',
+                description: 'Prefix the token with "Token", e.g. "Token xxxx"',
+                in: 'header',
+                name: 'Authorization',
+              },
+            },
+          },
+          security: [
+            {
+              tokenAuth: [],
+            },
+          ],
         },
         exclude: ['/'],
+        swaggerOptions: {
+          persistAuthorization: true,
+        },
       }),
     )
-    .group('/api', (app) => app.use(usersPlugin).use(profilesPlugin));
+    .group('/api', (app) =>
+      app.use(usersPlugin).use(profilesPlugin).use(articlesPlugin),
+    );
 };

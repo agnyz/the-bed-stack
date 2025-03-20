@@ -1,3 +1,4 @@
+import { articles, favoriteArticles } from '@/articles/articles.model';
 import { relations, sql } from 'drizzle-orm';
 import {
   date,
@@ -24,6 +25,8 @@ export const users = pgTable('users', {
 export const userRelations = relations(users, ({ many }) => ({
   followers: many(userFollows, { relationName: 'followed' }),
   following: many(userFollows, { relationName: 'follower' }),
+  publishedArticles: many(articles, { relationName: 'author' }),
+  favoriteArticles: many(favoriteArticles, { relationName: 'favoritedBy' }),
 }));
 
 export const userFollows = pgTable(

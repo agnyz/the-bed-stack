@@ -50,6 +50,13 @@
       "when": 1742050755293,
       "tag": "0006_goofy_diamondback",
       "breakpoints": false
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1742359518221,
+      "tag": "0007_thin_eternals",
+      "breakpoints": false
     }
   ]
 }

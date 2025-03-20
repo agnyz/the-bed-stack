@@ -19,4 +19,9 @@ export default defineConfig({
   dialect: 'postgresql',
   dbCredentials: dbCredentials,
   strict: true,
+  // Redefine default migrations table and schema for the sake of clarity
+  migrations: {
+    table: '__drizzle_migrations',
+    schema: 'drizzle',
+  },
 });

@@ -54,16 +54,19 @@ export class ProfilesService {
 
   async generateProfileResponse(
     user: Profile,
-    currentUserId: number,
+    currentUserId: number | null,
   ): Promise<ParsedProfileSchema> {
     return {
       profile: {
         bio: user.bio,
         image: user.image,
         username: user.username,
-        following: !!user.followers.find(
-          (follower) => follower.followerId === currentUserId,
-        ),
+        following:
+          currentUserId == null
+            ? false
+            : !!user.followers.find(
+                (follower) => follower.followerId === currentUserId,
+              ),
       },
     };
   }

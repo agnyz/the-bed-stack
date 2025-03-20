@@ -46,7 +46,7 @@ export const UserLoginSchema = Type.Object({
 });
 
 // Schema for selecting a user - can be used to validate API responses
-const selectUserSchemaRaw = createSelectSchema(users);
+export const selectUserSchemaRaw = createSelectSchema(users);
 export const SelectUserSchema = Type.Omit(selectUserSchemaRaw, ['password']);
 
 export type FollowerSchema = typeof userFollows.$inferSelect;

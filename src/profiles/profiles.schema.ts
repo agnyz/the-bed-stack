@@ -2,7 +2,7 @@ import { type Static, Type } from '@sinclair/typebox';
 import {
   type FollowerSchema,
   type SelectUserSchema,
-  insertUserSchemaRaw,
+  selectUserSchemaRaw,
 } from '@users/users.schema';
 
 export type Profile = Static<typeof SelectUserSchema> & {
@@ -11,14 +11,16 @@ export type Profile = Static<typeof SelectUserSchema> & {
 
 export const ReturnedProfileSchema = Type.Object({
   profile: Type.Composite([
-    Type.Omit(insertUserSchemaRaw, [
+    Type.Omit(selectUserSchemaRaw, [
       'id',
       'email',
       'password',
       'createdAt',
       'updatedAt',
     ]),
-    Type.Object({ following: Type.Boolean() }),
+    Type.Object({
+      following: Type.Boolean(),
+    }),
   ]),
 });
 
