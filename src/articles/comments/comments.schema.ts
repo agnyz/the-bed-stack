@@ -1,4 +1,10 @@
+import { selectUserSchemaRaw } from '@/users/users.schema';
+import { comments } from '@articles/articles.model';
 import { type Static, Type } from '@sinclair/typebox';
+import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
+
+export const insertCommentSchemaRaw = createInsertSchema(comments);
+export const selectCommentSchemaRaw = createSelectSchema(comments);
 
 export const AddCommentSchema = Type.Object({
   comment: Type.Object({
@@ -11,22 +17,32 @@ export type CommentToCreate = Static<typeof AddCommentSchema>['comment'] & {
   articleId: number;
 };
 
-export const CommentSchema = Type.Object({
-  id: Type.Number(),
-  body: Type.String(),
-  createdAt: Type.String({ format: 'date-time' }),
-  updatedAt: Type.String({ format: 'date-time' }),
-  author: Type.Any(),
-});
+export const ReturnedCommentSchema = Type.Composite([
+  Type.Omit(selectCommentSchemaRaw, ['articleId', 'authorId']),
+  Type.Object({
+    author: Type.Composite([
+      Type.Omit(selectUserSchemaRaw, [
+        'id',
+        'email',
+        'password',
+        'createdAt',
+        'updatedAt',
+      ]),
+      Type.Object({
+        following: Type.Boolean(),
+      }),
+    ]),
+  }),
+]);
 
-export type ReturnedComment = Static<typeof CommentSchema>;
+export type ReturnedComment = Static<typeof ReturnedCommentSchema>;
 
 export const ReturnedCommentResponse = Type.Object({
-  comment: CommentSchema,
+  comment: ReturnedCommentSchema,
 });
 
 export const ReturnedCommentsResponse = Type.Object({
-  comments: Type.Array(CommentSchema),
+  comments: Type.Array(ReturnedCommentSchema),
 });
 
 export const DeleteCommentResponse = Type.Object({});

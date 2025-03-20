@@ -38,8 +38,8 @@ export class CommentsService {
     return {
       id: comment.id,
       body: comment.body,
-      createdAt: comment.createdAt.toISOString(),
-      updatedAt: comment.updatedAt.toISOString(),
+      createdAt: comment.createdAt,
+      updatedAt: comment.updatedAt,
       author: authorProfile.profile,
     };
   }
@@ -69,8 +69,8 @@ export class CommentsService {
         return {
           id: comment.id,
           body: comment.body,
-          createdAt: comment.createdAt.toISOString(),
-          updatedAt: comment.updatedAt.toISOString(),
+          createdAt: comment.createdAt,
+          updatedAt: comment.updatedAt,
           author: authorProfile.profile,
         };
       }),
