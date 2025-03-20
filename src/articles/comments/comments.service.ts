@@ -29,10 +29,9 @@ export class CommentsService {
     };
 
     const comment = await this.commentsRepository.create(commentData);
-    const authorUsername = await this.getAuthorUsername(comment.authorId);
-    const authorProfile = await this.profilesService.findByUsername(
+    const authorProfile = await this.profilesService.findByUserId(
       userId,
-      authorUsername,
+      comment.authorId,
     );
 
     return {
