@@ -63,24 +63,20 @@ export class CommentsService {
       article.id,
     );
 
-    const returnedComments = await Promise.all(
-      comments.map(async (comment) => {
-        const authorProfile = await this.profilesService.findByUserId(
-          currentUserId ?? null,
-          comment.authorId,
-        );
-
-        return {
-          id: comment.id,
-          body: comment.body,
-          createdAt: comment.createdAt,
-          updatedAt: comment.updatedAt,
-          author: authorProfile.profile,
-        };
-      }),
-    );
-
-    return returnedComments;
+    return comments.map((comment) => ({
+      id: comment.id,
+      body: comment.body,
+      createdAt: comment.createdAt,
+      updatedAt: comment.updatedAt,
+      author: {
+        username: comment.author.username,
+        bio: comment.author.bio,
+        image: comment.author.image,
+        following: currentUserId
+          ? comment.author.followers.some((f) => f.followerId === currentUserId)
+          : false,
+      },
+    }));
   }
 
   async deleteComment(
