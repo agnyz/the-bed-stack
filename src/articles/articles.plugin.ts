@@ -49,6 +49,11 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
           response: ReturnedArticleResponseSchema,
           detail: {
             summary: 'Create Article',
+            security: [
+              {
+                tokenAuth: [],
+              },
+            ],
           },
         },
       )
@@ -68,6 +73,11 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
           response: ReturnedArticleListSchema,
           detail: {
             summary: 'Artifle Feed',
+            security: [
+              {
+                tokenAuth: [],
+              },
+            ],
           },
         },
       )
@@ -96,6 +106,11 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
           response: ReturnedArticleResponseSchema,
           detail: {
             summary: 'Update Article',
+            security: [
+              {
+                tokenAuth: [],
+              },
+            ],
           },
         },
       )
@@ -111,6 +126,11 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
           response: DeleteArticleResponse,
           detail: {
             summary: 'Delete Article',
+            security: [
+              {
+                tokenAuth: [],
+              },
+            ],
           },
         },
       ),
