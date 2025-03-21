@@ -1,6 +1,7 @@
 import { AuthorizationError, BadRequestError } from '@errors';
 import type { ProfilesService } from '@profiles/profiles.service';
 import type { UsersRepository } from '@users/users.repository';
+import { NotFoundError } from 'elysia';
 import type { CommentsRepository } from './comments.repository';
 import type { CommentToCreate, ReturnedComment } from './comments.schema';
 
@@ -19,7 +20,7 @@ export class CommentsService {
     const article = await this.commentsRepository.findBySlug(articleSlug);
 
     if (!article) {
-      throw new BadRequestError(`Article with slug ${articleSlug} not found`);
+      throw new NotFoundError(`Article with slug ${articleSlug} not found`);
     }
 
     const commentData: CommentToCreate = {
