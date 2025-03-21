@@ -1,3 +1,4 @@
+import { env } from '@config';
 import type { Profile } from '@profiles/profiles.schema';
 import { type Static, Type } from '@sinclair/typebox';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
@@ -74,7 +75,9 @@ export type ArticleInDb = Omit<
 type ArticleFavoritedBy = typeof favoriteArticles.$inferSelect;
 
 export const ArticleFeedQuerySchema = Type.Object({
-  limit: Type.Optional(Type.Number({ minimum: 1, default: 20 })),
+  limit: Type.Optional(
+    Type.Number({ minimum: 1, maximum: Number(env.MAX_PAGINATION_LIMIT), default: 20 }),
+  ),
   offset: Type.Optional(Type.Number({ minimum: 0, default: 0 })),
 });
 export const ListArticlesQuerySchema = Type.Composite([
