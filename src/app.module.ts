@@ -56,6 +56,7 @@ export const setupApp = () => {
         exclude: ['/'],
         swaggerOptions: {
           persistAuthorization: true,
+          
         },
       }),
     )
