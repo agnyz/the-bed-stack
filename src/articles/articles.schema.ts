@@ -76,7 +76,11 @@ type ArticleFavoritedBy = typeof favoriteArticles.$inferSelect;
 
 export const ArticleFeedQuerySchema = Type.Object({
   limit: Type.Optional(
-    Type.Number({ minimum: 1, maximum: Number(env.MAX_PAGINATION_LIMIT), default: 20 }),
+    Type.Number({
+      minimum: 1,
+      maximum: Number(env.MAX_PAGINATION_LIMIT),
+      default: 20,
+    }),
   ),
   offset: Type.Optional(Type.Number({ minimum: 0, default: 0 })),
 });
