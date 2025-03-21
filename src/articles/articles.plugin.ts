@@ -73,8 +73,11 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
       )
       .get(
         '/:slug',
-        async ({ params, store }) =>
-          store.articlesService.findBySlug(params.slug),
+        async ({ params, store, request }) =>
+          store.articlesService.findBySlug(
+            params.slug,
+            await store.authService.getOptionalUserIdFromHeader(request.headers)
+          ),
         {
           response: ReturnedArticleResponseSchema,
           detail: {
