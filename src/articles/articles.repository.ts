@@ -6,6 +6,10 @@ import type { Database } from '@/database.providers';
 import { userFollows, users } from '@/users/users.model';
 import { articles, favoriteArticles } from '@articles/articles.model';
 import { and, arrayContains, count, desc, eq, inArray, sql } from 'drizzle-orm';
+import { NotFoundError } from 'elysia';
+
+
+
 
 export class ArticlesRepository {
   constructor(private readonly db: Database) {}
@@ -192,5 +196,67 @@ export class ArticlesRepository {
       .where(
         and(eq(articles.slug, slug), eq(articles.authorId, currentUserId)),
       );
+  }
+
+  async favoriteArticle(slug: string, currentUserId: number) {
+    const article = await this.findBySlug(slug);
+    if (!article) {
+      throw new NotFoundError('Article not found');
+    }
+
+    // Check if user already favorited the article
+    const existingFavorite = await this.db
+      .select()
+      .from(favoriteArticles)
+      .where(
+        and(
+          eq(favoriteArticles.articleId, article.id),
+          eq(favoriteArticles.userId, currentUserId),
+        ),
+      )
+      .limit(1);
+
+    if (existingFavorite.length > 0) {
+      return article; // Already favorited, return the article without creating duplicate
+    }
+
+    await this.db.insert(favoriteArticles).values({
+      articleId: article.id,
+      userId: currentUserId,
+    });
+    return article;
+  }
+
+  async unfavoriteArticle(slug: string, currentUserId: number) {
+    const article = await this.findBySlug(slug);
+    if (!article) {
+      throw new NotFoundError('Article not found');
+    }
+
+    // Check if user has favorited the article
+    const existingFavorite = await this.db
+      .select()
+      .from(favoriteArticles)
+      .where(
+        and(
+          eq(favoriteArticles.articleId, article.id),
+          eq(favoriteArticles.userId, currentUserId),
+        ),
+      )
+      .limit(1);
+
+    if (existingFavorite.length === 0) {
+      return article; // Not favorited, return the article without trying to unfavorite
+    }
+
+    await this.db
+      .delete(favoriteArticles)
+      .where(
+        and(
+          eq(favoriteArticles.articleId, article.id),
+          eq(favoriteArticles.userId, currentUserId),
+        ),
+      );
+    return article;
   }
 }

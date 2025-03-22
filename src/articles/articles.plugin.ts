@@ -113,5 +113,35 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
             summary: 'Delete Article',
           },
         },
+      )
+      .post(
+        '/:slug/favorite',
+        async ({ params, store, request }) =>
+          store.articlesService.favoriteArticle(
+            params.slug,
+            await store.authService.getUserIdFromHeader(request.headers),
+          ),
+        {
+          beforeHandle: app.store.authService.requireLogin,
+          response: ReturnedArticleResponseSchema,
+          detail: {
+            summary: 'Favorite Article',
+          },
+        },
+      )
+      .delete(
+        '/:slug/favorite',
+        async ({ params, store, request }) =>
+          store.articlesService.unfavoriteArticle(
+            params.slug,
+            await store.authService.getUserIdFromHeader(request.headers),
+          ),
+        {
+          beforeHandle: app.store.authService.requireLogin,
+          response: ReturnedArticleResponseSchema,
+          detail: {
+            summary: 'Unfavorite Article',
+          },
+        },
       ),
 );
