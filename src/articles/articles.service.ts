@@ -118,4 +118,40 @@ export class ArticlesService {
       },
     };
   }
+
+  async favoriteArticle(slug: string, currentUserId: number) {
+    const article = await this.repository.favoriteArticle(slug, currentUserId);
+    const baseResponse = await this.generateArticleResponse(article, currentUserId);
+    
+    // If the article is already favorited, return the current state
+    if (baseResponse.article.favorited) {
+      return baseResponse;
+    }
+
+    return {
+      article: {
+        ...baseResponse.article,
+        favorited: true,
+        favoritesCount: baseResponse.article.favoritesCount + 1,
+      },
+    };
+  }
+
+  async unfavoriteArticle(slug: string, currentUserId: number) {
+    const article = await this.repository.unfavoriteArticle(slug, currentUserId);
+    const baseResponse = await this.generateArticleResponse(article, currentUserId);
+    
+    // If the article is not favorited, return the current state
+    if (!baseResponse.article.favorited) {
+      return baseResponse;
+    }
+
+    return {
+      article: {
+        ...baseResponse.article,
+        favorited: false,
+        favoritesCount: baseResponse.article.favoritesCount - 1,
+      },
+    };
+  }
 }
