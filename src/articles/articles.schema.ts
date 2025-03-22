@@ -2,7 +2,6 @@ import { env } from '@config';
 import type { Profile } from '@profiles/profiles.schema';
 import { type Static, Type } from '@sinclair/typebox';
 import { createInsertSchema, createSelectSchema } from 'drizzle-typebox';
-// Do not use path aliases here (i.e. '@/users/users.model'), as that doesn't work with Drizzle Studio
 import { articles, type favoriteArticles } from './articles.model';
 
 export const insertArticleSchemaRaw = createInsertSchema(articles);
@@ -72,7 +71,7 @@ export type ArticleInDb = Omit<
   favoritedBy: ArticleFavoritedBy[];
 };
 
-type ArticleFavoritedBy = typeof favoriteArticles.$inferSelect;
+export type ArticleFavoritedBy = typeof favoriteArticles.$inferSelect;
 
 export const ArticleFeedQuerySchema = Type.Object({
   limit: Type.Optional(
