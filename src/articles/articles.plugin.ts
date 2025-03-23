@@ -126,6 +126,11 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
           response: ReturnedArticleResponseSchema,
           detail: {
             summary: 'Favorite Article',
+            security: [
+              {
+                tokenAuth: [],
+              },
+            ],
           },
         },
       )
@@ -141,6 +146,11 @@ export const articlesPlugin = new Elysia().use(setupArticles).group(
           response: ReturnedArticleResponseSchema,
           detail: {
             summary: 'Unfavorite Article',
+            security: [
+              {
+                tokenAuth: [],
+              },
+            ],
           },
         },
       ),
