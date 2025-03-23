@@ -5,7 +5,8 @@ import type {
 import type { Database } from '@/database.providers';
 import { userFollows, users } from '@/users/users.model';
 import { articles, favoriteArticles } from '@articles/articles.model';
-import { and, arrayContains, count, desc, eq, inArray, sql } from 'drizzle-orm';
+import { articleTags } from '@tags/tags.model';
+import { and, count, desc, eq, inArray, sql } from 'drizzle-orm';
 
 export class ArticlesRepository {
   constructor(private readonly db: Database) {}
@@ -62,9 +63,6 @@ export class ArticlesRepository {
     );
 
     const articleFilters = [];
-    if (tag) {
-      articleFilters.push(arrayContains(articles.tagList, [tag]));
-    }
     if (favorited) {
       articleFilters.push(eq(users.username, favorited));
     }
@@ -86,13 +84,33 @@ export class ArticlesRepository {
         .groupBy(articles.id),
     );
 
+    const tagFilters = [];
+    if (tag) {
+      tagFilters.push(eq(articleTags.tagName, tag));
+    }
+    const articlesWithTagsCTE = this.db.$with('articlesWithTags').as(
+      this.db
+        .select({
+          articleId: articles.id,
+          tagList: sql<
+            string[]
+          >`array_agg(article_tags.tag_name order by article_tags.tag_name)`.as(
+            'tagList',
+          ),
+        })
+        .from(articles)
+        .leftJoin(articleTags, eq(articleTags.articleId, articles.id))
+        .where(and(...articleFilters, ...tagFilters))
+        .groupBy(articles.id),
+    );
+
     const resultsQuery = this.db
-      .with(authorsWithFollowersCTE, articlesWithLikesCTE)
+      .with(authorsWithFollowersCTE, articlesWithLikesCTE, articlesWithTagsCTE)
       .select({
         slug: articles.slug,
         title: articles.title,
         description: articles.description,
-        tagList: articles.tagList,
+        tagList: articlesWithTagsCTE.tagList,
         createdAt: articles.createdAt,
         updatedAt: articles.updatedAt,
         favorited: articlesWithLikesCTE.favorited,
@@ -112,6 +130,10 @@ export class ArticlesRepository {
       .innerJoin(
         authorsWithFollowersCTE,
         eq(authorsWithFollowersCTE.authorId, articles.authorId),
+      )
+      .innerJoin(
+        articlesWithTagsCTE,
+        eq(articlesWithTagsCTE.articleId, articles.id),
       )
       .orderBy(desc(articles.createdAt))
       .as('results');
@@ -139,6 +161,7 @@ export class ArticlesRepository {
           },
         },
         favoritedBy: true,
+        tags: true,
       },
     });
     if (!result) return null;
@@ -155,6 +178,7 @@ export class ArticlesRepository {
           },
         },
         favoritedBy: true,
+        tags: true,
       },
     });
     if (!result) return null;
