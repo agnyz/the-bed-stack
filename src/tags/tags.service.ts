@@ -14,6 +14,7 @@ export class TagsService {
   }
 
   async upsertArticleTags(articleId: number, tags: string[]) {
+    // TODO: use tranaction
     if (tags.length === 0) return;
 
     // Ensure every tag exists

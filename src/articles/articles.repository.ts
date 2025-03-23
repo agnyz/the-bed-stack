@@ -88,14 +88,13 @@ export class ArticlesRepository {
       this.db
         .select({
           articleId: articles.id,
-          tags: sql<
-            string[]
-          >`array_agg(article_tags.tag_name order by article_tags.tag_name ASC)`.as(
-            'tags',
-          ),
+          tags: sql<string[]>`
+            array_agg(article_tags.tag_name order by article_tags.tag_name ASC)
+            filter (where article_tags.tag_name is not null)
+          `.as('tags'),
         })
         .from(articles)
-        .fullJoin(users, eq(users.id, articles.authorId))
+        .innerJoin(users, eq(users.id, articles.authorId))
         .leftJoin(articleTags, eq(articleTags.articleId, articles.id))
         .where(and(...authorFilters, ...articleFilters))
         .groupBy(articles.id)
@@ -111,7 +110,14 @@ export class ArticlesRepository {
         slug: articles.slug,
         title: articles.title,
         description: articles.description,
-        tagList: articlesWithTagsCTE.tags,
+        // Case-when is not natively suppoerted yet
+        // https://github.com/drizzle-team/drizzle-orm/issues/1065
+        tagList: sql<string[]>`
+          case 
+            when ${articlesWithTagsCTE.tags} is not null then ${articlesWithTagsCTE.tags}
+            else '{}'::text[]
+          end
+          `.as('tagList'),
         createdAt: articles.createdAt,
         updatedAt: articles.updatedAt,
         favorited: articlesWithLikesCTE.favorited,
