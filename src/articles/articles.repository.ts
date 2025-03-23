@@ -84,24 +84,25 @@ export class ArticlesRepository {
         .groupBy(articles.id),
     );
 
-    const tagFilters = [];
-    if (tag) {
-      tagFilters.push(eq(articleTags.tagName, tag));
-    }
     const articlesWithTagsCTE = this.db.$with('articlesWithTags').as(
       this.db
         .select({
           articleId: articles.id,
-          tagList: sql<
+          tags: sql<
             string[]
-          >`array_agg(article_tags.tag_name order by article_tags.tag_name)`.as(
-            'tagList',
+          >`array_agg(article_tags.tag_name order by article_tags.tag_name ASC)`.as(
+            'tags',
           ),
         })
         .from(articles)
+        .fullJoin(users, eq(users.id, articles.authorId))
         .leftJoin(articleTags, eq(articleTags.articleId, articles.id))
-        .where(and(...articleFilters, ...tagFilters))
-        .groupBy(articles.id),
+        .where(and(...authorFilters, ...articleFilters))
+        .groupBy(articles.id)
+        // Having can't be used with aliases, the calculation must be repeated
+        .having(
+          tag ? sql`${tag} = any(array_agg(article_tags.tag_name))` : sql`true`,
+        ),
     );
 
     const resultsQuery = this.db
@@ -110,7 +111,7 @@ export class ArticlesRepository {
         slug: articles.slug,
         title: articles.title,
         description: articles.description,
-        tagList: articlesWithTagsCTE.tagList,
+        tagList: articlesWithTagsCTE.tags,
         createdAt: articles.createdAt,
         updatedAt: articles.updatedAt,
         favorited: articlesWithLikesCTE.favorited,
