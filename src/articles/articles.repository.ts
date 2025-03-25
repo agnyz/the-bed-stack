@@ -193,4 +193,36 @@ export class ArticlesRepository {
         and(eq(articles.slug, slug), eq(articles.authorId, currentUserId)),
       );
   }
+
+  async favoriteArticle(slug: string, currentUserId: number) {
+    const article = await this.findBySlug(slug);
+    if (!article) return null;
+
+    const result = await this.db
+      .insert(favoriteArticles)
+      .values({
+        articleId: article.id,
+        userId: currentUserId,
+      })
+      .onConflictDoNothing()
+      .returning();
+
+    return article;
+  }
+
+  async unfavoriteArticle(slug: string, currentUserId: number) {
+    const article = await this.findBySlug(slug);
+    if (!article) return null;
+
+    await this.db
+      .delete(favoriteArticles)
+      .where(
+        and(
+          eq(favoriteArticles.articleId, article.id),
+          eq(favoriteArticles.userId, currentUserId),
+        ),
+      );
+
+    return article;
+  }
 }
