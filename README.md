@@ -62,7 +62,7 @@
 1. **Build the app**
 
     ```sh
-    bun build
+    bun run build # not `bun build`!
     ```
 
 2. **Run the server**
